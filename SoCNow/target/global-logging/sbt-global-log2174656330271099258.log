@@ -1,0 +1,18 @@
+[0m[[0m[0mdebug[0m] [0m[0m> Exec(testOnly TopTest -- -DwriteVcd=1 -DmemFile=/home/talha/SoC-Now/SoCNow/fpga/program.mem, Some(5d208796-b8b4-41d2-98b4-e21d010168a5), Some(CommandSource(console0)))[0m
+[0m[[0m[0mdebug[0m] [0m[0mEvaluating tasks: Test / testOnly[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0minfo[0m] [0m[0mcompiling 21 Scala sources to /home/talha/SoC-Now/SoCNow/nucleusrv/target/scala-2.12/classes ...[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/talha/SoC-Now/SoCNow/nucleusrv/src/main/scala/components/SRam.scala:21:7: Generated class nucleusrv.components.SRam differs only in case from nucleusrv.components.sram.[0m
+[0m[[0m[33mwarn[0m] [0m[0m  Such classes will overwrite one another on case-insensitive filesystems.[0m
+[0m[[0m[33mwarn[0m] [0m[0mclass SRam extends Module{[0m
+[0m[[0m[33mwarn[0m] [0m[0m      ^[0m
+[0m[[0m[33mwarn[0m] [0m[0mthere were 496 feature warnings; re-run with -feature for details[0m
+[0m[[0m[33mwarn[0m] [0m[0mtwo warnings found[0m
+[0m[[0m[0minfo[0m] [0m[0mcompiling 1 Scala source to /home/talha/SoC-Now/SoCNow/target/scala-2.12/classes ...[0m
+[0m[[0m[31merror[0m] [0m[0m/home/talha/SoC-Now/SoCNow/src/main/scala/Top.scala:315:61: too many arguments (3) for constructor Core: (req: caravan.bus.common.AbstrRequest, rsp: caravan.bus.common.AbstrResponse)(implicit config: caravan.bus.common.BusConfig)nucleusrv.components.Core[0m
+[0m[[0m[31merror[0m] [0m[0m  val core = Module(new Core(new WBRequest, new WBResponse, None))[0m
+[0m[[0m[31merror[0m] [0m[0m                                                            ^[0m
+[0m[[0m[31merror[0m] [0m[0mone error found[0m
+[0m[[0m[31merror[0m] [0m[0m(Compile / [31mcompileIncremental[0m) Compilation failed[0m
+[0m[[0m[31merror[0m] [0m[0mTotal time: 19 s, completed Jan 19, 2022 4:53:17 PM[0m
+[0m[[0m[0mdebug[0m] [0m[0m> Exec(shell, None, None)[0m

@@ -1,0 +1,64 @@
+[0m[[0m[0mdebug[0m] [0m[0m> Exec(testOnly TopTest -- -DwriteVcd=1 -DmemFile=/home/talha/SoC-Now/SoCNow/fpga/program.mem, Some(16b9b057-64a1-4739-8b14-6bb734f912f3), Some(CommandSource(console0)))[0m
+[0m[[0m[0mdebug[0m] [0m[0mEvaluating tasks: Test / testOnly[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0minfo[0m] [0m[0mcompiling 23 Scala sources to /home/talha/SoC-Now/SoCNow/buraq_mini/jigsaw/caravan/target/scala-2.12/classes ...[0m
+[0m[[0m[0minfo[0m] [0m[0mcompiling 22 Scala sources to /home/talha/SoC-Now/SoCNow/nucleusrv/target/scala-2.12/classes ...[0m
+[0m[[0m[0minfo[0m] [0m[0mcompiling 2 Scala sources to /home/talha/SoC-Now/SoCNow/buraq_mini/target/scala-2.12/classes ...[0m
+[0m[[0m[31merror[0m] [0m[0m/home/talha/SoC-Now/SoCNow/buraq_mini/src/main/scala/TilelinkHarness.scala:5:8: not found: object jigsaw[0m
+[0m[[0m[31merror[0m] [0m[0mimport jigsaw.rams.fpga.BlockRam[0m
+[0m[[0m[31merror[0m] [0m[0m       ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/talha/SoC-Now/SoCNow/buraq_mini/src/main/scala/TilelinkHarness.scala:16:26: not found: value BlockRam[0m
+[0m[[0m[31merror[0m] [0m[0m  val imem_ctrl = Module(BlockRam.createNonMaskableRAM(programFile, bus=config, rows=1024))[0m
+[0m[[0m[31merror[0m] [0m[0m                         ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/talha/SoC-Now/SoCNow/buraq_mini/src/main/scala/TilelinkHarness.scala:16:69: not found: value bus[0m
+[0m[[0m[31merror[0m] [0m[0m  val imem_ctrl = Module(BlockRam.createNonMaskableRAM(programFile, bus=config, rows=1024))[0m
+[0m[[0m[31merror[0m] [0m[0m                                                                    ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/talha/SoC-Now/SoCNow/buraq_mini/src/main/scala/TilelinkHarness.scala:16:81: not found: value rows[0m
+[0m[[0m[31merror[0m] [0m[0m  val imem_ctrl = Module(BlockRam.createNonMaskableRAM(programFile, bus=config, rows=1024))[0m
+[0m[[0m[31merror[0m] [0m[0m                                                                                ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/talha/SoC-Now/SoCNow/buraq_mini/src/main/scala/TilelinkHarness.scala:17:26: not found: value BlockRam[0m
+[0m[[0m[31merror[0m] [0m[0m  val dmem_ctrl = Module(BlockRam.createMaskableRAM(bus=config, rows=1024))[0m
+[0m[[0m[31merror[0m] [0m[0m                         ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/talha/SoC-Now/SoCNow/buraq_mini/src/main/scala/TilelinkHarness.scala:17:53: not found: value bus[0m
+[0m[[0m[31merror[0m] [0m[0m  val dmem_ctrl = Module(BlockRam.createMaskableRAM(bus=config, rows=1024))[0m
+[0m[[0m[31merror[0m] [0m[0m                                                    ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/talha/SoC-Now/SoCNow/buraq_mini/src/main/scala/TilelinkHarness.scala:17:65: not found: value rows[0m
+[0m[[0m[31merror[0m] [0m[0m  val dmem_ctrl = Module(BlockRam.createMaskableRAM(bus=config, rows=1024))[0m
+[0m[[0m[31merror[0m] [0m[0m                                                                ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/talha/SoC-Now/SoCNow/buraq_mini/src/main/scala/WishboneHarness.scala:5:8: not found: object jigsaw[0m
+[0m[[0m[31merror[0m] [0m[0mimport jigsaw.rams.fpga.BlockRam[0m
+[0m[[0m[31merror[0m] [0m[0m       ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/talha/SoC-Now/SoCNow/buraq_mini/src/main/scala/WishboneHarness.scala:16:26: not found: value BlockRam[0m
+[0m[[0m[31merror[0m] [0m[0m  val imem_ctrl = Module(BlockRam.createNonMaskableRAM(programFile, bus=config, rows=1024))[0m
+[0m[[0m[31merror[0m] [0m[0m                         ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/talha/SoC-Now/SoCNow/buraq_mini/src/main/scala/WishboneHarness.scala:16:69: not found: value bus[0m
+[0m[[0m[31merror[0m] [0m[0m  val imem_ctrl = Module(BlockRam.createNonMaskableRAM(programFile, bus=config, rows=1024))[0m
+[0m[[0m[31merror[0m] [0m[0m                                                                    ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/talha/SoC-Now/SoCNow/buraq_mini/src/main/scala/WishboneHarness.scala:16:81: not found: value rows[0m
+[0m[[0m[31merror[0m] [0m[0m  val imem_ctrl = Module(BlockRam.createNonMaskableRAM(programFile, bus=config, rows=1024))[0m
+[0m[[0m[31merror[0m] [0m[0m                                                                                ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/talha/SoC-Now/SoCNow/buraq_mini/src/main/scala/WishboneHarness.scala:17:26: not found: value BlockRam[0m
+[0m[[0m[31merror[0m] [0m[0m  val dmem_ctrl = Module(BlockRam.createMaskableRAM(bus=config, rows=1024))[0m
+[0m[[0m[31merror[0m] [0m[0m                         ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/talha/SoC-Now/SoCNow/buraq_mini/src/main/scala/WishboneHarness.scala:17:53: not found: value bus[0m
+[0m[[0m[31merror[0m] [0m[0m  val dmem_ctrl = Module(BlockRam.createMaskableRAM(bus=config, rows=1024))[0m
+[0m[[0m[31merror[0m] [0m[0m                                                    ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/talha/SoC-Now/SoCNow/buraq_mini/src/main/scala/WishboneHarness.scala:17:65: not found: value rows[0m
+[0m[[0m[31merror[0m] [0m[0m  val dmem_ctrl = Module(BlockRam.createMaskableRAM(bus=config, rows=1024))[0m
+[0m[[0m[31merror[0m] [0m[0m                                                                ^[0m
+[0m[[0m[31merror[0m] [0m[0m14 errors found[0m
+[0m[[0m[31merror[0m] [0m[0m/home/talha/SoC-Now/SoCNow/nucleusrv/src/main/scala/components/Top.scala:7:8: not found: object jigsaw[0m
+[0m[[0m[31merror[0m] [0m[0mimport jigsaw.rams.fpga.BlockRam[0m
+[0m[[0m[31merror[0m] [0m[0m       ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/talha/SoC-Now/SoCNow/nucleusrv/src/main/scala/components/Top.scala:24:25: not found: value BlockRam[0m
+[0m[[0m[31merror[0m] [0m[0m  val imemCtrl = Module(BlockRam.createNonMaskableRAM(programFile, config, 8192))[0m
+[0m[[0m[31merror[0m] [0m[0m                        ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/talha/SoC-Now/SoCNow/nucleusrv/src/main/scala/components/Top.scala:25:25: not found: value BlockRam[0m
+[0m[[0m[31merror[0m] [0m[0m  val dmemCtrl = Module(BlockRam.createMaskableRAM(config, 1024))[0m
+[0m[[0m[31merror[0m] [0m[0m                        ^[0m
+[0m[[0m[31merror[0m] [0m[0mthree errors found[0m
+[0m[[0m[31merror[0m] [0m[0m(nucleusrv / Compile / [31mcompileIncremental[0m) Compilation failed[0m
+[0m[[0m[31merror[0m] [0m[0m(buraq_mini / Compile / [31mcompileIncremental[0m) Compilation failed[0m
+[0m[[0m[31merror[0m] [0m[0mTotal time: 33 s, completed Jan 19, 2022 5:06:21 PM[0m
+[0m[[0m[0mdebug[0m] [0m[0m> Exec(shell, None, None)[0m
+[0m[[0m[0minfo[0m] [0m[0mshutting down sbt server[0m

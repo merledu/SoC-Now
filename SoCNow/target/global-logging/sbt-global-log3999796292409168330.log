@@ -1,0 +1,11 @@
+[0m[[0m[0mdebug[0m] [0m[0m> Exec(testOnly TopTest -- -DwriteVcd=1 -DmemFile=/home/talha/NucleusSoC/picofoxy/fpga/program.mem, Some(f5a1d03d-0c04-4042-ad4d-7605203eb4a2), Some(CommandSource(console0)))[0m
+[0m[[0m[0mdebug[0m] [0m[0mEvaluating tasks: Test / testOnly[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0minfo[0m] [0m[0mcompiling 1 Scala source to /home/talha/SoC-Now/SoCNow/target/scala-2.12/classes ...[0m
+[0m[[0m[33mwarn[0m] [0m[0mCanceling execution...[0m
+[0m[[0m[0minfo[0m] [0m[0mCompilation has been cancelled[0m
+[0m[[0m[31merror[0m] [0m[0mCancelled: testOnly TopTest -- -DwriteVcd=1 -DmemFile=/home/talha/NucleusSoC/picofoxy/fpga/program.mem[0m
+[0m[[0m[31merror[0m] [0m[0mCancelled: testOnly TopTest -- -DwriteVcd=1 -DmemFile=/home/talha/NucleusSoC/picofoxy/fpga/program.mem[0m
+[0m[[0m[31merror[0m] [0m[0mUse 'last' for the full log.[0m
+[0m[[0m[0mdebug[0m] [0m[0m> Exec(shell, None, None)[0m
+[0m[[0m[0minfo[0m] [0m[0mshutting down sbt server[0m
