@@ -1,0 +1,23 @@
+[0m[[0m[0mdebug[0m] [0m[0m> Exec(testOnly TopTest -- -DwriteVcd=1 -DmemFile=/home/talha/SoC-Now/SoCNow/fpga/program.mem, Some(6e7ab832-3533-42d6-8273-cffe688db1ed), Some(CommandSource(console0)))[0m
+[0m[[0m[0mdebug[0m] [0m[0mEvaluating tasks: Test / testOnly[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0minfo[0m] [0m[0mcompiling 1 Scala source to /home/talha/SoC-Now/SoCNow/target/scala-2.12/classes ...[0m
+[0m[[0m[31merror[0m] [0m[0m/home/talha/SoC-Now/SoCNow/src/main/scala/Top.scala:14:27: object spiflash is not a member of package jigsaw.peripherals[0m
+[0m[[0m[31merror[0m] [0m[0mimport jigsaw.peripherals.spiflash._[0m
+[0m[[0m[31merror[0m] [0m[0m                          ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/talha/SoC-Now/SoCNow/src/main/scala/Top.scala:15:27: object UART is not a member of package jigsaw.peripherals[0m
+[0m[[0m[31merror[0m] [0m[0mimport jigsaw.peripherals.UART._[0m
+[0m[[0m[31merror[0m] [0m[0m                          ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/talha/SoC-Now/SoCNow/src/main/scala/Top.scala:310:28: not found: value Config[0m
+[0m[[0m[31merror[0m] [0m[0m  implicit val spiConfig = Config()[0m
+[0m[[0m[31merror[0m] [0m[0m                           ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/talha/SoC-Now/SoCNow/src/main/scala/Top.scala:311:24: not found: type Spi[0m
+[0m[[0m[31merror[0m] [0m[0m  val spi = Module(new Spi(new WBRequest(), new WBResponse()))[0m
+[0m[[0m[31merror[0m] [0m[0m                       ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/talha/SoC-Now/SoCNow/src/main/scala/Top.scala:312:25: not found: type uart[0m
+[0m[[0m[31merror[0m] [0m[0m  val uart = Module(new uart(new WBRequest(), new WBResponse()))[0m
+[0m[[0m[31merror[0m] [0m[0m                        ^[0m
+[0m[[0m[31merror[0m] [0m[0m5 errors found[0m
+[0m[[0m[31merror[0m] [0m[0m(Compile / [31mcompileIncremental[0m) Compilation failed[0m
+[0m[[0m[31merror[0m] [0m[0mTotal time: 1 s, completed Jan 19, 2022 5:14:18 PM[0m
+[0m[[0m[0mdebug[0m] [0m[0m> Exec(shell, None, None)[0m

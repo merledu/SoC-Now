@@ -1,0 +1,24 @@
+[0m[[0m[0mdebug[0m] [0m[0m> Exec(testOnly TopTest -- -DwriteVcd=1 -DmemFile=/home/talha/SoC-Now/SoCNow/fpga/program.mem, Some(bae17293-5fd6-4a31-b7e0-6ce5e5c810fa), Some(CommandSource(console0)))[0m
+[0m[[0m[0mdebug[0m] [0m[0mEvaluating tasks: Test / testOnly[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0minfo[0m] [0m[0mcompiling 25 Scala sources to /home/talha/SoC-Now/SoCNow/nucleusrv/jigsaw/caravan/target/scala-2.12/classes ...[0m
+[0m[[0m[0minfo[0m] [0m[0mcompiling 18 Scala sources to /home/talha/SoC-Now/SoCNow/nucleusrv/jigsaw/target/scala-2.12/classes ...[0m
+[0m[[0m[0minfo[0m] [0m[0mcompiling 21 Scala sources to /home/talha/SoC-Now/SoCNow/nucleusrv/target/scala-2.12/classes ...[0m
+[0m[[0m[0minfo[0m] [0m[0mcompiling 40 Scala sources to /home/talha/SoC-Now/SoCNow/buraq_mini/target/scala-2.12/classes ...[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/talha/SoC-Now/SoCNow/nucleusrv/src/main/scala/components/SRam.scala:21:7: Generated class components.SRam differs only in case from components.sram.[0m
+[0m[[0m[33mwarn[0m] [0m[0m  Such classes will overwrite one another on case-insensitive filesystems.[0m
+[0m[[0m[33mwarn[0m] [0m[0mclass SRam extends Module{[0m
+[0m[[0m[33mwarn[0m] [0m[0m      ^[0m
+[0m[[0m[33mwarn[0m] [0m[0mthere were 496 feature warnings; re-run with -feature for details[0m
+[0m[[0m[33mwarn[0m] [0m[0mtwo warnings found[0m
+[0m[[0m[0minfo[0m] [0m[0mcompiling 1 Scala source to /home/talha/SoC-Now/SoCNow/target/scala-2.12/classes ...[0m
+[0m[[0m[31merror[0m] [0m[0m/home/talha/SoC-Now/SoCNow/src/main/scala/Top.scala:321:36: value SPI is not a member of object caravan.bus.common.Peripherals[0m
+[0m[[0m[31merror[0m] [0m[0m  addressMap.addDevice(Peripherals.SPI, "h40001000".U(32.W), "h00000FFF".U(32.W), wb_spi_slave)[0m
+[0m[[0m[31merror[0m] [0m[0m                                   ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/talha/SoC-Now/SoCNow/src/main/scala/Top.scala:322:36: value UART is not a member of object caravan.bus.common.Peripherals[0m
+[0m[[0m[31merror[0m] [0m[0m  addressMap.addDevice(Peripherals.UART, "h40002000".U(32.W), "h00000FFF".U(32.W), wb_uart_slave)[0m
+[0m[[0m[31merror[0m] [0m[0m                                   ^[0m
+[0m[[0m[31merror[0m] [0m[0mtwo errors found[0m
+[0m[[0m[31merror[0m] [0m[0m(Compile / [31mcompileIncremental[0m) Compilation failed[0m
+[0m[[0m[31merror[0m] [0m[0mTotal time: 58 s, completed Jan 19, 2022 4:38:16 PM[0m
+[0m[[0m[0mdebug[0m] [0m[0m> Exec(shell, None, None)[0m

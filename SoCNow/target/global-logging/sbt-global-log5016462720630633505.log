@@ -1,0 +1,138 @@
+[0m[[0m[0mdebug[0m] [0m[0m> Exec(testOnly TopTest -- -DwriteVcd=1 -DmemFile=/home/talha/SoC-Now/SoCNow/fpga/program.mem, Some(376566a4-d1f8-468f-a39a-048050e03313), Some(CommandSource(console0)))[0m
+[0m[[0m[0mdebug[0m] [0m[0mEvaluating tasks: Test / testOnly[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0minfo[0m] [0m[0mcompiling 1 Scala source to /home/talha/SoC-Now/SoCNow/target/scala-2.12/classes ...[0m
+[0m[[0m[31merror[0m] [0m[0m/home/talha/SoC-Now/SoCNow/src/main/scala/Top.scala:2:8: not found: object buraq_mini[0m
+[0m[[0m[31merror[0m] [0m[0mimport buraq_mini.core.Core[0m
+[0m[[0m[31merror[0m] [0m[0m       ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/talha/SoC-Now/SoCNow/src/main/scala/Top.scala:4:8: not found: object caravan[0m
+[0m[[0m[31merror[0m] [0m[0mimport caravan.bus.common.{AddressMap, BusDecoder, Switch1toN,Peripherals}[0m
+[0m[[0m[31merror[0m] [0m[0m       ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/talha/SoC-Now/SoCNow/src/main/scala/Top.scala:6:8: not found: object caravan[0m
+[0m[[0m[31merror[0m] [0m[0mimport caravan.bus.tilelink.{TLRequest, TLResponse, TilelinkConfig, TilelinkDevice, TilelinkError, TilelinkHost, TilelinkMaster, TilelinkSlave}[0m
+[0m[[0m[31merror[0m] [0m[0m       ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/talha/SoC-Now/SoCNow/src/main/scala/Top.scala:7:8: not found: object caravan[0m
+[0m[[0m[31merror[0m] [0m[0mimport caravan.bus.wishbone.{WBRequest, WBResponse, WishboneConfig, WishboneDevice, WishboneHost, WishboneMaster, WishboneSlave}[0m
+[0m[[0m[31merror[0m] [0m[0m       ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/talha/SoC-Now/SoCNow/src/main/scala/Top.scala:8:8: not found: object caravan[0m
+[0m[[0m[31merror[0m] [0m[0mimport caravan.bus.wishbone.{WishboneErr}[0m
+[0m[[0m[31merror[0m] [0m[0m       ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/talha/SoC-Now/SoCNow/src/main/scala/Top.scala:11:8: not found: object jigsaw[0m
+[0m[[0m[31merror[0m] [0m[0mimport jigsaw.fpga.boards.artyA7._[0m
+[0m[[0m[31merror[0m] [0m[0m       ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/talha/SoC-Now/SoCNow/src/main/scala/Top.scala:12:8: not found: object jigsaw[0m
+[0m[[0m[31merror[0m] [0m[0mimport jigsaw.rams.fpga.BlockRam[0m
+[0m[[0m[31merror[0m] [0m[0m       ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/talha/SoC-Now/SoCNow/src/main/scala/Top.scala:13:8: not found: object jigsaw[0m
+[0m[[0m[31merror[0m] [0m[0mimport jigsaw.peripherals.gpio._[0m
+[0m[[0m[31merror[0m] [0m[0m       ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/talha/SoC-Now/SoCNow/src/main/scala/Top.scala:14:8: not found: object jigsaw[0m
+[0m[[0m[31merror[0m] [0m[0mimport jigsaw.peripherals.spiflash._[0m
+[0m[[0m[31merror[0m] [0m[0m       ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/talha/SoC-Now/SoCNow/src/main/scala/Top.scala:15:8: not found: object jigsaw[0m
+[0m[[0m[31merror[0m] [0m[0mimport jigsaw.peripherals.UART._[0m
+[0m[[0m[31merror[0m] [0m[0m       ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/talha/SoC-Now/SoCNow/src/main/scala/Top.scala:299:23: not found: type WishboneConfig[0m
+[0m[[0m[31merror[0m] [0m[0m  implicit val config:WishboneConfig = WishboneConfig(32,32)[0m
+[0m[[0m[31merror[0m] [0m[0m                      ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/talha/SoC-Now/SoCNow/src/main/scala/Top.scala:299:40: not found: value WishboneConfig[0m
+[0m[[0m[31merror[0m] [0m[0m  implicit val config:WishboneConfig = WishboneConfig(32,32)[0m
+[0m[[0m[31merror[0m] [0m[0m                                       ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/talha/SoC-Now/SoCNow/src/main/scala/Top.scala:300:33: not found: type WishboneHost[0m
+[0m[[0m[31merror[0m] [0m[0m  val wb_imem_host = Module(new WishboneHost())[0m
+[0m[[0m[31merror[0m] [0m[0m                                ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/talha/SoC-Now/SoCNow/src/main/scala/Top.scala:301:34: not found: type WishboneDevice[0m
+[0m[[0m[31merror[0m] [0m[0m  val wb_imem_slave = Module(new WishboneDevice())[0m
+[0m[[0m[31merror[0m] [0m[0m                                 ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/talha/SoC-Now/SoCNow/src/main/scala/Top.scala:302:33: not found: type WishboneHost[0m
+[0m[[0m[31merror[0m] [0m[0m  val wb_dmem_host = Module(new WishboneHost())[0m
+[0m[[0m[31merror[0m] [0m[0m                                ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/talha/SoC-Now/SoCNow/src/main/scala/Top.scala:303:34: not found: type WishboneDevice[0m
+[0m[[0m[31merror[0m] [0m[0m  val wb_dmem_slave = Module(new WishboneDevice())[0m
+[0m[[0m[31merror[0m] [0m[0m                                 ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/talha/SoC-Now/SoCNow/src/main/scala/Top.scala:304:33: not found: type WishboneDevice[0m
+[0m[[0m[31merror[0m] [0m[0m  val wb_spi_slave = Module(new WishboneDevice())[0m
+[0m[[0m[31merror[0m] [0m[0m                                ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/talha/SoC-Now/SoCNow/src/main/scala/Top.scala:305:34: not found: type WishboneDevice[0m
+[0m[[0m[31merror[0m] [0m[0m  val wb_uart_slave = Module(new WishboneDevice())[0m
+[0m[[0m[31merror[0m] [0m[0m                                 ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/talha/SoC-Now/SoCNow/src/main/scala/Top.scala:306:34: not found: type WishboneDevice[0m
+[0m[[0m[31merror[0m] [0m[0m  val wb_gpio_slave = Module(new WishboneDevice())[0m
+[0m[[0m[31merror[0m] [0m[0m                                 ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/talha/SoC-Now/SoCNow/src/main/scala/Top.scala:307:21: not found: value BlockRam[0m
+[0m[[0m[31merror[0m] [0m[0m  val imem = Module(BlockRam.createNonMaskableRAM(programFile, bus=config, rows=1024))[0m
+[0m[[0m[31merror[0m] [0m[0m                    ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/talha/SoC-Now/SoCNow/src/main/scala/Top.scala:307:64: not found: value bus[0m
+[0m[[0m[31merror[0m] [0m[0m  val imem = Module(BlockRam.createNonMaskableRAM(programFile, bus=config, rows=1024))[0m
+[0m[[0m[31merror[0m] [0m[0m                                                               ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/talha/SoC-Now/SoCNow/src/main/scala/Top.scala:307:76: not found: value rows[0m
+[0m[[0m[31merror[0m] [0m[0m  val imem = Module(BlockRam.createNonMaskableRAM(programFile, bus=config, rows=1024))[0m
+[0m[[0m[31merror[0m] [0m[0m                                                                           ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/talha/SoC-Now/SoCNow/src/main/scala/Top.scala:308:21: not found: value BlockRam[0m
+[0m[[0m[31merror[0m] [0m[0m  val dmem = Module(BlockRam.createMaskableRAM(bus=config, rows=1024))[0m
+[0m[[0m[31merror[0m] [0m[0m                    ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/talha/SoC-Now/SoCNow/src/main/scala/Top.scala:308:48: not found: value bus[0m
+[0m[[0m[31merror[0m] [0m[0m  val dmem = Module(BlockRam.createMaskableRAM(bus=config, rows=1024))[0m
+[0m[[0m[31merror[0m] [0m[0m                                               ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/talha/SoC-Now/SoCNow/src/main/scala/Top.scala:308:60: not found: value rows[0m
+[0m[[0m[31merror[0m] [0m[0m  val dmem = Module(BlockRam.createMaskableRAM(bus=config, rows=1024))[0m
+[0m[[0m[31merror[0m] [0m[0m                                                           ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/talha/SoC-Now/SoCNow/src/main/scala/Top.scala:309:25: not found: type Gpio[0m
+[0m[[0m[31merror[0m] [0m[0m  val gpio = Module(new Gpio(new WBRequest(), new WBResponse()))[0m
+[0m[[0m[31merror[0m] [0m[0m                        ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/talha/SoC-Now/SoCNow/src/main/scala/Top.scala:309:34: not found: type WBRequest[0m
+[0m[[0m[31merror[0m] [0m[0m  val gpio = Module(new Gpio(new WBRequest(), new WBResponse()))[0m
+[0m[[0m[31merror[0m] [0m[0m                                 ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/talha/SoC-Now/SoCNow/src/main/scala/Top.scala:309:51: not found: type WBResponse[0m
+[0m[[0m[31merror[0m] [0m[0m  val gpio = Module(new Gpio(new WBRequest(), new WBResponse()))[0m
+[0m[[0m[31merror[0m] [0m[0m                                                  ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/talha/SoC-Now/SoCNow/src/main/scala/Top.scala:310:28: not found: value Config[0m
+[0m[[0m[31merror[0m] [0m[0m  implicit val spiConfig = Config()[0m
+[0m[[0m[31merror[0m] [0m[0m                           ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/talha/SoC-Now/SoCNow/src/main/scala/Top.scala:311:24: not found: type Spi[0m
+[0m[[0m[31merror[0m] [0m[0m  val spi = Module(new Spi(new WBRequest(), new WBResponse()))[0m
+[0m[[0m[31merror[0m] [0m[0m                       ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/talha/SoC-Now/SoCNow/src/main/scala/Top.scala:311:32: not found: type WBRequest[0m
+[0m[[0m[31merror[0m] [0m[0m  val spi = Module(new Spi(new WBRequest(), new WBResponse()))[0m
+[0m[[0m[31merror[0m] [0m[0m                               ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/talha/SoC-Now/SoCNow/src/main/scala/Top.scala:311:49: not found: type WBResponse[0m
+[0m[[0m[31merror[0m] [0m[0m  val spi = Module(new Spi(new WBRequest(), new WBResponse()))[0m
+[0m[[0m[31merror[0m] [0m[0m                                                ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/talha/SoC-Now/SoCNow/src/main/scala/Top.scala:312:25: not found: type uart[0m
+[0m[[0m[31merror[0m] [0m[0m  val uart = Module(new uart(new WBRequest(), new WBResponse()))[0m
+[0m[[0m[31merror[0m] [0m[0m                        ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/talha/SoC-Now/SoCNow/src/main/scala/Top.scala:312:34: not found: type WBRequest[0m
+[0m[[0m[31merror[0m] [0m[0m  val uart = Module(new uart(new WBRequest(), new WBResponse()))[0m
+[0m[[0m[31merror[0m] [0m[0m                                 ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/talha/SoC-Now/SoCNow/src/main/scala/Top.scala:312:51: not found: type WBResponse[0m
+[0m[[0m[31merror[0m] [0m[0m  val uart = Module(new uart(new WBRequest(), new WBResponse()))[0m
+[0m[[0m[31merror[0m] [0m[0m                                                  ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/talha/SoC-Now/SoCNow/src/main/scala/Top.scala:314:26: not found: type WishboneErr[0m
+[0m[[0m[31merror[0m] [0m[0m  val wbErr = Module(new WishboneErr())[0m
+[0m[[0m[31merror[0m] [0m[0m                         ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/talha/SoC-Now/SoCNow/src/main/scala/Top.scala:315:25: not found: type Core[0m
+[0m[[0m[31merror[0m] [0m[0m  val core = Module(new Core(new WBRequest, new WBResponse))[0m
+[0m[[0m[31merror[0m] [0m[0m                        ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/talha/SoC-Now/SoCNow/src/main/scala/Top.scala:315:34: not found: type WBRequest[0m
+[0m[[0m[31merror[0m] [0m[0m  val core = Module(new Core(new WBRequest, new WBResponse))[0m
+[0m[[0m[31merror[0m] [0m[0m                                 ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/talha/SoC-Now/SoCNow/src/main/scala/Top.scala:315:49: not found: type WBResponse[0m
+[0m[[0m[31merror[0m] [0m[0m  val core = Module(new Core(new WBRequest, new WBResponse))[0m
+[0m[[0m[31merror[0m] [0m[0m                                                ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/talha/SoC-Now/SoCNow/src/main/scala/Top.scala:319:24: not found: type AddressMap[0m
+[0m[[0m[31merror[0m] [0m[0m  val addressMap = new AddressMap[0m
+[0m[[0m[31merror[0m] [0m[0m                       ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/talha/SoC-Now/SoCNow/src/main/scala/Top.scala:326:27: not found: type Switch1toN[0m
+[0m[[0m[31merror[0m] [0m[0m  val switch = Module(new Switch1toN(new WishboneMaster(), new WishboneSlave(), devices.size))[0m
+[0m[[0m[31merror[0m] [0m[0m                          ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/talha/SoC-Now/SoCNow/src/main/scala/Top.scala:326:42: not found: type WishboneMaster[0m
+[0m[[0m[31merror[0m] [0m[0m  val switch = Module(new Switch1toN(new WishboneMaster(), new WishboneSlave(), devices.size))[0m
+[0m[[0m[31merror[0m] [0m[0m                                         ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/talha/SoC-Now/SoCNow/src/main/scala/Top.scala:326:64: not found: type WishboneSlave[0m
+[0m[[0m[31merror[0m] [0m[0m  val switch = Module(new Switch1toN(new WishboneMaster(), new WishboneSlave(), devices.size))[0m
+[0m[[0m[31merror[0m] [0m[0m                                                               ^[0m
+[0m[[0m[31merror[0m] [0m[0m43 errors found[0m
+[0m[[0m[31merror[0m] [0m[0m(Compile / [31mcompileIncremental[0m) Compilation failed[0m
+[0m[[0m[31merror[0m] [0m[0mTotal time: 1 s, completed Jan 19, 2022 4:36:43 PM[0m
+[0m[[0m[0mdebug[0m] [0m[0m> Exec(shell, None, None)[0m
+[0m[[0m[0minfo[0m] [0m[0mshutting down sbt server[0m

@@ -1,6 +1,6 @@
 import chisel3._
-import buraq_mini.core.Core
-// import nucleusrv.components.Core
+// import buraq_mini.core.Core
+import nucleusrv.components.Core
 import caravan.bus.common.{AddressMap, BusDecoder, Switch1toN,Peripherals}
 
 import caravan.bus.tilelink.{TLRequest, TLResponse, TilelinkConfig, TilelinkDevice, TilelinkError, TilelinkHost, TilelinkMaster, TilelinkSlave}
@@ -380,8 +380,8 @@ class Top(programFile: Option[String]) extends Module {
   io.gpio_en_o := gpio.io.cio_gpio_en_o(7,0)
   gpio.io.cio_gpio_i := io.gpio_i
 
-  core.io.stall_core_i := false.B
-  core.io.irq_external_i := false.B
+  // core.io.stall_core_i := false.B
+  // core.io.irq_external_i := false.B
 
 
 }

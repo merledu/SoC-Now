@@ -1,0 +1,16 @@
+[0m[[0m[31merror[0m] [0m[0m/home/talha/SoC-Now/SoCNow/src/main/scala/Top.scala:14:27: object spiflash is not a member of package jigsaw.peripherals[0m
+[0m[[0m[31merror[0m] [0m[0mimport jigsaw.peripherals.spiflash._[0m
+[0m[[0m[31merror[0m] [0m[0m                          ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/talha/SoC-Now/SoCNow/src/main/scala/Top.scala:15:27: object UART is not a member of package jigsaw.peripherals[0m
+[0m[[0m[31merror[0m] [0m[0mimport jigsaw.peripherals.UART._[0m
+[0m[[0m[31merror[0m] [0m[0m                          ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/talha/SoC-Now/SoCNow/src/main/scala/Top.scala:310:28: not found: value Config[0m
+[0m[[0m[31merror[0m] [0m[0m  implicit val spiConfig = Config()[0m
+[0m[[0m[31merror[0m] [0m[0m                           ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/talha/SoC-Now/SoCNow/src/main/scala/Top.scala:311:24: not found: type Spi[0m
+[0m[[0m[31merror[0m] [0m[0m  val spi = Module(new Spi(new WBRequest(), new WBResponse()))[0m
+[0m[[0m[31merror[0m] [0m[0m                       ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/talha/SoC-Now/SoCNow/src/main/scala/Top.scala:312:25: not found: type uart[0m
+[0m[[0m[31merror[0m] [0m[0m  val uart = Module(new uart(new WBRequest(), new WBResponse()))[0m
+[0m[[0m[31merror[0m] [0m[0m                        ^[0m
+[0m[[0m[31merror[0m] [0m[0m5 errors found[0m

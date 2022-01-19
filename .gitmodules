@@ -8,3 +8,7 @@
 	path = SoCNow/buraq_mini
 	url = https://github.com/shahzaibk23/buraq_mini
 	branch = decoupled-interface
+[submodule "SoCNow/nucleusrv"]
+	path = SoCNow/nucleusrv
+	url = https://github.com/merledu/nucleusrv
+	branch = trace-1.0

@@ -4,6 +4,14 @@ ThisBuild / scalaVersion     := "2.12.13"
 ThisBuild / version          := "0.1.0"
 ThisBuild / organization     := "com.github.merledu"
 
+lazy val caravan = project in file("caravan")
+
+lazy val jigsaw = (project in file("jigsaw")).dependsOn(caravan)
+
+lazy val buraq_mini = (project in file("buraq_mini")).dependsOn(caravan, jigsaw)
+
+lazy val nucleusrv = (project in file("nucleusrv")).dependsOn(caravan, jigsaw)
+
 lazy val root = (project in file("."))
   .settings(
     name := "SoCNow",
@@ -23,4 +31,4 @@ lazy val root = (project in file("."))
     addCompilerPlugin("edu.berkeley.cs" % "chisel3-plugin" % "3.4.3" cross CrossVersion.full),
     addCompilerPlugin("org.scalamacros" % "paradise" % "2.1.1" cross CrossVersion.full)
   )
-
+  .dependsOn(caravan, jigsaw, nucleusrv, buraq_mini)
