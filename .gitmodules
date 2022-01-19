@@ -4,7 +4,7 @@
 [submodule "SoCNow/caravan"]
 	path = SoCNow/caravan
 	url = https://github.com/shahzaibk23/caravan
-[submodule "SoCNow/nucleusrv"]
-	path = SoCNow/nucleusrv
-	url = https://github.com/shahzaibk23/nucleusrv
-	branch = trace-1.0
+[submodule "SoCNow/buraq_mini"]
+	path = SoCNow/buraq_mini
+	url = https://github.com/shahzaibk23/buraq_mini
+	branch = decoupled-interface
