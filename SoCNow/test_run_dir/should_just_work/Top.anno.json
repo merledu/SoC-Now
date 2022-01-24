@@ -4,6 +4,13 @@
     "file":"test_run_dir/should_just_work/Top.lo.fir"
   },
   {
+    "class":"firrtl.transforms.CombinationalPath",
+    "sink":"~Top|Top>io_spi_sclk",
+    "sources":[
+      "~Top|Top>clock"
+    ]
+  },
+  {
     "class":"firrtl.transforms.DedupedResult",
     "original":"~Top|WishboneHost",
     "duplicate":"~Top|Top/wb_imem_host:WishboneHost",
@@ -148,7 +155,7 @@
   {
     "class":"firrtl.annotations.LoadMemoryAnnotation",
     "target":"Top.BlockRamWithoutMasking.mem",
-    "fileName":"/home/talha/SoC-Now/SoCNow/fpga/program.mem",
+    "fileName":"/home/shahzaib/Documents/SoC-Now/SoCNow/fpga/program.mem",
     "hexOrBinary":"h",
     "originalMemoryNameOpt":"mem"
   },
