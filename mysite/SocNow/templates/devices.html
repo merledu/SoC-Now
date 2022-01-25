@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SoC-Now</title>
+    <link href="assets/bs/css/bootstrap.css" rel="stylesheet" />
+    <link href="assets/css/style.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+
+</head>
+<style>
+    body{
+        overflow-x: hidden;
+    }
+</style>
+<body class="hero-grad">
+    <section class="clean-block" style="height: 100%;">
+        <div class="row">
+            <div class="col-md-3">
+                <div style="text-align: left;">
+                    <img src="assets/img/socLogo.png" style="width: 40%; margin-top: 10px;" /><br>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="nav justify-content-evenly">
+                    <div> <a href="{% url 'home' %}"> Home </a></div>
+                    <div> <a href="{% url 'about2' %}"> About </a></div>
+                    <div><a href="{% url 'contact2' %}"> Contact </a></div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div style="text-align: right;">
+                    <img src="assets/img/profile.png" style="width: 20%; margin-top: 10px;" />
+                </div>
+            </div>
+        </div>
+       
+       
+        <div class="row" style="margin-top: 3vh;">
+            <div class="col-md-3">
+            </div>
+            <div class="col-md-6" style="height: 100%;text-align: center;">
+                <br>
+                <div class="glass" style="border-radius: 15px; backdrop-filter: blur(50px); padding: 40px 45px;border: solid 1px rgba(255, 255, 255, 0.5); margin-top: 3vh;">
+                    <div style="text-align: left">
+                        <div>
+                            <h4 class="head" style="width: 200px;">
+                                Customize SoC
+                            </h4>
+                            <p class="middle">
+                                Generate a customized SoC with Core extensions, devices and bus interconnect of your choice.
+                            </p>
+                            
+                        </div>
+                        <div style="text-align: center;">
+                            <h3 style="font-weight: lighter;">Devices</h3>
+                            <p style="color: rgba(255, 255, 255, 0.801); font-weight: lighter;">Select the Devices to include in the SoC.</p>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-md-3"></div>
+                            
+                            <div class="col-md-8">
+                                <form>
+                                    <input type="checkbox" name="dev" disabled checked />
+                                    <label> General Purpose Input Output (GPIO) </label>
+                                    <br>
+                                    <input type="checkbox" name="dev" />
+                                    <label> Serial Peripheral Interface (SPI) </label>
+                                    <br>
+                                    <input type="checkbox" name="dev" />
+                                    <label> Universal Asynchronous Receiver Transmitter (UART) </label>
+                                    <br>
+                                    <input type="checkbox" name="dev" />
+                                    <label> Timer </label>
+                                    <br>
+                                    <input type="checkbox" name="dev" />
+                                    <label> Inter Integrated Circuit (I<sup>2</sup>C) </label>
+                                </form>
+                            </div>
+                        </div>
+
+                        <div class="d-flex justify-content-between align-items-center">
+                            <a href="{% url 'core' %}">  <img src="assets/img/boldarrow2.png" style="width: 70%;" /> </a>
+                            <a href="{% url 'bus' %}">  <img src="assets/img/boldarrow.png" style="width: 70%;" /> </a>
+                        </div>
+                        
+                       
+                    </div>                    
+                </div>
+                
+            </div>
+            <div class="col-md-3">
+                
+            </div>
+
+        </div>
+    </section>
+    
+    <script src="assets/bs/js/bootstrap.js" ></script>
+   
+</body>
+</html>
