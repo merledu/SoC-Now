@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SoC-Now</title>
+    <link href="assets/bs/css/bootstrap.css" rel="stylesheet" />
+    <link href="assets/css/style.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+
+</head>
+<style>
+    body{
+        overflow-x: hidden;
+    }
+</style>
+<body class="hero-grad">
+    <section class="clean-block" style="height: 100%;">
+        <div class="nav">
+            <div style="margin-right:25% ;"> <a href="{% url 'about1' %}"> About </a></div>
+            <div><a href="{% url 'contact1' %}"> Contact </a></div>
+        </div>
+        <div style="text-align: center;">
+            <img src="assets/img/socLogo.png" style="width: 25%;" /><br>
+            An open source no cost tool for creating customized SoC using No Code
+        </div>
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6 glass" style="backdrop-filter: blur(50px);height: 100%;text-align: center;border: solid 1px rgba(255, 255, 255, 0.1);">
+                <br>
+                
+                <h1> LOGIN</h1>
+                <form>
+                    <input class="col-md-10 contact" placeholder="Username or Email" type="text" />
+                    <br>
+                    <br>
+                        <div class="d-flex justify-content-between align-items-center contact" style="padding: 0px; margin-left: 9%; width: 82%; background-color: white;">
+                            <input class="col-md-10 pas-input " style="padding: 10px 15px;border-radius: 10px !important; border:none; border-radius: 0px;" placeholder="Password" type="password" id="id_password" />
+                            <i class="far fa-eye col-md-1" id="togglePassword" style="background-color: white; text-align: center; cursor: pointer;color: #00000050;"></i>
+                        </div>
+                    
+                    
+                    <br>
+                    <br>
+                    <br>
+
+                    Don't have an Account? <a href="{% url 'signup' %}" style="text-decoration: none;"><b style="color:#00DFFF">Sign Up</b></a>
+                    <br>
+                    <a style="color: #3BAEFE;">Forgot Password?</a>
+                    <br>
+                    <br>
+                    <!-- <input type="submit" class="btn login-btn" value="Login" /> -->
+                </form>
+
+                       <!-- <button onclick="window.location.href = 'home.html' " class="btn login-btn">
+                           Login
+                        </button>  -->
+                        <div><a href="{% url 'home' %}"> login </a></div>
+                    <br>
+                    <br>
+                    <br>
+            </div>
+            <div class="col-md-3"></div>
+        </div>
+    </section>
+    
+    <script src="assets/bs/js/bootstrap.js" ></script>
+    <script>
+          const togglePassword = document.querySelector('#togglePassword');
+  const password = document.querySelector('#id_password');
+ 
+  togglePassword.addEventListener('click', function (e) {
+    // toggle the type attribute
+    const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+    password.setAttribute('type', type);
+    // toggle the eye slash icon
+    this.classList.toggle('fa-eye-slash');
+});
+    </script>
+</body>
+</html>
