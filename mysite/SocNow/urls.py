@@ -18,6 +18,8 @@ urlpatterns = [
     path('/UnderRiview', views.UnderRiview, name = 'UnderRiview'),
     path('/bus', views.bus, name = 'bus'),
     path('/finalize', views.finalize, name = 'finalize'),
+    path('/json_return', views.json_return, name = 'json_return'),
+    
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

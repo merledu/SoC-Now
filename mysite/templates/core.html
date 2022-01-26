@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,9 +26,9 @@
             </div>
             <div class="col-md-6">
                 <div class="nav justify-content-evenly">
-                    <div> <a href="home.html"> Home </a></div>
-                    <div> <a href="about2.html"> About </a></div>
-                    <div><a href="contact2.html"> Contact </a></div>
+                    <div> <a href="{% url 'home' %}"> Home </a></div>
+                    <div> <a href="{% url 'about2' %}"> About </a></div>
+                    <div><a href="{% url 'contact2' %}"> Contact </a></div>
                 </div>
             </div>
             <div class="col-md-3">
@@ -62,36 +63,46 @@
                             <div class="col-md-3"></div>
                             <div class="col-md-3" style="border-right: 1px solid white">
                                 <h5 style="font-weight: lighter;">ISA</h5>
-                                <form>
-                                    <input type="radio" name="isa" value="32 Bit" checked />
+                                <form method="POST"> {% csrf_token %}
+                                    <input type="radio" name="isa" value="32 Bit" checked disabled />
                                     <label> 32 Bit </label>
                                     <br>
-                                    <input type="radio" name="isa" value="64 Bit" />
-                                    <label> 64 Bit </label>
-                                </form>
+                                    <!-- <input type="radio" name="isa" value="64 Bit" />
+                                    <label> 64 Bit </label> -->
                             </div>
                             <div class="col-md-1"></div>
                             <div class="col-md-3">
                                 <h5 style="font-weight: lighter;">Extensions</h5>
-                                <form>
-                                    <input type="checkbox" name="ext" disabled checked />
+                                    <input type="checkbox" value="i" name="ext" disabled checked />
                                     <label> Integer (I) </label>
                                     <br />
-                                    <input type="checkbox" name="ext" />
+                                    <input type="checkbox" value="m" name="ext" />
                                     <label> Multiplier (M) </label>
                                     <br />
-                                    <input type="checkbox" name="ext" />
+                                    <input type="checkbox" value="f" name="ext" />
                                     <label> Floating Point (F) </label>
                                     <br />
-                                    <input type="checkbox" name="ext" />
+                                    <input type="checkbox" value="c" name="ext" />
                                     <label> Compressed (C) </label> 
-                                </form>
                             </div>
                             <div class="col-md-2"></div>
                         </div>
 
-                        <div style="text-align: right;">
-                          <a href="devices.html">  <img src="assets/img/boldarrow.png" style="width: 10%;" /> </a>
+                        <div style="display: flex;justify-content: flex-end;">
+                          <!-- <a href="{% url 'devices' %}">  <img src="assets/img/boldarrow.png" style="width: 10%;" /> </a> -->
+                          <style>
+                              input[type=submit] {
+                                    background: url("{% static 'img/boldarrow.png' %}");
+                                    border: 0;
+                                    display: block;
+                                    height: 100px;
+                                    width: 30%;
+                                    background-repeat: no-repeat;
+                                }
+                          </style>  
+                          <input type="submit" value=" ">
+                        </form>
+
                         </div>
                         
                        

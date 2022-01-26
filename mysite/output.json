@@ -1,0 +1,1 @@
+[{"model": "SocNow.soc", "pk": 15, "fields": {"isa": 32, "extensions": "c", "devices": "spi", "bus": "tl-c"}}]

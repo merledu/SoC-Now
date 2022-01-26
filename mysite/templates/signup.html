@@ -41,7 +41,7 @@
                     <br>
                     <br>
 
-                    Already have an Account? <a href="login.html" style="text-decoration: none;"><b style="color:#00DFFF">Login</b></a>
+                    Already have an Account? <a href="{% url 'login' %}"  style="text-decoration: none;"><b style="color:#00DFFF">Login</b></a>
                     <br>
                     <br>
                         <!-- <input type="submit" class="btn login-btn" value="Sign Up" /> -->
@@ -52,8 +52,8 @@
             </div>
             <div class="col-md-3">
                 <div class="nav justify-content-evenly">
-                    <div> <a href="about1.html"> About </a></div>
-                    <div><a href="contact1.html"> Contact </a></div>
+                    <div> <a href="{% url 'about1' %}"> About </a></div>
+                    <div><a href="{% url 'contact1' %}"> Contact </a></div>
                 </div>
             </div>
         </div>

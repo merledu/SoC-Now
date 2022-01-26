@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,9 +26,9 @@
             </div>
             <div class="col-md-6">
                 <div class="nav justify-content-evenly">
-                    <div> <a href="home.html"> Home </a></div>
-                    <div> <a href="about2.html"> About </a></div>
-                    <div><a href="contact2.html"> Contact </a></div>
+                    <div> <a href="{% url 'home' %}"> Home </a></div>
+                    <div> <a href="{% url 'about2' %}"> About </a></div>
+                    <div><a href="{% url 'contact2' %}"> Contact </a></div>
                 </div>
             </div>
             <div class="col-md-3">
@@ -63,22 +64,32 @@
                             <div class="col-md-3"></div>
                             
                             <div class="col-md-8">
-                                <form>
-                                    <input type="radio" name="bus" checked>
+                                <form method="POST"> {% csrf_token %}
+                                    <input type="radio" name="bus" value="wb" checked>
                                     <label> Wishbone </label>
                                     <br />
-                                    <input type="radio" name="bus">
+                                    <input type="radio" name="bus" value="tl-ul">
                                     <label> Tilelink Uncached Lightweight (TL-UL) </label>
                                     <br />
-                                    <input type="radio" name="bus">
+                                    <input type="radio" name="bus" value="tl-c">
                                     <label> Tilelink Cached (TL-C) </label>
-                                </form>
                             </div>
                         </div>
 
                         <div class="d-flex justify-content-between align-items-center">
-                            <a href="devices.html">  <img src="assets/img/boldarrow2.png" style="width: 70%;" /> </a>
-                            <a href="finalize.html">  <img src="assets/img/boldarrow.png" style="width: 70%;" /> </a>
+                            <a href="{% url 'devices' %}">  <img src="assets/img/boldarrow2.png" style="width: 70%;" /> </a>
+                            <style>
+                                input[type=submit] {
+                                      background: url("{% static 'img/boldarrow.png' %}");
+                                      border: 0;
+                                      display: block;
+                                      height: 100px;
+                                      width: 30%;
+                                      background-repeat: no-repeat;
+                                  }
+                            </style>  
+                            <input type="submit" value=" ">                        </form>
+
                         </div>
                         
                        

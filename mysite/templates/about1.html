@@ -19,7 +19,7 @@
         <div class="row" style="height:100% ">
             <div class="col-md-8 glass">
                 <div class="container center" style="margin-top: 10vh;">
-                   <a href="index.html"> <img src="assets/img/socLogo.png" style="width: 50%;" /> </a>
+                   <a href="{% url 'index' %}"> <img src="assets/img/socLogo.png" style="width: 50%;" /> </a>
                     
                     <div class="container" style="margin-top: 5vh; text-align: justify;font-size: large;">
                         <h1>About</h1>
@@ -38,8 +38,8 @@
             </div>
             <div class="col-md-4">
                 <div class="nav">
-                    <div class="active" style="margin-right:20px ;"> <a href="about1.html"> About </a></div>
-                    <div><a href="contact1.html"> Contact </a></div>
+                    <div class="active" style="margin-right:20px ;"> <a href="{% url 'about1' %}"> About </a></div>
+                    <div><a href="{% url 'contact1' %}"> Contact </a></div>
                 </div>
             </div>
         </div>

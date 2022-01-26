@@ -6,8 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SoC-Now</title>
-    <link href="{% static 'assets/bs/css/bootstrap.css' %}" rel="stylesheet" />
-    <link href="{% static 'assets/css/style.css' %}" rel="stylesheet" />
+    <link href="{% static 'bs/css/bootstrap.css' %}" rel="stylesheet" />
+    <link href="{% static 'css/style.css' %}" rel="stylesheet" />
 </head>
 <style>
     body{
@@ -20,14 +20,14 @@
         <div class="row" style="height:100% ">
             <div class="col-md-8 glass">
                 <div class="container center" style="margin-top: 20vh;">
-                    <img src="{% static 'assets/img/socLogo.png' %}" style="width: 50%;" />
+                    <img src="{% static 'img/socLogo.png' %}" style="width: 50%;" />
                     <div class="justify" style="width: 50%;margin-left: 25%;">
                         <p>An open source no cost tool for creating</p><p>customized SoC using No Code</p>
                     </div>
-                    <a href="login.html"><button class="btn blue-btn">
+                    <a href="{% url 'login' %}"><button class="btn blue-btn">
                         <div>
                             Explore
-                        <img src="{% static 'assets/img/arrow.png' %}" />
+                        <img src="{% static 'img/arrow.png' %}" />
                         </div>
                         
                     </button></a>
@@ -36,13 +36,13 @@
             </div>
             <div class="col-md-4">
                 <div class="nav">
-                    <div style="margin-right:20px ;"> <a href="about1.html"> About </a></div>
-                    <div><a href="contact1.html"> Contact </a></div>
+                    <div style="margin-right:20px ;"> <a href="{% url 'about1' %}"> About </a></div>
+                    <div><a href="{% url 'contact1' %}"> Contact </a></div>
                 </div>
             </div>
         </div>
     </section>
     
-    <script src="{% static 'assets/bs/js/bootstrap.js' %}" ></script>
+    <script src="{% static 'bs/js/bootstrap.js' %}" ></script>
 </body>
 </html>

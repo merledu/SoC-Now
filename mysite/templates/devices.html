@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,9 +26,9 @@
             </div>
             <div class="col-md-6">
                 <div class="nav justify-content-evenly">
-                    <div> <a href="home.html"> Home </a></div>
-                    <div> <a href="about2.html"> About </a></div>
-                    <div><a href="contact2.html"> Contact </a></div>
+                    <div> <a href="{% url 'home' %}"> Home </a></div>
+                    <div> <a href="{% url 'about2' %}"> About </a></div>
+                    <div><a href="{% url 'contact2' %}"> Contact </a></div>
                 </div>
             </div>
             <div class="col-md-3">
@@ -63,29 +64,40 @@
                             <div class="col-md-3"></div>
                             
                             <div class="col-md-8">
-                                <form>
-                                    <input type="checkbox" name="dev" disabled checked />
+                                <form method="POST"> {% csrf_token %}
+                                    <input type="checkbox" name="dev" value="gpio" disabled checked />
                                     <label> General Purpose Input Output (GPIO) </label>
                                     <br>
-                                    <input type="checkbox" name="dev" />
+                                    <input type="checkbox" name="dev" value="spi" />
                                     <label> Serial Peripheral Interface (SPI) </label>
                                     <br>
-                                    <input type="checkbox" name="dev" />
+                                    <input type="checkbox" name="dev" value="uart" />
                                     <label> Universal Asynchronous Receiver Transmitter (UART) </label>
                                     <br>
-                                    <input type="checkbox" name="dev" />
+                                    <input type="checkbox" name="dev" value="timer" />
                                     <label> Timer </label>
                                     <br>
-                                    <input type="checkbox" name="dev" />
+                                    <input type="checkbox" name="dev" value="i2c" />
                                     <label> Inter Integrated Circuit (I<sup>2</sup>C) </label>
-                                </form>
                             </div>
                         </div>
 
                         <div class="d-flex justify-content-between align-items-center">
-                            <a href="core.html">  <img src="assets/img/boldarrow2.png" style="width: 70%;" /> </a>
-                            <a href="bus.html">  <img src="assets/img/boldarrow.png" style="width: 70%;" /> </a>
-                        </div>
+                            <a href="{% url 'core' %}">  <img src="assets/img/boldarrow2.png" style="width: 70%;" /> </a>
+                            <style>
+                                input[type=submit] {
+                                      background: url("{% static 'img/boldarrow.png' %}");
+                                      border: 0;
+                                      display: block;
+                                      height: 100px;
+                                      width: 30%;
+                                      background-repeat: no-repeat;
+                                  }
+                            </style>  
+                            <input type="submit" value=" ">
+                        </form>
+
+                                                </div>
                         
                        
                     </div>                    
