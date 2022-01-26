@@ -18,7 +18,7 @@ def core(request):
     if request.method == "POST":
         SoC.objects.create(
             isa=32,
-            extensions = request.POST.getlist("ext")
+            extensions =["i"] ++ request.POST.getlist("ext")
         )
         return redirect("devices")
     return render(request , "core.html")
@@ -26,7 +26,7 @@ def core(request):
 def devices(request):
     obj = list(SoC.objects.all())[-1]
     if request.method == "POST":
-        obj.devices=request.POST.getlist("dev")
+        obj.devices= ["gpio"] ++ request.POST.getlist("dev")
         obj.save()
         return redirect("bus")
     return render(request , "devices.html")
