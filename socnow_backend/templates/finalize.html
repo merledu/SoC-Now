@@ -1,16 +1,7 @@
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SoC-Now</title>
-    <link href="assets/bs/css/bootstrap.css" rel="stylesheet" />
-    <link href="assets/css/style.css" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+{% include 'base.html' %}
 
-</head>
+{% block content %}
 <style>
     body{
         overflow-x: hidden;
@@ -21,7 +12,7 @@
         <div class="row">
             <div class="col-md-3">
                 <div style="text-align: left;">
-                    <img src="assets/img/socLogo.png" style="width: 40%; margin-top: 10px;" /><br>
+                    <img src="{% static 'img/socLogo.png' %}" style="width: 40%; margin-top: 10px;" /><br>
                 </div>
             </div>
             <div class="col-md-6">
@@ -33,7 +24,7 @@
             </div>
             <div class="col-md-3">
                 <div style="text-align: right;">
-                    <img src="assets/img/profile.png" style="width: 20%; margin-top: 10px;" />
+                    <img src="{% static 'img/profile.png' %}" style="width: 20%; margin-top: 10px;" />
                 </div>
             </div>
         </div>
@@ -62,18 +53,18 @@
                         <div style="text-align: right;">
                             <button class="btn frame-btn">
                                 Expand
-                                <img src="assets/img/uparrow.png" />
+                                <img src="{% static 'img/uparrow.png' %}" />
                             </button>
                         </div>
                         <div class="frame">
-                            <img src="assets/img/diagram.png" style="width: 100%;" />
+                            <img src="{% static 'img/diagram.png' %}" style="width: 100%;" />
                         </div>
                         <br>
                         <div class="d-flex justify-content-between align-items-center">
-                            <a href="{% url 'bus' %}">  <img src="assets/img/boldarrow2.png" style="width: 70%;" /> </a>
+                            <a href="{% url 'bus' %}">  <img src="{% static 'img/boldarrow2.png' %}" style="width: 70%;" /> </a>
                             <button class="btn down-btn">
                                 CHISEL Source 
-                                <img src="assets/img/downarrow.png" />
+                                <img src="{% static 'img/downarrow.png' %}" />
                             </button>
                         </div>
 
@@ -93,7 +84,7 @@
         <div class="container" style="text-align: right;">
             <a href="{% url 'json_return' %}"> <button class="btn fin-btn">
                 Generate RTL
-                <img src="assets/img/arrow.png" />
+                <img src="{% static 'img/arrow.png' %}" />
             </button>
             </a>
         </div>
@@ -104,8 +95,4 @@
             
         </button></a> -->
     </section>
-    
-    <script src="assets/bs/js/bootstrap.js" ></script>
-   
-</body>
-</html>
+ {% endblock %}

@@ -1,15 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SoC-Now</title>
-    <link href="assets/bs/css/bootstrap.css" rel="stylesheet" />
-    <link href="assets/css/style.css" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+{% load static %}
+{% include 'base.html' %}
 
-</head>
+{% block content %}
 <style>
     body{
         overflow-x: hidden;
@@ -20,7 +12,7 @@
         <div class="row">
             <div class="col-md-3">
                 <div style="text-align: left;">
-                    <img src="assets/img/socLogo.png" style="width: 40%; margin-top: 10px;" /><br>
+                    <img src="{% static 'img/socLogo.png' %}" style="width: 40%; margin-top: 10px;" /><br>
                 </div>
             </div>
             <div class="col-md-6">
@@ -32,7 +24,7 @@
             </div>
             <div class="col-md-3">
                 <div style="text-align: right;">
-                    <img src="assets/img/profile.png" style="width: 20%; margin-top: 10px;" />
+                    <img src="{% static 'img/profile.png' %}" style="width: 20%; margin-top: 10px;" />
                 </div>
             </div>
         </div>
@@ -56,7 +48,9 @@
                             <input class="col-md-12 contact" type="email" placeholder="Email" />
                             <input class="col-md-12 contact" type="text" placeholder="Organization" />
                             <textarea class="col-md-12 contact" rows=5 placeholder="Message ..." ></textarea>
-
+                            <div style="text-align: right;">
+                                <input type="submit" class="btn dblue-btn" value="Send Message" />
+                            </div>
                         </form>
                     </div>                    
                 </div>
@@ -69,7 +63,4 @@
         </div>
     </section>
     
-    <script src="assets/bs/js/bootstrap.js" ></script>
-   
-</body>
-</html>
+{% endblock %}
