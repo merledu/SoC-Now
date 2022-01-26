@@ -59,7 +59,7 @@ def bus(request):
         obj.save()
         #json dump
         #turtle script
-        return redirect("finalize")
+        return redirect("json_return")
     return render(request , "bus.html")
 
 def finalize(request):
@@ -73,4 +73,4 @@ def json_return(request):
     data = serializers.serialize("json" , SoC.objects.filter(pk=InsertId))
     with open("output.json", "w") as outfile:
         outfile.write(data)
-    return render(request , "finalize.html")
+    return redirect("finalize")
