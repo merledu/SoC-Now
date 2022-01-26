@@ -68,25 +68,6 @@ def finalize(request):
 
 
 
-# def objectToDic(core, devices, bus):
-
-#     dictionary = {}
-#     dictionary["isa"] = SoC.isa
-#     dictionary["extensions"] = SoC.extensions
-#     dictionary["devices"] = SoC.devices
-#     dictionary["bus"] = SoC.bus
-
-#     print (dictionary)
-
-
-# objectToDic =  objectToDic(core , devices , bus)
-
-
-# def jsondata(request):
-#       data = list(SoC.objects.values())
-#       print (JsonResponse(data,safe = False))
-
-
 def json_return(request):
     InsertId= (SoC.objects.last()).id
     data = serializers.serialize("json" , SoC.objects.filter(pk=InsertId))
