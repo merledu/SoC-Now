@@ -25,9 +25,9 @@
             </div>
             <div class="col-md-6">
                 <div class="nav justify-content-evenly">
-                    <div class="active"> <a href="home.html"> Home </a></div>
-                    <div> <a href="about2.html"> About </a></div>
-                    <div><a href="contact2.html"> Contact </a></div>
+                    <div class="active"> <a href="{% url 'home' %}"> Home </a></div>
+                    <div> <a href="{% url 'about2' %}"> About </a></div>
+                    <div><a href="{% url 'contact2' %}"> Contact </a></div>
                 </div>
             </div>
             <div class="col-md-3">
@@ -43,7 +43,7 @@
             </div>
             <div class="col-md-6" style="height: 100%;text-align: center;">
                 <br>
-                <a href="core.html" style="text-decoration: none; color: white;"><div class="glass d-flex justify-content-between align-items-center" style="border-radius: 15px; backdrop-filter: blur(50px); padding: 10px 15px;border: solid 1px rgba(255, 255, 255, 0.5); margin-top: 20px;">
+                <a href="{% url 'core' %}" style="text-decoration: none; color: white;"><div class="glass d-flex justify-content-between align-items-center" style="border-radius: 15px; backdrop-filter: blur(50px); padding: 10px 15px;border: solid 1px rgba(255, 255, 255, 0.5); margin-top: 20px;">
                     <div style="text-align: left;padding-left: 20px;">
                         <div>
                             <h4 class="head" style="width: 250px;">

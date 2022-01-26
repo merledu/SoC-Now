@@ -18,8 +18,8 @@
 <body class="hero-grad">
     <section class="clean-block" style="height: 100%;">
         <div class="nav">
-            <div style="margin-right:25% ;"> <a href="about1.html"> About </a></div>
-            <div><a href="contact1.html"> Contact </a></div>
+            <div style="margin-right:25% ;"> <a href="{% url 'about1' %}"> About </a></div>
+            <div><a href="{% url 'contact1' %}"> Contact </a></div>
         </div>
         <div style="text-align: center;">
             <img src="assets/img/socLogo.png" style="width: 25%;" /><br>
@@ -45,7 +45,7 @@
                     <br>
                     <br>
 
-                    Don't have an Account? <a href="signup.html" style="text-decoration: none;"><b style="color:#00DFFF">Sign Up</b></a>
+                    Don't have an Account? <a href="{% url 'signup' %}" style="text-decoration: none;"><b style="color:#00DFFF">Sign Up</b></a>
                     <br>
                     <a style="color: #3BAEFE;">Forgot Password?</a>
                     <br>
@@ -53,9 +53,10 @@
                     <!-- <input type="submit" class="btn login-btn" value="Login" /> -->
                 </form>
 
-                       <button onclick="window.location.href = 'home.html'" class="btn login-btn">
+                       <!-- <button onclick="window.location.href = 'home.html' " class="btn login-btn">
                            Login
-                        </button> 
+                        </button>  -->
+                        <div><a href="{% url 'home' %}"> login </a></div>
                     <br>
                     <br>
                     <br>
