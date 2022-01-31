@@ -162,3 +162,25 @@
     color: white;
     background-color: #007FA7;
 }
+
+.bordered-box{
+    border: 1px solid #007FA7;
+    padding: 20px 20px;
+    border-radius: 10px;
+    box-shadow: 12px 12px 0px 0px #ffffff66;
+    background-color: #007FA7
+}
+
+.long-btn{
+    color: white;
+    background-color: #42b9dd;
+    padding: 40px 30px;
+    margin-bottom: 20px;
+    font-size: larger;
+    border-radius: 10px;
+    width: 70%;
+}
+.long-btn:hover{
+    color: white;
+
+}

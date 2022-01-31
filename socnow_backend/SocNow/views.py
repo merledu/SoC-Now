@@ -18,7 +18,7 @@ def core(request):
     if request.method == "POST":
         SoC.objects.create(
             isa=32,
-            extensions =["i"] ++ request.POST.getlist("ext")
+            extensions =["i"] + request.POST.getlist("ext")
         )
         return redirect("devices")
     return render(request , "core.html")
@@ -26,7 +26,7 @@ def core(request):
 def devices(request):
     obj = list(SoC.objects.all())[-1]
     if request.method == "POST":
-        obj.devices= ["gpio"] ++ request.POST.getlist("dev")
+        obj.devices= ["gpio"] + request.POST.getlist("dev")
         obj.save()
         return redirect("bus")
     return render(request , "devices.html")
@@ -74,3 +74,15 @@ def json_return(request):
     with open("output.json", "w") as outfile:
         outfile.write(data)
     return redirect("finalize")
+
+def verify(request):
+    return render(request, "verify.html", {})
+
+def add_test(request):
+    return render(request, "addTest.html", {})
+
+def verify_results(request):
+    return render(request, "verifyOutput.html", {})
+
+def config(request):
+    return render(request, "config.html", {})

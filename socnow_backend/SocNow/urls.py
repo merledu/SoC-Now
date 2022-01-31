@@ -1,3 +1,4 @@
+from unicodedata import name
 from django.urls import path
 from . import views
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
@@ -19,6 +20,10 @@ urlpatterns = [
     path('bus/', views.bus, name = 'bus'),
     path('finalize/', views.finalize, name = 'finalize'),
     path('json_return/', views.json_return, name = 'json_return'),
+    path('verify/', views.verify, name="verify"),
+    path('add-test/', views.add_test, name="add_test"),
+    path("results/", views.verify_results, name="verify_results"),
+    path("config/", views.config, name="config")
     
 ]
 

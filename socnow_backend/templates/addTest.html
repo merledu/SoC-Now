@@ -1,0 +1,86 @@
+{% load static %}
+
+{% include 'base.html' %}
+
+{% block content %}
+<script src="{% static 'codemirror/codemirror-5.65.0/lib/codemirror.js' %}"></script>
+<link rel="stylesheet" href="{% static 'codemirror/codemirror-5.65.0/theme/ayu-dark.css' %}">
+<link rel="stylesheet" href="{% static 'codemirror/codemirror-5.65.0/lib/codemirror.css' %}">
+<script src="{% static 'codemirror/codemirror-5.65.0/mode/clike/clike.js' %}"></script>
+<script src="{% static 'codemirror/codemirror-5.65.0/addon/display/autorefresh.js' %}"></script>
+<style>
+    body{
+        overflow-x: hidden;
+    }
+</style>
+<body class="hero-grad">
+    <section class="clean-block" style="height: 100%;">
+        <div class="row">
+            <div class="col-md-3">
+                <div style="text-align: left;">
+                    <img src="{% static 'img/socLogo.png' %}" style="width: 40%; margin-top: 10px;" /><br>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="nav justify-content-evenly">
+                    <div> <a href="{% url 'home' %}"> Home </a></div>
+                    <div> <a href="{% url 'about2' %}"> About </a></div>
+                    <div><a href="{% url 'contact2' %}"> Contact </a></div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div style="text-align: right;">
+                    <img src="assets/img/profile.png" style="width: 20%; margin-top: 10px;" />
+                </div>
+            </div>
+        </div>
+        <!-- <div class="container"> -->
+            <div class="container">
+                <!-- <form> method="post">
+                    {% csrf_token %} -->
+                <div class="col-md-12 bordered-box">
+                    <textarea id="editor"></textarea>
+                </div>
+                <br>
+                <br>
+                <div class="d-flex justify-content-between">
+                    <a href="{% url 'verify' %}"> <button class="btn fin-btn">< Back</button> </a>
+                    <button onclick="runCode()" class="btn fin-btn">Run Code</button>
+                    <button onclick="window.close()" id="upload" class="btn fin-btn disabled">Add <span>^</span> </button>
+                </div>
+                <br>
+                <div class="hide" id="output" style="text-align:center">
+                    <b>Program OUTPUT </b>
+                </div>
+                <br>
+                <br>
+            <!-- </form> -->
+            </div>
+        <!-- </div> -->
+    </section>
+
+    <script>
+        function runCode() {
+            var btn=document.getElementById("upload");
+            btn.classList.remove("disabled");
+            var output=document.getElementById("output");
+            output.classList.remove("hide");
+        }
+    
+        var editor = document.getElementById("editor");
+        CodeMirror.fromTextArea(
+            editor,
+            {
+                lineNumbers: true,
+                matchBrackets: true,
+                theme: "ayu-dark",
+                mode: "text/x-c",
+                autoRefresh: true,
+                scrollbars:true,
+                
+            }
+        ).setSize(null, "100%");
+    </script>
+    
+
+{% endblock %}

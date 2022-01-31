@@ -1,0 +1,104 @@
+{% load static %}
+
+{% include 'base.html' %}
+
+{% block content %}
+
+<style>
+    body{
+        overflow-x: hidden;
+    }
+</style>
+
+<body class="hero-grad">
+    <section class="clean-block" style="height: 100%;">
+        <div class="row">
+            <div class="col-md-3">
+                <div style="text-align: left;">
+                    <img src="{% static 'img/socLogo.png' %}" style="width: 40%; margin-top: 10px;" /><br>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="nav justify-content-evenly">
+                    <div> <a href="{% url 'home' %}"> Home </a></div>
+                    <div> <a href="{% url 'about2' %}"> About </a></div>
+                    <div><a href="{% url 'contact2' %}"> Contact </a></div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div style="text-align: right;">
+                    <img src="assets/img/profile.png" style="width: 20%; margin-top: 10px;" />
+                </div>
+            </div>
+        </div>
+    <div class="container" style="margin-top: 5vh;">
+        <div class="d-flex justify-content-around">
+                <div class="col-md-5 bordered-box">
+                    <h3> Select Test Cases </h3>
+                    <input type="checkbox" name="tst" id="select-all" />
+                    <label> Select All </label>
+                    <br />
+                    <input type="checkbox" name="tst" disabled checked />
+                    <label> Basic Test Case </label>
+                    <br />
+                    <input type="checkbox" name="tst" />
+                    <label> Test Case 1 </label>
+                    <br />
+                    <input type="checkbox" name="tst" />
+                    <label> Test Case 2 </label>
+                    <br />
+                    <input type="checkbox" name="tst" />
+                    <label> Test Case 3 </label>
+                    <br />
+                    <input type="checkbox" name="tst" />
+                    <label> Test Case 4 </label>
+                    <br />
+                    <input type="checkbox" name="tst" />
+                    <label> Test Case 5 </label>
+                    <br />
+                    <input type="checkbox" name="tst" />
+                    <label> Test Case 6 </label>
+                    <br />
+                    <input type="checkbox" name="tst" />
+                    <label> Test Case 7 </label>
+                    <br />
+                    <input type="checkbox" name="tst" />
+                    <label> Test Case 8 </label>
+                    <br />
+                    <input type="checkbox" name="tst" />
+                    <label> Test Case 9 </label>
+                    <br />
+                    <input type="checkbox" name="tst" />
+                    <label> Test Case 10 </label>
+                    <br />
+                    <br>
+                    <a href="{% url 'add_test' %}"><button class="btn btn-outline-light"> Add Custom Test Case + </button> </a>
+                </div>
+           <script>
+               $('#select-all').click(function(event) {   
+                    if(this.checked) {
+                        // Iterate each checkbox
+                        $(':checkbox').each(function() {
+                            this.checked = true;                        
+                        });
+                    } else {
+                        $(':checkbox').each(function() {
+                            this.checked = false;                       
+                        });
+                    }
+                }); 
+           </script>
+                
+                
+            </div>
+            </div>
+            <br>
+                <br>
+                <br>
+                <div class=" container d-flex justify-content-end">
+                    <a href="{% url 'verify_results' %}"> <button class="btn fin-btn"> Start Verification <span>></span> </button> </a>
+                </div>
+
+
+
+{% endblock %}
