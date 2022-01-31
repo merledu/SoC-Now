@@ -36,16 +36,16 @@
         </div>
         <!-- <div class="container"> -->
             <div class="container">
-                <!-- <form> method="post">
-                    {% csrf_token %} -->
+                <form method="post">
+                    {% csrf_token %}
                 <div class="col-md-12 bordered-box">
-                    <textarea id="editor"></textarea>
+                    <textarea name="editor" id="editor"></textarea>
                 </div>
                 <br>
                 <br>
                 <div class="d-flex justify-content-between">
                     <a href="{% url 'verify' %}"> <button class="btn fin-btn">< Back</button> </a>
-                    <button onclick="runCode()" class="btn fin-btn">Run Code</button>
+                    <input type="submit" class="btn fin-btn" value="Run Code">
                     <button onclick="window.close()" id="upload" class="btn fin-btn disabled">Add <span>^</span> </button>
                 </div>
                 <br>
@@ -54,7 +54,7 @@
                 </div>
                 <br>
                 <br>
-            <!-- </form> -->
+            </form>
             </div>
         <!-- </div> -->
     </section>

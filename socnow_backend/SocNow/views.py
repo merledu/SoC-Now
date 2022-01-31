@@ -6,6 +6,7 @@ from django.shortcuts import render, redirect
 from .models import SoC
 from django.http import JsonResponse
 from django.core import serializers
+import icecream as ic
 # Create your views here.
 
 def index(request):
@@ -79,6 +80,13 @@ def verify(request):
     return render(request, "verify.html", {})
 
 def add_test(request):
+    if request.method == "POST":
+        code = request.POST.get("editor")
+        # print(code)
+        file = open('/home/mordok/SoC-Now/socnow_backend/test/test.c' , 'w')
+        file.write(code)
+        file.close()
+
     return render(request, "addTest.html", {})
 
 def verify_results(request):
@@ -86,3 +94,7 @@ def verify_results(request):
 
 def config(request):
     return render(request, "config.html", {})
+
+# def addTest(request):
+#     if request.method == "POST":
+#         ic(request.POST.get("editor"))
