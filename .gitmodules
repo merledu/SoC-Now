@@ -12,6 +12,7 @@
 	path = SoCNow/nucleusrv
 	url = https://github.com/merledu/nucleusrv
 	branch = trace-1.0
+
 [submodule "riscv-arch-test"]
 	path = riscv-arch-test
 	url = https://github.com/riscv-non-isa/riscv-arch-test

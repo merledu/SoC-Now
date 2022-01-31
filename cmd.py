@@ -1,10 +1,11 @@
 import os
 import subprocess
-import re
-import time
+# import re
+# import time
 
-
-run_script = subprocess.call(["sh" , "./script.sh"])
+TEST = input("Enter the test name: ")
+# run_script = subprocess.call(["sh" , "./script.sh TEST"])
+os.system("./script.sh " + TEST)
 
 
 # #print(run_script)
