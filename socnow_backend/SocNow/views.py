@@ -6,7 +6,8 @@ from django.shortcuts import render, redirect
 from .models import SoC
 from django.http import JsonResponse
 from django.core import serializers
-import icecream as ic
+import os
+import subprocess
 # Create your views here.
 
 def index(request):
@@ -83,9 +84,16 @@ def add_test(request):
     if request.method == "POST":
         code = request.POST.get("editor")
         # print(code)
-        file = open('/home/mordok/SoC-Now/socnow_backend/test/test.c' , 'w')
+        #path = os.getcwd()
+        #file = open(path + '/SocNow/test/test.c' , 'w')
+        file = open('/home/shahzaib/Documents/SoC-Now/SoCNow/nucleusrv/tools/tests/custom/test.c' , 'w')
         file.write(code)
         file.close()
+        
+        #subprocess.call(["sh" , "/home/shahzaib/Documents/SoC-Now/SoCNow/nucleusrv/tools/ ./add_test.sh"])
+        #os.system("/home/shahzaib/Documents/SoC-Now/SoCNow/nucleusrv/tools/ ./add_test.sh")
+        #os.system('python3 /home/shahzaib/Documents/SoC-Now/SoCNow/nucleusrv/tools/add_run.py')
+        #exec(open('/home/shahzaib/Documents/SoC-Now/SoCNow/nucleusrv/tools/add_run.py').read())
 
     return render(request, "addTest.html", {})
 

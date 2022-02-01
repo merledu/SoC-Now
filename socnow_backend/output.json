@@ -1,1 +1,1 @@
-[{"model": "SocNow.soc", "pk": 22, "fields": {"isa": 32, "extensions": "i", "devices": "gpio", "bus": "wb"}}]
+[{"model": "SocNow.soc", "pk": 23, "fields": {"isa": 32, "extensions": "i,m,f,c", "devices": "gpio,spi,uart,timer", "bus": "wb"}}]
