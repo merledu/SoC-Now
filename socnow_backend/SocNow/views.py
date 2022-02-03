@@ -8,6 +8,7 @@ from django.http import JsonResponse
 from django.core import serializers
 import os
 import subprocess
+import ast
 # Create your views here.
 
 def index(request):
@@ -68,13 +69,30 @@ def finalize(request):
     return render(request , "finalize.html")
 
 
-
+# {'isa': 32, 'extensions': 'i,m', 'devices': 'gpio,uart', 'bus': 'tl-ul'}
 
 def json_return(request):
     InsertId= (SoC.objects.last()).id
     data = serializers.serialize("json" , SoC.objects.filter(pk=InsertId))
+    print(ast.literal_eval(data)[0]["fields"])
+    actualData = ast.literal_eval(data)[0]["fields"]
+    outData = {}
+    outData["isa"] = actualData["isa"]
+    outData["i"] = [1 if "i" in actualData["extensions"] else 0][0]
+    outData["m"] = [1 if "m" in actualData["extensions"] else 0][0]
+    outData["f"] = [1 if "f" in actualData["extensions"] else 0][0]
+    outData["c"] = [1 if "c" in actualData["extensions"] else 0][0]
+    outData["gpio"] = [1 if "gpio" in actualData["devices"] else 0][0]
+    outData["spi"] = [1 if "spi" in actualData["devices"] else 0][0]
+    outData["uart"] = [1 if "uart" in actualData["devices"] else 0][0]
+    outData["timer"] = [1 if "timer" in actualData["devices"] else 0][0]
+    outData["spi_flash"] = [1 if "spi_flash" in actualData["devices"] else 0][0]
+    outData["i2c"] = [1 if "i2c" in actualData["devices"] else 0][0]
+    outData["wb"] = [1 if "wb" in actualData["bus"] else 0][0]
+    outData["tl"] = [1 if "tl" in actualData["bus"] else 0][0]
+
     with open("output.json", "w") as outfile:
-        outfile.write(data)
+        outfile.write(str(outData))
     return redirect("finalize")
 
 def verify(request):
