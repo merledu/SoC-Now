@@ -84,12 +84,13 @@ def add_test(request):
     if request.method == "POST":
         code = request.POST.get("editor")
         # print(code)
-        #path = os.getcwd()
+        path = os.getcwd()
         #file = open(path + '/SocNow/test/test.c' , 'w')
-        file = open('/home/shahzaib/Documents/SoC-Now/SoCNow/nucleusrv/tools/tests/custom/test.c' , 'w')
+        file = open(path+"/custom_test/test.c" , 'w')
         file.write(code)
         file.close()
         
+        os.system("./add_test.sh ")
         #subprocess.call(["sh" , "/home/shahzaib/Documents/SoC-Now/SoCNow/nucleusrv/tools/ ./add_test.sh"])
         #os.system("/home/shahzaib/Documents/SoC-Now/SoCNow/nucleusrv/tools/ ./add_test.sh")
         #os.system('python3 /home/shahzaib/Documents/SoC-Now/SoCNow/nucleusrv/tools/add_run.py')
