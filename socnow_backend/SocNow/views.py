@@ -77,7 +77,7 @@ def json_return(request):
     print(ast.literal_eval(data)[0]["fields"])
     actualData = ast.literal_eval(data)[0]["fields"]
     outData = {}
-    outData["isa"] = actualData["isa"]
+    # outData["isa"] = actualData["isa"]
     outData["i"] = [1 if "i" in actualData["extensions"] else 0][0]
     outData["m"] = [1 if "m" in actualData["extensions"] else 0][0]
     outData["f"] = [1 if "f" in actualData["extensions"] else 0][0]
