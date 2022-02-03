@@ -1,1 +1,1 @@
-{'isa': 32, 'i': 1, 'm': 0, 'f': 1, 'c': 0, 'gpio': 1, 'spi': 1, 'uart': 0, 'timer': 0, 'spi_flash': 0, 'i2c': 0, 'wb': 1, 'tl': 0}
+{"i": 1, "m": 0, "f": 1, "c": 0, "gpio": 1, "spi": 1, "uart": 0, "timer": 0, "spi_flash": 0, "i2c": 0, "wb": 0, "tl": 1}

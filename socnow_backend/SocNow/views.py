@@ -9,6 +9,8 @@ from django.core import serializers
 import os
 import subprocess
 import ast
+import json
+
 # Create your views here.
 
 def index(request):
@@ -92,7 +94,8 @@ def json_return(request):
     outData["tl"] = [1 if "tl" in actualData["bus"] else 0][0]
 
     with open("output.json", "w") as outfile:
-        outfile.write(str(outData))
+        # outfile.write(str(outData))
+        json.dump(outData,outfile )
     return redirect("finalize")
 
 def verify(request):
