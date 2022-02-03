@@ -18,3 +18,7 @@ class SoC(models.Model):
                 blank=True
                             )
     bus = models.CharField(max_length=50, null=True, blank=True)
+
+
+class ComplianceTests(models.Model):
+    name = models.CharField(max_length=1000)
