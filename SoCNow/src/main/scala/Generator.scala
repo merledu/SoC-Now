@@ -14,6 +14,8 @@ import jigsaw.peripherals.gpio._
 import jigsaw.peripherals.spiflash._
 import jigsaw.peripherals.UART._
 
+// import scala.util.parsing.json._
+
 class Generator(programFile: Option[String], GPIO:Boolean = true, UART:Boolean = true, SPI:Boolean = true, TL:Boolean = true, WB:Boolean = false) extends Module {
   val io = IO(new Bundle {
     val spi_cs_n = Output(Bool())
@@ -375,4 +377,18 @@ if (SPI & UART){
   // core.io.irq_external_i := false.B
 
 
+}
+
+import spray.json._
+import DefaultJsonProtocol._
+
+object GeneratorDriver extends App {
+
+
+  val file = scala.io.Source.fromFile((os.pwd.toString)+"//src//main//scala//config.json").mkString
+
+  val fileToJson = file.parseJson.convertTo[Map[String, JsValue]]
+  val config = fileToJson.map({case (a,b) => a -> {if (b == JsNumber(1)) true else false}})
+
+  (new ChiselStage).emitVerilog(new Generator(programFile=None, GPIO = config("gpio"), UART = config("uart"), SPI = config("spi_flash"), TL = config("tl"), WB = config("wb")))
 }
