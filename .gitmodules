@@ -1,0 +1,3 @@
+[submodule "SoC-Now-Generator"]
+	path = SoC-Now-Generator
+	url = https://github.com/merledu/SoC-Now-Generator
