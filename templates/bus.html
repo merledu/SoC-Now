@@ -1,0 +1,99 @@
+{% load static %}
+{% include 'base.html' %}
+
+{% block content %}
+<style>
+    body{
+        overflow-x: hidden;
+    }
+</style>
+<body class="hero-grad">
+    <section class="clean-block" style="height: 100%;">
+        <div class="row">
+            <div class="col-md-3">
+                <div style="text-align: left;">
+                    <img src="{% static 'img/socLogo.png' %}" style="width: 40%; margin-top: 10px;" /><br>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="nav justify-content-evenly">
+                    <div> <a href="{% url 'home' %}"> Home </a></div>
+                    <div> <a href="{% url 'about2' %}"> About </a></div>
+                    <div><a href="{% url 'contact2' %}"> Contact </a></div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div style="text-align: right;">
+                    <img src="{% static 'img/profile.png' %}" style="width: 20%; margin-top: 10px;" />
+                </div>
+            </div>
+        </div>
+       
+       
+        <div class="row" style="margin-top: 3vh;">
+            <div class="col-md-3">
+            </div>
+            <div class="col-md-6" style="height: 100%;text-align: center;">
+                <br>
+                <div class="glass" style="border-radius: 15px; backdrop-filter: blur(50px); padding: 40px 45px;border: solid 1px rgba(255, 255, 255, 0.5); margin-top: 3vh;">
+                    <div style="text-align: left">
+                        <div>
+                            <h4 class="head" style="width: 200px;">
+                                Customize SoC
+                            </h4>
+                            <p class="middle">
+                                Generate a customized SoC with Core extensions, devices and bus interconnect of your choice.
+                            </p>
+                            
+                        </div>
+                        <div style="text-align: center;">
+                            <h3 style="font-weight: lighter;">Bus Interconnect</h3>
+                            <p style="color: rgba(255, 255, 255, 0.801); font-weight: lighter;">Select the Bus Interconnect to be used inside the SoC.</p>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-md-3"></div>
+                            
+                            <div class="col-md-8">
+                                <form method="POST"> {% csrf_token %}
+                                    <input type="radio" name="bus" value="wb" checked>
+                                    <label> Wishbone </label>
+                                    <br />
+                                    <input type="radio" name="bus" value="tl-ul">
+                                    <label> Tilelink Uncached Lightweight (TL-UL) </label>
+                                    <br />
+                                    <input type="radio" name="bus" value="tl-c">
+                                    <label> Tilelink Cached (TL-C) </label>
+                            </div>
+                        </div>
+
+                        <div class="d-flex justify-content-between align-items-center">
+                            <a href="{% url 'devices' %}">  <img src="{% static 'img/boldarrow2.png' %}" style="width: 70%;" /> </a>
+                            <style>
+                                input[type=submit] {
+                                    background: url("{% static 'img/boldarrow.png' %}");
+                                      border: 0;
+                                      background-size: contain;
+                                      display: block;
+                                      height: 67px;
+                                      width: 10%;
+                                      background-repeat: no-repeat;
+                                  }
+                            </style>  
+                            <input type="submit" value=" ">                        </form>
+
+                        </div>
+                        
+                       
+                    </div>                    
+                </div>
+                
+            </div>
+            <div class="col-md-3">
+                
+            </div>
+
+        </div>
+    </section>
+    
+{% endblock %}

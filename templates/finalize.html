@@ -1,0 +1,258 @@
+{% load static %}
+{% include 'base.html' %}
+
+{% block content %}
+<style>
+    body{
+        overflow-x: hidden;
+    }
+    #loader{
+        display: none;
+    }
+</style>
+<body class="hero-grad">
+    <section id="main" class="clean-block" style="height: 100%;">
+        <div class="row">
+            <div class="col-md-3">
+                <div style="text-align: left;">
+                    <img src="{% static 'img/socLogo.png' %}" style="width: 40%; margin-top: 10px;" /><br>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="nav justify-content-evenly">
+                    <div> <a href="{% url 'home' %}"> Home </a></div>
+                    <div> <a href="{% url 'about2' %}"> About </a></div>
+                    <div><a href="{% url 'contact2' %}"> Contact </a></div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div style="text-align: right;">
+                    <img src="{% static 'img/profile.png' %}" style="width: 20%; margin-top: 10px;" />
+                </div>
+            </div>
+        </div>
+       
+       
+        <div class="row" style="margin-top: 3vh;">
+            <div class="col-md-3">
+            </div>
+            <div class="col-md-6" style="height: 100%;text-align: center;">
+                <br>
+                <div class="glass" style="border-radius: 15px; backdrop-filter: blur(50px); padding: 40px 45px;border: solid 1px rgba(255, 255, 255, 0.5); margin-top: 3vh;">
+                    <div style="text-align: left">
+                        <div>
+                            <h4 class="head" style="width: 200px;">
+                                Customize SoC
+                            </h4>
+                            <p class="middle">
+                                Generate a customized SoC with Core extensions, devices and bus interconnect of your choice.
+                            </p>
+                            
+                        </div>
+                        <div style="text-align: center;">
+                            <h3 style="font-weight: lighter;">Finalized SoC</h3>
+                        </div>
+                        
+                        <div style="text-align: right;">
+                            <button class="btn frame-btn">
+                                Expand
+                                <img src="{% static 'img/uparrow.png' %}" />
+                            </button>
+                        </div>
+                        <div class="frame">
+                            <img src="{% static 'img/diagram.png' %}" style="width: 100%;" />
+                        </div>
+                        <br>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <a href="{% url 'bus' %}">  <img src="{% static 'img/boldarrow2.png' %}" style="width: 70%;" /> </a>
+                            <!-- <button class="btn down-btn">
+                                CHISEL Source 
+                                <img src="{% static 'img/downarrow.png' %}" />
+                            </button> -->
+                        </div>
+
+                        
+                        
+                       
+                    </div>                    
+                </div>
+                
+            </div>
+            <div class="col-md-3">
+                
+            </div>
+
+        </div>
+
+        <div class="container" style="text-align: right;">
+            <a onclick="showLoaderOnClick('{% url 'loadRTL' %}')"> <button class="btn fin-btn">
+                Generate RTL
+                <img src="{% static 'img/arrow.png' %}" />
+            </button>
+            </a>
+            <br>
+            <a onclick="showLoaderOnClick('{% url 'verif_soc' %}')"> <button class="btn fin-btn">
+                Verify SoC
+                <img src="{% static 'img/arrow.png' %}" />
+            </button>
+            </a>
+        </div>
+        <!-- <a href="{% url 'json_return' %}"><button class="btn blue-btn" style="position: absolute; right: 0;>
+            <div>
+                Generate RTL
+            </div>
+            
+        </button></a> -->
+        
+    </section>
+    <section id="loader" class="clean-block" style="height: 100%;">
+        <div class="row">
+            <div class="col-md-3">
+                <div style="text-align: left;">
+                    <img src="{% static 'img/socLogo.png' %}" style="width: 40%; margin-top: 10px;" /><br>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="nav justify-content-evenly">
+                    <div> <a href="{% url 'home' %}"> Home </a></div>
+                    <div> <a href="{% url 'about2' %}"> About </a></div>
+                    <div><a href="{% url 'contact2' %}"> Contact </a></div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div style="text-align: right;">
+                    <img src="{% static 'img/profile.png' %}" style="width: 20%; margin-top: 10px;" />
+                </div>
+            </div>
+        </div>
+        <form method="post" onbeforeunload="assignValue()"> {% csrf_token %}
+          <input type="hidden" id="anyId" name="loaded" value="">
+
+        </form>
+       
+        <script>
+          function assignValue(){
+          document.getElementById("anyId").value="reloaded";
+          }
+        </script>
+        <div class="container" style="text-align: center; margin-top: 20vh;">
+            <div class="loadingio-spinner-double-ring-319ae1des27"><div class="ldio-wwfef3pxad">
+                <div></div>
+                <div></div>
+                <div><div></div></div>
+                <div><div></div></div>
+                </div></div>
+                <style type="text/css">
+                @keyframes ldio-wwfef3pxad {
+                  0% { transform: rotate(0) }
+                  100% { transform: rotate(360deg) }
+                }
+                .ldio-wwfef3pxad div { box-sizing: border-box!important }
+                .ldio-wwfef3pxad > div {
+                  position: absolute;
+                  width: 144px;
+                  height: 144px;
+                  top: 28px;
+                  left: 28px;
+                  border-radius: 50%;
+                  border: 16px solid #000;
+                  border-color: #93dbe9 transparent #93dbe9 transparent;
+                  animation: ldio-wwfef3pxad 1s linear infinite;
+                }
+                
+                .ldio-wwfef3pxad > div:nth-child(2), .ldio-wwfef3pxad > div:nth-child(4) {
+                  width: 108px;
+                  height: 108px;
+                  top: 46px;
+                  left: 46px;
+                  animation: ldio-wwfef3pxad 1s linear infinite reverse;
+                }
+                .ldio-wwfef3pxad > div:nth-child(2) {
+                  border-color: transparent #689cc5 transparent #689cc5
+                }
+                .ldio-wwfef3pxad > div:nth-child(3) { border-color: transparent }
+                .ldio-wwfef3pxad > div:nth-child(3) div {
+                  position: absolute;
+                  width: 100%;
+                  height: 100%;
+                  transform: rotate(45deg);
+                }
+                .ldio-wwfef3pxad > div:nth-child(3) div:before, .ldio-wwfef3pxad > div:nth-child(3) div:after { 
+                  content: "";
+                  display: block;
+                  position: absolute;
+                  width: 16px;
+                  height: 16px;
+                  top: -16px;
+                  left: 48px;
+                  background: #93dbe9;
+                  border-radius: 50%;
+                  box-shadow: 0 128px 0 0 #93dbe9;
+                }
+                .ldio-wwfef3pxad > div:nth-child(3) div:after {
+                  left: -16px;
+                  top: 48px;
+                  box-shadow: 128px 0 0 0 #93dbe9;
+                }
+                
+                .ldio-wwfef3pxad > div:nth-child(4) { border-color: transparent; }
+                .ldio-wwfef3pxad > div:nth-child(4) div {
+                  position: absolute;
+                  width: 100%;
+                  height: 100%;
+                  transform: rotate(45deg);
+                }
+                .ldio-wwfef3pxad > div:nth-child(4) div:before, .ldio-wwfef3pxad > div:nth-child(4) div:after {
+                  content: "";
+                  display: block;
+                  position: absolute;
+                  width: 16px;
+                  height: 16px;
+                  top: -16px;
+                  left: 30px;
+                  background: #689cc5;
+                  border-radius: 50%;
+                  box-shadow: 0 92px 0 0 #689cc5;
+                }
+                .ldio-wwfef3pxad > div:nth-child(4) div:after {
+                  left: -16px;
+                  top: 30px;
+                  box-shadow: 92px 0 0 0 #689cc5;
+                }
+                .loadingio-spinner-double-ring-319ae1des27 {
+                  width: 200px;
+                  height: 200px;
+                  display: inline-block;
+                  overflow: hidden;
+                  /* background: #f1f2f3; */
+                }
+                .ldio-wwfef3pxad {
+                  width: 100%;
+                  height: 100%;
+                  position: relative;
+                  transform: translateZ(0) scale(1);
+                  backface-visibility: hidden;
+                  transform-origin: 0 0; /* see note above */
+                }
+                .ldio-wwfef3pxad div { box-sizing: content-box; }
+                /* generated by https://loading.io/ */
+                </style>
+
+                <h3>Generating RTL</h3>
+        </div>
+
+        
+    </section>
+    <script>
+        function showLoaderOnClick(url) {
+            showLoader();
+            window.location=url;
+        }
+        function showLoader(){
+            var m =document.getElementById("main");
+            m.style.display = "none";
+            var l = document.getElementById("loader");
+            l.style.display = "block";
+        } 
+    </script>
+ {% endblock %}

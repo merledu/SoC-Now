@@ -1,0 +1,62 @@
+{% load static %}
+
+{% include 'base.html' %}
+
+{% block content %}
+<style>
+    body{
+        overflow-x: hidden;
+    }
+</style>
+<body class="hero-grad">
+    <section class="clean-block" style="height: 100%;">
+        <div class="row">
+            <div class="col-md-3">
+                <div style="text-align: left;">
+                    <img src="{% static 'img/socLogo.png' %}" style="width: 40%; margin-top: 10px;" /><br>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="nav justify-content-evenly">
+                    <div > <a href="{% url 'home' %}"> Home </a></div>
+                    <div class="active"> <a href="{% url 'about2' %}"> About </a></div>
+                    <div><a href="{% url 'contact2' %}"> Contact </a></div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div style="text-align: right;">
+                    <img src="{% static 'img/profile.png' %}" style="width: 20%; margin-top: 10px;" />
+                </div>
+            </div>
+        </div>
+       
+       
+        <div class="row" style="margin-top: 3vh;">
+            <div class="col-md-3">
+            </div>
+            <div class="col-md-6" style="height: 100%;text-align: center;">
+                <br>
+                <div class="glass" style="border-radius: 15px; backdrop-filter: blur(50px); padding: 40px 45px;border: solid 1px rgba(255, 255, 255, 0.5); margin-top: 15vh;">
+                    <div style="text-align: left">
+                        <div>
+                            <h4 class="head" style="width: 100px;">
+                                About
+                            </h4>
+                        </div>
+                        
+                        <p>
+                            An open source no cost tool for creating customized SoC using No Code. This Mini SoC Generator will generate an System on Chip (SoC).
+                            It will be based on RISC-V ISA (IMFC extensions) (32-bit). It will take specifications of the SoC as parameters. All the Modules will be parameterized and reusable, for anyone who requires just a single part instead of an entire SoC. High Level approaches will be used by using CHISEL (Constructing Hardware in Scala Embedded Language)
+                        </p>
+                    </div>                    
+                </div>
+                
+            </div>
+            <div class="col-md-3">
+                
+            </div>
+
+        </div>
+    </section>
+    
+{% endblock %}
