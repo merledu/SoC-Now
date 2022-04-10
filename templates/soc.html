@@ -55,7 +55,7 @@
                             <div class="col-md-3"></div>
                             <div class="col-md-3" style="border-right: 1px solid white">
                                 <h5 style="font-weight: lighter;">ISA</h5>
-                                {% comment %} <form method="POST"> {% csrf_token %} {% endcomment %}
+                                <form method="POST"> {% csrf_token %}
                                     <input type="radio" name="isa" value="32 Bit" checked disabled />
                                     <label> 32 Bit </label>
                                     <br>
@@ -81,7 +81,7 @@
                         </div>
 
                         <div style="display: flex;justify-content: flex-end;">
-                          <button class="btn" onclick="open_menu('devices')"> <img src="{% static 'img/boldarrow.png' %}" style="width: 80%;" /> </button>
+                          <button type="button" class="btn" onclick="open_menu('devices')"> <img src="{% static 'img/boldarrow.png' %}" style="width: 80%;" /> </button>
                           {% comment %} <style>
                               input[type=submit] {
                                     background: url("{% static 'img/boldarrow.png' %}");
@@ -144,8 +144,8 @@
                         </div>
 
                         <div class="d-flex justify-content-between align-items-center">
-                            <button class="btn" onclick="open_menu('core')"><img src="{% static 'img/boldarrow2.png' %}" style="width: 70%;" /> </button>
-                            <button class="btn" onclick="open_menu('bus')"> <img src="{% static 'img/boldarrow.png' %}" style="width: 80%;" /> </button>
+                            <button type="button" class="btn" onclick="open_menu('core')"><img src="{% static 'img/boldarrow2.png' %}" style="width: 70%;" /> </button>
+                            <button type="button" class="btn" onclick="open_menu('bus')"> <img src="{% static 'img/boldarrow.png' %}" style="width: 80%;" /> </button>
 
                             {% comment %} <style>
                                 input[type=submit] {
@@ -201,8 +201,8 @@
                         </div>
 
                         <div class="d-flex justify-content-between align-items-center">
-                            <button class="btn" onclick="open_menu('devices')"><img src="{% static 'img/boldarrow2.png' %}" style="width: 70%;" /> </button>
-                            <button class="btn" > <img src="{% static 'img/boldarrow.png' %}" style="width: 80%;" /> </button>
+                            <button type="button" class="btn" onclick="open_menu('devices')"><img src="{% static 'img/boldarrow2.png' %}" style="width: 70%;" /> </button>
+                            <button type="submit" class="btn" > <img src="{% static 'img/boldarrow.png' %}" style="width: 80%;" /> </button>
 
                             {% comment %} <style>
                                 input[type=submit] {
@@ -218,6 +218,7 @@
                             <input type="submit" value=" ">                        </form> {% endcomment %}
 
                         </div>
+                    </form>
                         
                        
                     </div>                    
