@@ -40,7 +40,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'pages',
     'soc',
-    'django_mysql'
+    'django_mysql',
+    'components',
+    'verification'
 
 ]
 
@@ -135,9 +137,29 @@ GENERATOR_DIR="SoC-Now-Generator"
 
 
 DRIVERS = {
-    "soc":"GeneratorDriver"
+    "soc":"GeneratorDriver",
+    "coreiwb":"nucleusrv.components.CoreDriverWB",
+    "coreitl":"nucleusrv.components.CoreDriverTL",
+    "gpiowb":"jigsaw.GpioDriverWB",
+    "spiwb":"jigsaw.SpiDriverWB",
+    "uartwb":"jigsaw.UARTHarnessDriver",
+    "gpiotl":"jigsaw.GpioDriverTL",
+    "spitl":"jigsaw.SpiDriverTL",
+    "uarttl":"jigsaw.UARTHarnessDriverTL",
+    "wb":"caravan.bus.wishbone.WishboneDriver",
+    "tl":"caravan.bus.tilelink.TilelinkDriver"
 }
 
 RTL_FILES = {
-    "soc":"Generator.v" 
+    "soc":"Generator.v",
+    "coreiwb":"Top.v",
+    "coreitl":"TopTL.v",
+    "gpiowb":"GpioWB.v",
+    "spiwb":"SpiHarness.v",
+    "uartwb":"uartHarness.v",
+    "gpiotl":"GpioTL.v",
+    "spitl":"SpiHarnessTL.v",
+    "uarttl":"uartHarness_TL.v",
+    "wb":"Harness.v",
+    "tl":"TilelinkHarness.v"
 }

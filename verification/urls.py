@@ -1,0 +1,8 @@
+from curses.ascii import SO
+from unicodedata import name
+from django.urls import path
+from .views import *
+
+urlpatterns = [
+    path("", verif_select, name="verif_select")
+]

@@ -1,6 +1,6 @@
 import os
 from unicodedata import name
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 import os
 from thesocnow.settings import DRIVERS, GENERATOR_DIR, RTL_FILES
 
@@ -35,11 +35,11 @@ def show_rtl(request, driverFile):
     return render(request, "RTL.html", context)
 
 def gen_rtl(request, component):
+    os.chdir(GENERATOR_DIR)
     if component == "soc":
-        os.chdir(GENERATOR_DIR)
         os.system("./peripheralScript.py")
-        os.system(f"sbt 'runMain {DRIVERS[component]}'")
-        os.chdir("..")
-        
+    os.system(f"sbt 'runMain {DRIVERS[component]}'")
+    os.chdir("..")
 
     return redirect("rtl", RTL_FILES[component])
+

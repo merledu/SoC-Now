@@ -1,0 +1,116 @@
+{% extends 'base2.html' %}
+
+{% load static %}
+
+{% block nana %}
+<style>
+    body{
+        overflow-x:hidden;
+    }
+</style>
+
+<div class="comp">
+
+    <div class="CoreMainContainer">
+        <h2 class="heading">
+            Cores
+        </h2>
+        <div class="contentDiv">
+            <h3 class="title">Wishbone</h3>
+            <div class="buttonsDiv">
+                <button onclick="showLoaderOnClick('{% url 'gen' component='coreiwb' %}')" class="buttons">RV32I</button>
+                <button disabled class="buttons">RV32IC</button>
+                <button disabled class="buttons">RV32IF</button>
+                <button disabled class="buttons">RV32IM</button>
+                <button disabled class="buttons">RV32IMC</button>
+                <button disabled class="buttons">RV32IMF</button>
+                <button disabled class="buttons">RV32IMFC</button>
+            </div>
+
+        </div>
+        <div class="contentDiv">
+            <h3 class="title">Tilelink</h3>
+            <div class="buttonsDiv">
+                <button onclick="showLoaderOnClick('{% url 'gen' component='coreitl' %}')" class="buttons">RV32I</button>
+                <button disabled class="buttons">RV32IC</button>
+                <button disabled class="buttons">RV32IF</button>
+                <button disabled class="buttons">RV32IM</button>
+                <button disabled class="buttons">RV32IMC</button>
+                <button disabled class="buttons">RV32IMF</button>
+                <button disabled class="buttons">RV32IMFC</button>
+            </div>
+
+        </div>
+        
+        
+        
+
+
+
+
+
+        <div class="CoreMainContainer">
+            <h2 class="heading">
+                Devices
+            </h2>
+            <div class="contentDiv">
+                <h3 class="title">Wishbone Integrated</h3>
+                <div class="buttonsDiv">
+                    <button onclick="showLoaderOnClick('{% url 'gen' component='gpiowb' %}')" class="buttons">GPIO</button>
+                    <button disabled class="buttons">SPI</button>
+                    <button onclick="showLoaderOnClick('{% url 'gen' component='spiwb' %}')" class="buttons">SPI-Flash</button>
+                    <button onclick="showLoaderOnClick('{% url 'gen' component='uartwb' %}')" class="buttons">UART</button>
+                    <button disabled class="buttons">TIMER</button>
+                    <button disabled class="buttons">I <sup>2</sup>C </button>
+                </div>
+
+            </div>
+            <div class="contentDiv">
+                <h3 class="title">Tilelink Integrated</h3>
+                <div class="buttonsDiv">
+                    <button onclick="showLoaderOnClick('{% url 'gen' component='gpiotl' %}')" class="buttons">GPIO</button>
+                    <button disabled class="buttons">SPI</button>
+                    <button onclick="showLoaderOnClick('{% url 'gen' component='spitl' %}')" class="buttons">SPI-Flash</button>
+                    <button onclick="showLoaderOnClick('{% url 'gen' component='uarttl' %}')" class="buttons">UART</button>
+                    <button disabled class="buttons">TIMER</button>
+                    <button disabled class="buttons">I <sup>2</sup>C </button>
+                </div>
+
+            </div>
+
+
+
+
+
+
+
+            <div class="CoreMainContainer">
+                <h2 class="heading">
+                    Buses
+                </h2>
+                <div class="contentDiv">
+                    <h3 class="title">Options</h3>
+                    <div class="buttonsDiv">
+                        <button onclick="showLoaderOnClick('{% url 'gen' component='wb' %}')" class="buttons">Wishbone</button>
+                        <button onclick="showLoaderOnClick('{% url 'gen' component='tl' %}')" class="buttons">TL-UL</button>
+                        <button disabled class="buttons">TL-C</button>
+                        
+                    </div>
+    
+                </div>
+               
+
+
+
+    </div>
+
+
+
+
+
+
+
+
+</div>
+
+{% endblock %}

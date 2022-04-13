@@ -278,3 +278,105 @@
 .btn-containerr button img {
     width: 100%;
 }
+
+
+
+@import url("https://fonts.googleapis.com/css?family=Raleway:400,400i,700");
+ 
+ .rtl .button {
+	 display: flex;
+	 align-items: center;
+	 justify-content: center;
+	 cursor: pointer;
+}
+ .rtl .button svg {
+	 height: 55px;
+	 width: 200px;
+	 fill: none;
+	 stroke-width: 5;
+}
+ .rtl .button svg .o1 {
+	 stroke: rgba(65, 204, 255, 0.7);
+	 fill: #007FA7;
+	 transition: all 1s ease-in-out;
+}
+ .rtl .button svg .o2 {
+	 stroke: white;
+	 stroke-dasharray: 20 420;
+	 stroke-dashoffset: 20;
+	 transition: all 1s ease-in-out;
+}
+ .rtl .button span {
+	 position: absolute;
+	 margin: auto 0;
+	 text-transform: uppercase;
+	 letter-spacing: 3px;
+}
+ .rtl .button:hover .o1 {
+	 fill: rgba(16, 185, 204, 0.3);
+}
+ .rtl .button:hover .o2 {
+	 stroke-dashoffset: -420;
+}
+
+
+.comp .heading{
+    text-align: center;
+    color: white;
+    height: 100px;
+    background-color: #0080a755;
+    align-items: center !important;
+    line-height: 100px;
+    margin-bottom: 0px;
+        border-bottom: 1px solid #548ea5;
+
+}
+
+.comp .title{
+    color: white;
+    text-align: center !important;
+    justify-content: center !important;
+    width: 300px;
+    background-color: #0080a700;
+    align-items: center !important;
+    line-height: 100px;
+    display: flex;
+    flex: 1;
+    margin-bottom: 0px;
+    height: auto;
+    
+}
+.comp .buttonsDiv{
+    padding: 10px;
+    display: flex;
+    flex: 3;
+    flex-wrap: wrap;
+    /* justify-content: center; */
+    height: auto;
+    align-items: center !important;
+    /* line-height: 100px; */
+}
+.comp .buttons{
+    background-color: #007FA7;
+    color: white;
+    border-radius: 5px;
+    border: 1px rgba(255, 255, 255, 0.469) solid;
+    width: 150px;
+
+    height: 40px;
+    margin: 3px;
+}
+.comp .buttons:hover{
+    background-color: #193549;
+    color: white;
+    border: 1px white solid;
+    font-weight: bold;
+}
+.comp .contentDiv{
+    display: flex;
+    flex-wrap: wrap;
+    /* justify-content: center; */
+    /* margin-top: -10px; */
+    border-bottom: 1px solid #548ea5;
+    /* height: 100px;/ */
+}
