@@ -1,7 +1,7 @@
 import json
 from PIL import Image, ImageDraw, ImageColor, ImageFont
 def makeDiagram():
-    f = open('../SoCNow/src/main/scala/config.json')
+    f = open('SoC-Now-Generator/src/main/scala/config.json')
     data = json.load(f)
     f.close()
     ext = []

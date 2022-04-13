@@ -4,6 +4,6 @@ from django.urls import path
 from .views import *
 
 urlpatterns = [
-    path("", soc_view, name="core"),
+    path("", soc_view, name="soc"),
     path("final/", finalize_view, name="finalize")
 ]

@@ -1,5 +1,5 @@
 .hero-main{
-    background-image: url("../img/bg2.png");
+    background-image: url("../img/bg.jpg");
     height: 100vh;
     background-size: cover;
     color: white;
@@ -183,4 +183,98 @@
 .long-btn:hover{
     color: white;
 
+}
+#loader{
+    display: none;
+}
+
+.btn-containerr {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--bg);
+}
+.btn-containerr {
+    --btn-bg: #007FA7;
+    /* --bg: #f22c3a; */
+}
+
+.btn-containerr button {
+    --width: 230px;
+    --height: 70px;
+    border: 0;
+    position: relative;
+    min-width: var(--width);
+    min-height: var(--height);
+    border-radius: var(--height);
+    color: #fff;
+    background: rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 1rem;
+}
+.btn-containerr button .text, .btn-containerr button .icon-container {
+    position: relative;
+    z-index: 2;
+}
+.btn-containerr button .icon-container {
+    --icon-size: 50px;
+    position: relative;
+    width: var(--icon-size);
+    height: var(--icon-size);
+    margin-left: 15px;
+    transition: transform 500ms ease;
+}
+
+.btn-containerr button .icon-container .icon {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: var(--icon-size);
+    height: var(--icon-size);
+    transition: transform 500ms ease, opacity 250ms ease;
+}
+.btn-containerr button .icon-container .icon--left {
+    transform: translateX(-200%);
+    opacity: 0;
+}
+.btn-containerr button .icon-container .icon svg {
+    width: 100%;
+    height: 100%;
+    fill: #fff;
+}
+.btn-containerr button::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--btn-bg);
+    border-radius: var(--height);
+    z-index: 1;
+    transition: transform 500ms ease;
+}
+.btn-containerr button:hover::after {
+    transform: translateX(65%);
+}
+.btn-containerr button:hover .icon-container {
+    transform: translateX(125%);
+    --icon-size: 25px;
+}
+.btn-containerr button:hover .icon-container .icon--left {
+    transform: translateX(0);
+    opacity: 1;
+}
+.btn-containerr button:hover .icon-container .icon--right {
+    transform: translateX(100%);
+    opacity: 0;
+}
+.btn-containerr button img {
+    width: 100%;
 }

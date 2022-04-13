@@ -1,37 +1,17 @@
-{% load static %}
-{% include 'base.html' %}
+{% extends 'base2.html' %}
 
-{% block content %}
+{% load static %}
+
+{% block nana %}
+
 <style>
     body{
         overflow-x: hidden;
     }
-    #loader{
-        display: none;
-    }
-</style>
-<body class="hero-grad">
-    <section id="main" class="clean-block" style="height: 100%;">
-        <div class="row">
-            <div class="col-md-3">
-                <div style="text-align: left;">
-                    <img src="{% static 'img/socLogo.png' %}" style="width: 40%; margin-top: 10px;" /><br>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="nav justify-content-evenly">
-                    <div> <a href="{% url 'home' %}"> Home </a></div>
-                    <div> <a href="{% url 'about2' %}"> About </a></div>
-                    <div><a href="{% url 'contact2' %}"> Contact </a></div>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div style="text-align: right;">
-                    <img src="{% static 'img/profile.png' %}" style="width: 20%; margin-top: 10px;" />
-                </div>
-            </div>
-        </div>
+   
+</style>   
        
+   
        
         <div class="row" style="margin-top: 3vh;">
             <div class="col-md-3">
@@ -64,7 +44,7 @@
                         </div>
                         <br>
                         <div class="d-flex justify-content-between align-items-center">
-                            <a href="{% url 'bus' %}">  <img src="{% static 'img/boldarrow2.png' %}" style="width: 70%;" /> </a>
+                            <a href="{% url 'soc' %}">  <img src="{% static 'img/boldarrow2.png' %}" style="width: 70%;" /> </a>
                             <!-- <button class="btn down-btn">
                                 CHISEL Source 
                                 <img src="{% static 'img/downarrow.png' %}" />
@@ -78,181 +58,55 @@
                 </div>
                 
             </div>
-            <div class="col-md-3">
-                
+            <div class="col-md-3" style="margin-top: 65vh;">
+                <div class="container" style="text-align: right;">
+                    <div class="btn-containerr">
+                        <button>
+                            <span class="text">Verify SoC</span>
+                            <div class="icon-container">
+                                <div class="icon icon--left">
+                                    <img src="{% static 'img/arrow.png' %}"  />
+                                </div>
+                                <div class="icon icon--right">
+                                    <img src="{% static 'img/arrow.png' %}"  />
+                                </div>
+                            </div>
+                        </button>
+                    </div>
+                    <br>
+
+                    <div class="btn-containerr">
+                        <button onclick="showLoaderOnClick('{% url 'soc' %}')">>
+                            <span class="text">Generate RTL</span>
+                            <div class="icon-container">
+                                <div class="icon icon--left">
+                                    <img src="{% static 'img/arrow.png' %}"  />
+                                </div>
+                                <div class="icon icon--right">
+                                    <img src="{% static 'img/arrow.png' %}"  />
+                                </div>
+                            </div>
+                        </button>
+                    </div>
+                    {% comment %} <a onclick="showLoaderOnClick('{% url 'verif_soc' %}')">  {% endcomment %}
+                        {% comment %} <button class="btn fin-btn">
+                        Verify SoC
+                        <img src="{% static 'img/arrow.png' %}" />
+                    </button>
+                    </a>
+                    <br>
+                    <a onclick="showLoaderOnClick('{% url 'soc' %}')"> <button class="btn fin-btn">
+                        Generate RTL
+                        <img src="{% static 'img/arrow.png' %}" />
+                    </button>
+                    </a> {% endcomment %}
+                    <br>
+                    
+                </div>
             </div>
 
         </div>
 
-        <div class="container" style="text-align: right;">
-            <a onclick="showLoaderOnClick('{% url 'loadRTL' %}')"> <button class="btn fin-btn">
-                Generate RTL
-                <img src="{% static 'img/arrow.png' %}" />
-            </button>
-            </a>
-            <br>
-            <a onclick="showLoaderOnClick('{% url 'verif_soc' %}')"> <button class="btn fin-btn">
-                Verify SoC
-                <img src="{% static 'img/arrow.png' %}" />
-            </button>
-            </a>
-        </div>
-        <!-- <a href="{% url 'json_return' %}"><button class="btn blue-btn" style="position: absolute; right: 0;>
-            <div>
-                Generate RTL
-            </div>
-            
-        </button></a> -->
+      
         
-    </section>
-    <section id="loader" class="clean-block" style="height: 100%;">
-        <div class="row">
-            <div class="col-md-3">
-                <div style="text-align: left;">
-                    <img src="{% static 'img/socLogo.png' %}" style="width: 40%; margin-top: 10px;" /><br>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="nav justify-content-evenly">
-                    <div> <a href="{% url 'home' %}"> Home </a></div>
-                    <div> <a href="{% url 'about2' %}"> About </a></div>
-                    <div><a href="{% url 'contact2' %}"> Contact </a></div>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div style="text-align: right;">
-                    <img src="{% static 'img/profile.png' %}" style="width: 20%; margin-top: 10px;" />
-                </div>
-            </div>
-        </div>
-        <form method="post" onbeforeunload="assignValue()"> {% csrf_token %}
-          <input type="hidden" id="anyId" name="loaded" value="">
-
-        </form>
-       
-        <script>
-          function assignValue(){
-          document.getElementById("anyId").value="reloaded";
-          }
-        </script>
-        <div class="container" style="text-align: center; margin-top: 20vh;">
-            <div class="loadingio-spinner-double-ring-319ae1des27"><div class="ldio-wwfef3pxad">
-                <div></div>
-                <div></div>
-                <div><div></div></div>
-                <div><div></div></div>
-                </div></div>
-                <style type="text/css">
-                @keyframes ldio-wwfef3pxad {
-                  0% { transform: rotate(0) }
-                  100% { transform: rotate(360deg) }
-                }
-                .ldio-wwfef3pxad div { box-sizing: border-box!important }
-                .ldio-wwfef3pxad > div {
-                  position: absolute;
-                  width: 144px;
-                  height: 144px;
-                  top: 28px;
-                  left: 28px;
-                  border-radius: 50%;
-                  border: 16px solid #000;
-                  border-color: #93dbe9 transparent #93dbe9 transparent;
-                  animation: ldio-wwfef3pxad 1s linear infinite;
-                }
-                
-                .ldio-wwfef3pxad > div:nth-child(2), .ldio-wwfef3pxad > div:nth-child(4) {
-                  width: 108px;
-                  height: 108px;
-                  top: 46px;
-                  left: 46px;
-                  animation: ldio-wwfef3pxad 1s linear infinite reverse;
-                }
-                .ldio-wwfef3pxad > div:nth-child(2) {
-                  border-color: transparent #689cc5 transparent #689cc5
-                }
-                .ldio-wwfef3pxad > div:nth-child(3) { border-color: transparent }
-                .ldio-wwfef3pxad > div:nth-child(3) div {
-                  position: absolute;
-                  width: 100%;
-                  height: 100%;
-                  transform: rotate(45deg);
-                }
-                .ldio-wwfef3pxad > div:nth-child(3) div:before, .ldio-wwfef3pxad > div:nth-child(3) div:after { 
-                  content: "";
-                  display: block;
-                  position: absolute;
-                  width: 16px;
-                  height: 16px;
-                  top: -16px;
-                  left: 48px;
-                  background: #93dbe9;
-                  border-radius: 50%;
-                  box-shadow: 0 128px 0 0 #93dbe9;
-                }
-                .ldio-wwfef3pxad > div:nth-child(3) div:after {
-                  left: -16px;
-                  top: 48px;
-                  box-shadow: 128px 0 0 0 #93dbe9;
-                }
-                
-                .ldio-wwfef3pxad > div:nth-child(4) { border-color: transparent; }
-                .ldio-wwfef3pxad > div:nth-child(4) div {
-                  position: absolute;
-                  width: 100%;
-                  height: 100%;
-                  transform: rotate(45deg);
-                }
-                .ldio-wwfef3pxad > div:nth-child(4) div:before, .ldio-wwfef3pxad > div:nth-child(4) div:after {
-                  content: "";
-                  display: block;
-                  position: absolute;
-                  width: 16px;
-                  height: 16px;
-                  top: -16px;
-                  left: 30px;
-                  background: #689cc5;
-                  border-radius: 50%;
-                  box-shadow: 0 92px 0 0 #689cc5;
-                }
-                .ldio-wwfef3pxad > div:nth-child(4) div:after {
-                  left: -16px;
-                  top: 30px;
-                  box-shadow: 92px 0 0 0 #689cc5;
-                }
-                .loadingio-spinner-double-ring-319ae1des27 {
-                  width: 200px;
-                  height: 200px;
-                  display: inline-block;
-                  overflow: hidden;
-                  /* background: #f1f2f3; */
-                }
-                .ldio-wwfef3pxad {
-                  width: 100%;
-                  height: 100%;
-                  position: relative;
-                  transform: translateZ(0) scale(1);
-                  backface-visibility: hidden;
-                  transform-origin: 0 0; /* see note above */
-                }
-                .ldio-wwfef3pxad div { box-sizing: content-box; }
-                /* generated by https://loading.io/ */
-                </style>
-
-                <h3>Generating RTL</h3>
-        </div>
-
-        
-    </section>
-    <script>
-        function showLoaderOnClick(url) {
-            showLoader();
-            window.location=url;
-        }
-        function showLoader(){
-            var m =document.getElementById("main");
-            m.style.display = "none";
-            var l = document.getElementById("loader");
-            l.style.display = "block";
-        } 
-    </script>
- {% endblock %}
+        {% endblock %}  
