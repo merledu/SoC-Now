@@ -202,13 +202,13 @@
 }
 
 .btn-containerr button {
-    --width: 230px;
-    --height: 70px;
+    --width: 200px;
+    --height: 60px;
     border: 0;
     position: relative;
     min-width: var(--width);
     min-height: var(--height);
-    border-radius: var(--height);
+    border-radius: 10px;
     color: #fff;
     background: rgba(0, 0, 0, 0.3);
     cursor: pointer;
@@ -256,7 +256,7 @@
     width: 100%;
     height: 100%;
     background: var(--btn-bg);
-    border-radius: var(--height);
+    border-radius: 10px;
     z-index: 1;
     transition: transform 500ms ease;
 }
@@ -264,8 +264,8 @@
     transform: translateX(65%);
 }
 .btn-containerr button:hover .icon-container {
-    transform: translateX(125%);
-    --icon-size: 25px;
+    transform: translateX(60%);
+    --icon-size: 35px;
 }
 .btn-containerr button:hover .icon-container .icon--left {
     transform: translateX(0);
@@ -380,3 +380,61 @@
     border-bottom: 1px solid #548ea5;
     /* height: 100px;/ */
 }
+
+
+.noselect {
+    -webkit-touch-callout: none;
+      -webkit-user-select: none;
+       -khtml-user-select: none;
+         -moz-user-select: none;
+          -ms-user-select: none;
+              user-select: none;
+          -webkit-tap-highlight-color: transparent;
+          width: 200px;
+      height: 60px;
+      cursor: pointer;
+      border: none;
+      font-family: 'Comfortaa', cursive;
+      color: rgba(255, 255, 255, 0.79);
+      font-size: 20px;
+      border-radius: 4px;
+      box-shadow: inset 0px 3px 5px rgba(255,255,255,0.5), 0px 0px 10px rgba(0,0,0,0.15);
+      background: rgb(2,0,36);
+  background: linear-gradient(45deg, rgba(2,0,36,0) 5%, rgba(255,255,255,.5) 6%, rgba(255,255,255,0) 9%, rgba(255,255,255,.5) 10%, rgba(255,255,255,0) 17%, rgba(255,255,255,.5) 19%, rgba(255,255,255,0) 21%);
+      background-size: 150%;
+      background-position: right;
+      transition: 1s;
+  }
+  
+
+  
+  .noselect:hover {
+      background-position: left;
+      color: white;
+      box-shadow: inset 0px 3px 5px rgba(255,255,255,1), 0px 0px 10px rgba(0,0,0,0.25);
+  }
+  
+  .noselect:focus {
+      outline: none;
+  }
+
+   /* width */
+   ::-webkit-scrollbar {
+    width: 10px;
+    }
+
+    /* Track */
+    ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 25px;
+    /* margin-bottom: 50px;
+    margin-top: 50px; */
+    }
+
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+    background: #007FA7;
+    border-radius: 25px;
+    /* margin-bottom: 50px;
+    margin-top: 50px; */
+    }
