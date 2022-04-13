@@ -129,3 +129,15 @@ STATIC_URL = '/static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+
+
+GENERATOR_DIR="SoC-Now-Generator"
+
+
+DRIVERS = {
+    "soc":"GeneratorDriver"
+}
+
+RTL_FILES = {
+    "soc":"Generator.v" 
+}

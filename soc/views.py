@@ -1,8 +1,9 @@
 from django.shortcuts import redirect, render
 from .models import SoC
 from django.core import serializers
-import ast, json
+import ast, json, os
 from makeDiagram import makeDiagram
+from thesocnow.settings import GENERATOR_DIR, DRIVERS, RTL_FILES
 # Create your views here.
 def soc_view(request):
     if request.method == "POST":
@@ -42,4 +43,3 @@ def soc_view(request):
 def finalize_view(request):
     return render(request, "finalize.html", {})
 
-def gen_rtl()

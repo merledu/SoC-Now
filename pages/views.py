@@ -1,5 +1,8 @@
+import os
 from unicodedata import name
 from django.shortcuts import render
+import os
+from thesocnow.settings import DRIVERS, GENERATOR_DIR, RTL_FILES
 
 # Create your views here.
 def index_view(request):
@@ -19,3 +22,24 @@ def about_view2(request):
 
 def contact_view2(request):
     return render(request, "contact2.html", {})
+
+def show_rtl(request, driverFile):
+    file = open(os.path.join(GENERATOR_DIR, driverFile))
+    rtl_content = file.read()
+    file.close()
+
+    context = {
+        "rtl":rtl_content
+    }
+
+    return render(request, "RTL.html", context)
+
+def gen_rtl(request, component):
+    if component == "soc":
+        os.chdir(GENERATOR_DIR)
+        os.system("./peripheralScript.py")
+        os.system(f"sbt 'runMain {DRIVERS[component]}'")
+        os.chdir("..")
+        
+
+    return redirect("rtl", RTL_FILES[component])

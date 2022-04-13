@@ -5,5 +5,6 @@ from .views import *
 
 urlpatterns = [
     path("", soc_view, name="soc"),
-    path("final/", finalize_view, name="finalize")
+    path("final/", finalize_view, name="finalize"),
+   
 ]
