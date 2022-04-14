@@ -43,3 +43,5 @@ def soc_view(request):
 def finalize_view(request):
     return render(request, "finalize.html", {})
 
+def selectFPGA(request):
+    return render(request, "selectFPGA.html", {})

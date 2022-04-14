@@ -1,0 +1,79 @@
+{% extends 'base2.html' %}
+
+{% load static %}
+
+{% block nana %}
+
+<style>
+    body{
+        overflow-x: hidden;
+    }
+   
+</style>   
+       
+   
+       
+        <div class="row" style="margin-top: 3vh;">
+            <div class="col-md-3">
+            </div>
+            <div class="col-md-6" style="height: 100%;text-align: center;">
+                <br>
+                <div class="glass" style="border-radius: 15px; backdrop-filter: blur(50px); padding: 40px 45px;border: solid 1px rgba(255, 255, 255, 0.5); margin-top: 3vh;">
+                    <div style="text-align: left">
+                        <div>
+                            <h4 class="head" style="width: 300px;">
+                                Select Clock Frequency
+                            </h4>
+                            <br>
+                            <p class="middle">
+                    <label> Enter Clock Frequency </label>
+                    <input type="number" value="5" min="5" max="100" style="width:60px" />
+                    <label>MHz</label>
+                    <br>
+                </p>
+                            
+                           
+                            
+                        </div>
+                        <br>
+                        <h4 class="head" style="width: 200px;">
+                            Select FPGA
+                        </h4>
+                        <br>
+                        
+
+                        <div class="multi-button">
+                            <input name="buttons" value="Arty-A7" type="radio" id="arty" checked="checked">
+                            <label for="arty">
+                            Arty A-7</label>
+                            <input name="buttons" value="Zybo-Z7" type="radio" id="zybo">
+                            <label for="zybo">
+                              Zybo Z-7</label>
+                            
+                          </div>
+                        
+                         
+                        <br><br>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <a href="{% url 'finalize' %}">  <img src="{% static 'img/boldarrow2.png' %}" style="width: 70%;" /> </a>
+                            <a href="{% url 'soc' %}">  <img src="{% static 'img/boldarrow.png' %}" style="width: 70%;" /> </a>
+
+                            
+                        </div>
+
+                        
+                        
+                       
+                    </div>                    
+                </div>
+                
+            </div>
+            <div class="col-md-3">
+                
+            </div>
+
+        </div>
+
+      
+        
+        {% endblock %}  
