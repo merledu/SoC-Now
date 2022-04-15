@@ -334,8 +334,10 @@
 
 .comp .title{
     color: white;
-    text-align: center !important;
-    justify-content: center !important;
+    text-align: left !important;
+    /* justify-content: center !important; */
+    padding: 0px 0px 0px 50px;
+    border-right: solid 1px #ffffff57;
     width: 300px;
     background-color: #0080a700;
     align-items: center !important;
