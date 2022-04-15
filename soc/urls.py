@@ -7,5 +7,6 @@ urlpatterns = [
     path("", soc_view, name="soc"),
     path("final/", finalize_view, name="finalize"),
     # gen bitstream
-    path("select/fpga", selectFPGA, name="selectFPGA")
+    path("fpga/select", selectFPGA, name="selectFPGA"),
+    path("fpga/map", mapFPGA, name="mapFPGA")
 ]

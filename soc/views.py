@@ -45,3 +45,6 @@ def finalize_view(request):
 
 def selectFPGA(request):
     return render(request, "selectFPGA.html", {})
+
+def mapFPGA(request):
+    return render(request, "mapFPGA.html", {})

@@ -1,0 +1,466 @@
+{% extends 'base2.html' %}
+
+{% load static %}
+
+{% block nana %}
+
+<style>
+    body{
+        overflow-x: hidden;
+    }
+   
+</style>   
+       
+   
+       
+        <div class="row" style="margin-top: 3vh;">
+            <div class="col-md-3">
+            </div>
+            <div class="col-md-6" style="height: 100%;text-align: center;">
+                <br>
+                <div class="glass" style="border-radius: 15px; backdrop-filter: blur(50px); padding: 40px 45px;border: solid 1px rgba(255, 255, 255, 0.5); margin-top: 3vh;">
+                    <div style="text-align: left">
+                        <div>
+                            <h4 class="head" style="width: 300px;">
+                                Map I/Os to FPGA
+                            </h4>
+                            <br>
+                            <p class="middle">
+                                Map what SoC pins shall be mapped into FPGA components
+                            </p>
+                            
+                           
+                            
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="col-md-7">
+                                <img src="{% static 'img/fpga/arty.png' %}" style="width:100%;" />
+                                <br><br>
+                                <div class="row container "  style="padding-top:15px">
+                                    <div class="col-md-12 darker-borders"  style="padding-top:15px">
+                                        <ul>
+                                            <li>LED -- I/O</li>
+                                            <li>LED -- I/O</li>
+                                            <li>LED -- I/O</li>
+                                            <li>LED -- I/O</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-5 simple-borders">
+                                <div class="container row" style="padding-top:15px;text-align: center;">
+                                    
+                                    <div class="col-md-6">
+                                        BTN0
+
+                                        <label class="select" for="slct"><select id="slct" required="required">
+                                            <option value="" disabled="disabled" selected="selected">Select i/o</option>
+                                            <option value="#">One</option>
+                                            <option value="#">Two</option>
+                                            <option value="#">Three</option>
+                                            <option value="#">Four</option>
+                                            <option value="#">Five</option>
+                                            <option value="#">Six</option>
+                                            <option value="#">Seven</option>
+                                        </select><svg>
+                                            <use xlink:href="#select-arrow-down"></use>
+                                        </svg></label><!-- SVG Sprites--><svg class="sprites">
+                                            <symbol id="select-arrow-down" viewbox="0 0 10 6">
+                                                <polyline points="1 1 5 5 9 1"></polyline>
+                                            </symbol>
+                                        </svg>
+                                    </div>
+                                    <div class="col-md-6">
+                                        BTN1
+
+                                        <label class="select" for="slct"><select id="slct" required="required">
+                                            <option value="" disabled="disabled" selected="selected">Select i/o</option>
+                                            <option value="#">One</option>
+                                            <option value="#">Two</option>
+                                            <option value="#">Three</option>
+                                            <option value="#">Four</option>
+                                            <option value="#">Five</option>
+                                            <option value="#">Six</option>
+                                            <option value="#">Seven</option>
+                                        </select><svg>
+                                            <use xlink:href="#select-arrow-down"></use>
+                                        </svg></label><!-- SVG Sprites--><svg class="sprites">
+                                            <symbol id="select-arrow-down" viewbox="0 0 10 6">
+                                                <polyline points="1 1 5 5 9 1"></polyline>
+                                            </symbol>
+                                        </svg>
+
+                                    </div>
+                                   
+
+                                </div>
+
+                                <div class="container row" style="padding-top:15px;text-align: center;">
+                                    
+                                   
+                                    <div class="col-md-6">
+                                        BTN2
+
+                                        <label class="select" for="slct"><select id="slct" required="required">
+                                            <option value="" disabled="disabled" selected="selected">Select i/o</option>
+                                            <option value="#">One</option>
+                                            <option value="#">Two</option>
+                                            <option value="#">Three</option>
+                                            <option value="#">Four</option>
+                                            <option value="#">Five</option>
+                                            <option value="#">Six</option>
+                                            <option value="#">Seven</option>
+                                        </select><svg>
+                                            <use xlink:href="#select-arrow-down"></use>
+                                        </svg></label><!-- SVG Sprites--><svg class="sprites">
+                                            <symbol id="select-arrow-down" viewbox="0 0 10 6">
+                                                <polyline points="1 1 5 5 9 1"></polyline>
+                                            </symbol>
+                                        </svg>
+
+                                    </div>
+                                    <div class="col-md-6">
+                                        BTN3
+
+                                        <label class="select" for="slct"><select id="slct" required="required">
+                                            <option value="" disabled="disabled" selected="selected">Select i/o</option>
+                                            <option value="#">One</option>
+                                            <option value="#">Two</option>
+                                            <option value="#">Three</option>
+                                            <option value="#">Four</option>
+                                            <option value="#">Five</option>
+                                            <option value="#">Six</option>
+                                            <option value="#">Seven</option>
+                                        </select><svg>
+                                            <use xlink:href="#select-arrow-down"></use>
+                                        </svg></label><!-- SVG Sprites--><svg class="sprites">
+                                            <symbol id="select-arrow-down" viewbox="0 0 10 6">
+                                                <polyline points="1 1 5 5 9 1"></polyline>
+                                            </symbol>
+                                        </svg>
+
+                                    </div>
+
+                                </div>
+
+
+                                <div class="container row" style="padding-top:15px;text-align: center;">
+                                    
+                                    
+                                    <div class="col-md-6">
+                                        SW2
+
+                                        <label class="select" for="slct"><select id="slct" required="required">
+                                            <option value="" disabled="disabled" selected="selected">Select i/o</option>
+                                            <option value="#">One</option>
+                                            <option value="#">Two</option>
+                                            <option value="#">Three</option>
+                                            <option value="#">Four</option>
+                                            <option value="#">Five</option>
+                                            <option value="#">Six</option>
+                                            <option value="#">Seven</option>
+                                        </select><svg>
+                                            <use xlink:href="#select-arrow-down"></use>
+                                        </svg></label><!-- SVG Sprites--><svg class="sprites">
+                                            <symbol id="select-arrow-down" viewbox="0 0 10 6">
+                                                <polyline points="1 1 5 5 9 1"></polyline>
+                                            </symbol>
+                                        </svg>
+
+                                    </div>
+                                    <div class="col-md-6">
+                                        SW3
+
+                                        <label class="select" for="slct"><select id="slct" required="required">
+                                            <option value="" disabled="disabled" selected="selected">Select i/o</option>
+                                            <option value="#">One</option>
+                                            <option value="#">Two</option>
+                                            <option value="#">Three</option>
+                                            <option value="#">Four</option>
+                                            <option value="#">Five</option>
+                                            <option value="#">Six</option>
+                                            <option value="#">Seven</option>
+                                        </select><svg>
+                                            <use xlink:href="#select-arrow-down"></use>
+                                        </svg></label><!-- SVG Sprites--><svg class="sprites">
+                                            <symbol id="select-arrow-down" viewbox="0 0 10 6">
+                                                <polyline points="1 1 5 5 9 1"></polyline>
+                                            </symbol>
+                                        </svg>
+
+
+                                    </div>
+                                    
+                                </div>
+
+                                <div class="container row" style="padding-top:15px;text-align: center;">
+                                    
+                                    
+                                    <div class="col-md-6">
+                                        SW2
+
+                                        <label class="select" for="slct"><select id="slct" required="required">
+                                            <option value="" disabled="disabled" selected="selected">Select i/o</option>
+                                            <option value="#">One</option>
+                                            <option value="#">Two</option>
+                                            <option value="#">Three</option>
+                                            <option value="#">Four</option>
+                                            <option value="#">Five</option>
+                                            <option value="#">Six</option>
+                                            <option value="#">Seven</option>
+                                        </select><svg>
+                                            <use xlink:href="#select-arrow-down"></use>
+                                        </svg></label><!-- SVG Sprites--><svg class="sprites">
+                                            <symbol id="select-arrow-down" viewbox="0 0 10 6">
+                                                <polyline points="1 1 5 5 9 1"></polyline>
+                                            </symbol>
+                                        </svg>
+
+
+                                    </div>
+                                    <div class="col-md-6">
+                                        SW3
+
+                                        <label class="select" for="slct"><select id="slct" required="required">
+                                            <option value="" disabled="disabled" selected="selected">Select i/o</option>
+                                            <option value="#">One</option>
+                                            <option value="#">Two</option>
+                                            <option value="#">Three</option>
+                                            <option value="#">Four</option>
+                                            <option value="#">Five</option>
+                                            <option value="#">Six</option>
+                                            <option value="#">Seven</option>
+                                        </select><svg>
+                                            <use xlink:href="#select-arrow-down"></use>
+                                        </svg></label><!-- SVG Sprites--><svg class="sprites">
+                                            <symbol id="select-arrow-down" viewbox="0 0 10 6">
+                                                <polyline points="1 1 5 5 9 1"></polyline>
+                                            </symbol>
+                                        </svg>
+
+
+                                    </div>
+                                    
+                                </div>
+
+                                <div class="container row" style="padding-top:15px;text-align: center;">
+                                    
+                                    
+                                    <div class="col-md-6">
+                                        LD2
+
+                                        <label class="select" for="slct"><select id="slct" required="required">
+                                            <option value="" disabled="disabled" selected="selected">Select i/o</option>
+                                            <option value="#">One</option>
+                                            <option value="#">Two</option>
+                                            <option value="#">Three</option>
+                                            <option value="#">Four</option>
+                                            <option value="#">Five</option>
+                                            <option value="#">Six</option>
+                                            <option value="#">Seven</option>
+                                        </select><svg>
+                                            <use xlink:href="#select-arrow-down"></use>
+                                        </svg></label><!-- SVG Sprites--><svg class="sprites">
+                                            <symbol id="select-arrow-down" viewbox="0 0 10 6">
+                                                <polyline points="1 1 5 5 9 1"></polyline>
+                                            </symbol>
+                                        </svg>
+
+
+                                    </div>
+                                    <div class="col-md-6">
+                                        LD3
+
+                                        <label class="select" for="slct"><select id="slct" required="required">
+                                            <option value="" disabled="disabled" selected="selected">Select i/o</option>
+                                            <option value="#">One</option>
+                                            <option value="#">Two</option>
+                                            <option value="#">Three</option>
+                                            <option value="#">Four</option>
+                                            <option value="#">Five</option>
+                                            <option value="#">Six</option>
+                                            <option value="#">Seven</option>
+                                        </select><svg>
+                                            <use xlink:href="#select-arrow-down"></use>
+                                        </svg></label><!-- SVG Sprites--><svg class="sprites">
+                                            <symbol id="select-arrow-down" viewbox="0 0 10 6">
+                                                <polyline points="1 1 5 5 9 1"></polyline>
+                                            </symbol>
+                                        </svg>
+
+                                    </div>
+                                    
+                                </div>
+
+                                <div class="container row" style="padding-top:15px;text-align: center;">
+                                    
+                                    
+                                    <div class="col-md-6">
+                                        LD2
+
+                                        <label class="select" for="slct"><select id="slct" required="required">
+                                            <option value="" disabled="disabled" selected="selected">Select i/o</option>
+                                            <option value="#">One</option>
+                                            <option value="#">Two</option>
+                                            <option value="#">Three</option>
+                                            <option value="#">Four</option>
+                                            <option value="#">Five</option>
+                                            <option value="#">Six</option>
+                                            <option value="#">Seven</option>
+                                        </select><svg>
+                                            <use xlink:href="#select-arrow-down"></use>
+                                        </svg></label><!-- SVG Sprites--><svg class="sprites">
+                                            <symbol id="select-arrow-down" viewbox="0 0 10 6">
+                                                <polyline points="1 1 5 5 9 1"></polyline>
+                                            </symbol>
+                                        </svg>
+
+                                    </div>
+                                    <div class="col-md-6">
+                                        LD3
+
+                                        <label class="select" for="slct"><select id="slct" required="required">
+                                            <option value="" disabled="disabled" selected="selected">Select i/o</option>
+                                            <option value="#">One</option>
+                                            <option value="#">Two</option>
+                                            <option value="#">Three</option>
+                                            <option value="#">Four</option>
+                                            <option value="#">Five</option>
+                                            <option value="#">Six</option>
+                                            <option value="#">Seven</option>
+                                        </select><svg>
+                                            <use xlink:href="#select-arrow-down"></use>
+                                        </svg></label><!-- SVG Sprites--><svg class="sprites">
+                                            <symbol id="select-arrow-down" viewbox="0 0 10 6">
+                                                <polyline points="1 1 5 5 9 1"></polyline>
+                                            </symbol>
+                                        </svg>
+
+
+                                    </div>
+                                    
+                                </div>
+
+                                <div class="container row" style="padding-top:15px;text-align: center;">
+                                    
+                                    <div class="col-md-6">
+                                        JA
+
+                                        <label class="select" for="slct"><select id="slct" required="required">
+                                            <option value="" disabled="disabled" selected="selected">Select i/o</option>
+                                            <option value="#">One</option>
+                                            <option value="#">Two</option>
+                                            <option value="#">Three</option>
+                                            <option value="#">Four</option>
+                                            <option value="#">Five</option>
+                                            <option value="#">Six</option>
+                                            <option value="#">Seven</option>
+                                        </select><svg>
+                                            <use xlink:href="#select-arrow-down"></use>
+                                        </svg></label><!-- SVG Sprites--><svg class="sprites">
+                                            <symbol id="select-arrow-down" viewbox="0 0 10 6">
+                                                <polyline points="1 1 5 5 9 1"></polyline>
+                                            </symbol>
+                                        </svg>
+
+
+                                    </div>
+                                    <div class="col-md-6">
+                                        JB
+
+                                        <label class="select" for="slct"><select id="slct" required="required">
+                                            <option value="" disabled="disabled" selected="selected">Select i/o</option>
+                                            <option value="#">One</option>
+                                            <option value="#">Two</option>
+                                            <option value="#">Three</option>
+                                            <option value="#">Four</option>
+                                            <option value="#">Five</option>
+                                            <option value="#">Six</option>
+                                            <option value="#">Seven</option>
+                                        </select><svg>
+                                            <use xlink:href="#select-arrow-down"></use>
+                                        </svg></label><!-- SVG Sprites--><svg class="sprites">
+                                            <symbol id="select-arrow-down" viewbox="0 0 10 6">
+                                                <polyline points="1 1 5 5 9 1"></polyline>
+                                            </symbol>
+                                        </svg>
+
+
+                                    </div>
+                                    
+                                    
+                                </div>
+
+                                <div class="container row" style="padding-top:15px;text-align: center;">
+                                    
+                                    
+                                    <div class="col-md-6">
+                                        JC
+
+                                        <label class="select" for="slct"><select id="slct" required="required">
+                                            <option value="" disabled="disabled" selected="selected">Select i/o</option>
+                                            <option value="#">One</option>
+                                            <option value="#">Two</option>
+                                            <option value="#">Three</option>
+                                            <option value="#">Four</option>
+                                            <option value="#">Five</option>
+                                            <option value="#">Six</option>
+                                            <option value="#">Seven</option>
+                                        </select><svg>
+                                            <use xlink:href="#select-arrow-down"></use>
+                                        </svg></label><!-- SVG Sprites--><svg class="sprites">
+                                            <symbol id="select-arrow-down" viewbox="0 0 10 6">
+                                                <polyline points="1 1 5 5 9 1"></polyline>
+                                            </symbol>
+                                        </svg>
+
+
+                                    </div>
+                                    <div class="col-md-6">
+                                        JD
+
+                                        <label class="select" for="slct"><select id="slct" required="required">
+                                            <option value="" disabled="disabled" selected="selected">Select i/o</option>
+                                            <option value="#">One</option>
+                                            <option value="#">Two</option>
+                                            <option value="#">Three</option>
+                                            <option value="#">Four</option>
+                                            <option value="#">Five</option>
+                                            <option value="#">Six</option>
+                                            <option value="#">Seven</option>
+                                        </select><svg>
+                                            <use xlink:href="#select-arrow-down"></use>
+                                        </svg></label><!-- SVG Sprites--><svg class="sprites">
+                                            <symbol id="select-arrow-down" viewbox="0 0 10 6">
+                                                <polyline points="1 1 5 5 9 1"></polyline>
+                                            </symbol>
+                                        </svg>
+
+
+                                    </div>
+                                    
+                                </div>
+
+                                <br>
+
+                            </div>
+                        </div>
+
+
+                        
+                        
+                       
+                    </div>                    
+                </div>
+                
+            </div>
+            <div class="col-md-3">
+                
+            </div>
+
+        </div>
+
+      
+        
+        {% endblock %}  
