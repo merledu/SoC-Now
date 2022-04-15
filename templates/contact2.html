@@ -1,35 +1,14 @@
-{% load static %}
-{% include 'base.html' %}
+{% extends 'base2.html' %}
 
-{% block content %}
+{% load static %}
+
+{% block nana %}
 <style>
     body{
         overflow-x: hidden;
     }
 </style>
-<body class="hero-grad">
-    <section class="clean-block" style="height: 100%;">
-        <div class="row">
-            <div class="col-md-3">
-                <div style="text-align: left;">
-                    <img src="{% static 'img/socLogo.png' %}" style="width: 40%; margin-top: 10px;" /><br>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="nav justify-content-evenly">
-                    <div > <a href="{% url 'home' %}"> Home </a></div>
-                    <div> <a href="{% url 'about2' %}"> About </a></div>
-                    <div class="active"><a href="{% url 'contact2' %}"> Contact </a></div>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div style="text-align: right;">
-                    <img src="{% static 'img/profile.png' %}" style="width: 20%; margin-top: 10px;" />
-                </div>
-            </div>
-        </div>
-       
-       
+
         <div class="row" style="margin-top: 3vh;">
             <div class="col-md-3">
             </div>
@@ -61,6 +40,5 @@
             </div>
 
         </div>
-    </section>
     
 {% endblock %}

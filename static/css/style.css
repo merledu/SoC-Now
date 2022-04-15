@@ -450,11 +450,11 @@
       }
 
       .multi-button {
-        --shadow: 0, 0%, 60%;
+        --shadow: 0, 0%, 35%;
         position: relative;
         padding: .2rem;
-        background: content-box; /*hsl(var(--primary-1));*/
-        border: 1px solid  white;  
+        background:  hsl(var(--primary-1));
+        border: 1px solid  hsl(var(--primary-2));  
         box-shadow: 
           1px 1px 1px hsla(var(--shadow),.12),
           3px 3px 3px hsla(var(--shadow),.11), 
@@ -475,7 +475,7 @@
         display: inline-block;
         position: relative;
         padding: 2rem 2rem; 
-        color: #0000003a;
+        color: #cfcfcf3a;
         font-size: 16px;
         font-weight: 600;
         font-family: 'Poppins', 'Helvetica', sans-serif;

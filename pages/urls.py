@@ -8,8 +8,8 @@ urlpatterns = [
     path("about/", about_view, name="about1"),
     path("contact/", contact_view, name="contact1"),
     path("home/", home_view, name="home"),
-    path("about/", about_view2, name="about2"),
-    path("contact/", contact_view2, name="contact2"),
+    path("about-us/", about_view2, name="about2"),
+    path("contact-us/", contact_view2, name="contact2"),
     path("rtl/<str:driverFile>/", show_rtl, name="rtl"),
     path("gen/<str:component>/", gen_rtl, name="gen")
 ]
