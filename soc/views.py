@@ -48,3 +48,6 @@ def selectFPGA(request):
 
 def mapFPGA(request):
     return render(request, "mapFPGA.html", {})
+
+def bitsream_page(request):
+    return render(request, "bitstream.html", {})
