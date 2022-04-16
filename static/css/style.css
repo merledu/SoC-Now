@@ -81,8 +81,10 @@
 }
 
 .hero-grad{
-    background-image: url("../img/grad.png");
-    height: 100vh;
+    background: linear-gradient(220deg, #00dee8, #000B34) !important;
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 100vh;
     background-size: cover;
     background-repeat: repeat;
     color: white;
