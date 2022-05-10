@@ -163,3 +163,9 @@ RTL_FILES = {
     "wb":"Harness.v",
     "tl":"TilelinkHarness.v"
 }
+
+XDC_ENCODS = {
+    "default": "## Clock signal \nset_property PACKAGE_PIN E3 [get_ports {clock}] \nset_property IOSTANDARD LVCMOS33 [get_ports {clock}]",
+    "clk":"# Clock constraints \ncreate_clock -period x [get_ports {clock}]",
+    
+}

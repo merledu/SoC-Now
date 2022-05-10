@@ -39,7 +39,7 @@
                                 <br><br>
                                 <div class="row container "  style="padding-top:15px">
                                     <div class="col-md-12 darker-borders"  style="padding-top:15px">
-                                        <ul>
+                                        <ul id="gener">
                                             <li>LED -- I/O</li>
                                             <li>LED -- I/O</li>
                                             <li>LED -- I/O</li>
@@ -56,13 +56,10 @@
 
                                         <label class="select" for="slct"><select id="slct" required="required">
                                             <option value="" disabled="disabled" selected="selected">Select i/o</option>
-                                            <option value="#">One</option>
-                                            <option value="#">Two</option>
-                                            <option value="#">Three</option>
-                                            <option value="#">Four</option>
-                                            <option value="#">Five</option>
-                                            <option value="#">Six</option>
-                                            <option value="#">Seven</option>
+                                            {% for io in ios %}
+                                                <option value="{{ io }}"> {{ io }} </option>
+                                            {% endfor %}
+                                            
                                         </select><svg>
                                             <use xlink:href="#select-arrow-down"></use>
                                         </svg></label><!-- SVG Sprites--><svg class="sprites">
@@ -76,13 +73,9 @@
 
                                         <label class="select" for="slct"><select id="slct" required="required">
                                             <option value="" disabled="disabled" selected="selected">Select i/o</option>
-                                            <option value="#">One</option>
-                                            <option value="#">Two</option>
-                                            <option value="#">Three</option>
-                                            <option value="#">Four</option>
-                                            <option value="#">Five</option>
-                                            <option value="#">Six</option>
-                                            <option value="#">Seven</option>
+                                            {% for io in ios %}
+                                                <option value="{{ io }}"> {{ io }} </option>
+                                            {% endfor %}
                                         </select><svg>
                                             <use xlink:href="#select-arrow-down"></use>
                                         </svg></label><!-- SVG Sprites--><svg class="sprites">
@@ -104,13 +97,9 @@
 
                                         <label class="select" for="slct"><select id="slct" required="required">
                                             <option value="" disabled="disabled" selected="selected">Select i/o</option>
-                                            <option value="#">One</option>
-                                            <option value="#">Two</option>
-                                            <option value="#">Three</option>
-                                            <option value="#">Four</option>
-                                            <option value="#">Five</option>
-                                            <option value="#">Six</option>
-                                            <option value="#">Seven</option>
+                                            {% for io in ios %}
+                                                <option value="{{ io }}"> {{ io }} </option>
+                                            {% endfor %}
                                         </select><svg>
                                             <use xlink:href="#select-arrow-down"></use>
                                         </svg></label><!-- SVG Sprites--><svg class="sprites">
@@ -125,13 +114,9 @@
 
                                         <label class="select" for="slct"><select id="slct" required="required">
                                             <option value="" disabled="disabled" selected="selected">Select i/o</option>
-                                            <option value="#">One</option>
-                                            <option value="#">Two</option>
-                                            <option value="#">Three</option>
-                                            <option value="#">Four</option>
-                                            <option value="#">Five</option>
-                                            <option value="#">Six</option>
-                                            <option value="#">Seven</option>
+                                            {% for io in ios %}
+                                                <option value="{{ io }}"> {{ io }} </option>
+                                            {% endfor %}
                                         </select><svg>
                                             <use xlink:href="#select-arrow-down"></use>
                                         </svg></label><!-- SVG Sprites--><svg class="sprites">
@@ -153,13 +138,9 @@
 
                                         <label class="select" for="slct"><select id="slct" required="required">
                                             <option value="" disabled="disabled" selected="selected">Select i/o</option>
-                                            <option value="#">One</option>
-                                            <option value="#">Two</option>
-                                            <option value="#">Three</option>
-                                            <option value="#">Four</option>
-                                            <option value="#">Five</option>
-                                            <option value="#">Six</option>
-                                            <option value="#">Seven</option>
+                                            {% for io in ios %}
+                                                <option value="{{ io }}"> {{ io }} </option>
+                                            {% endfor %}
                                         </select><svg>
                                             <use xlink:href="#select-arrow-down"></use>
                                         </svg></label><!-- SVG Sprites--><svg class="sprites">
@@ -174,13 +155,9 @@
 
                                         <label class="select" for="slct"><select id="slct" required="required">
                                             <option value="" disabled="disabled" selected="selected">Select i/o</option>
-                                            <option value="#">One</option>
-                                            <option value="#">Two</option>
-                                            <option value="#">Three</option>
-                                            <option value="#">Four</option>
-                                            <option value="#">Five</option>
-                                            <option value="#">Six</option>
-                                            <option value="#">Seven</option>
+                                            {% for io in ios %}
+                                                <option value="{{ io }}"> {{ io }} </option>
+                                            {% endfor %}
                                         </select><svg>
                                             <use xlink:href="#select-arrow-down"></use>
                                         </svg></label><!-- SVG Sprites--><svg class="sprites">
@@ -202,13 +179,9 @@
 
                                         <label class="select" for="slct"><select id="slct" required="required">
                                             <option value="" disabled="disabled" selected="selected">Select i/o</option>
-                                            <option value="#">One</option>
-                                            <option value="#">Two</option>
-                                            <option value="#">Three</option>
-                                            <option value="#">Four</option>
-                                            <option value="#">Five</option>
-                                            <option value="#">Six</option>
-                                            <option value="#">Seven</option>
+                                            {% for io in ios %}
+                                            <option value="{{ io }}"> {{ io }} </option>
+                                        {% endfor %}
                                         </select><svg>
                                             <use xlink:href="#select-arrow-down"></use>
                                         </svg></label><!-- SVG Sprites--><svg class="sprites">
@@ -224,13 +197,9 @@
 
                                         <label class="select" for="slct"><select id="slct" required="required">
                                             <option value="" disabled="disabled" selected="selected">Select i/o</option>
-                                            <option value="#">One</option>
-                                            <option value="#">Two</option>
-                                            <option value="#">Three</option>
-                                            <option value="#">Four</option>
-                                            <option value="#">Five</option>
-                                            <option value="#">Six</option>
-                                            <option value="#">Seven</option>
+                                            {% for io in ios %}
+                                            <option value="{{ io }}"> {{ io }} </option>
+                                        {% endfor %}
                                         </select><svg>
                                             <use xlink:href="#select-arrow-down"></use>
                                         </svg></label><!-- SVG Sprites--><svg class="sprites">
@@ -252,13 +221,9 @@
 
                                         <label class="select" for="slct"><select id="slct" required="required">
                                             <option value="" disabled="disabled" selected="selected">Select i/o</option>
-                                            <option value="#">One</option>
-                                            <option value="#">Two</option>
-                                            <option value="#">Three</option>
-                                            <option value="#">Four</option>
-                                            <option value="#">Five</option>
-                                            <option value="#">Six</option>
-                                            <option value="#">Seven</option>
+                                            {% for io in ios %}
+                                                <option value="{{ io }}"> {{ io }} </option>
+                                            {% endfor %}
                                         </select><svg>
                                             <use xlink:href="#select-arrow-down"></use>
                                         </svg></label><!-- SVG Sprites--><svg class="sprites">
@@ -274,13 +239,9 @@
 
                                         <label class="select" for="slct"><select id="slct" required="required">
                                             <option value="" disabled="disabled" selected="selected">Select i/o</option>
-                                            <option value="#">One</option>
-                                            <option value="#">Two</option>
-                                            <option value="#">Three</option>
-                                            <option value="#">Four</option>
-                                            <option value="#">Five</option>
-                                            <option value="#">Six</option>
-                                            <option value="#">Seven</option>
+                                            {% for io in ios %}
+                                                <option value="{{ io }}"> {{ io }} </option>
+                                            {% endfor %}
                                         </select><svg>
                                             <use xlink:href="#select-arrow-down"></use>
                                         </svg></label><!-- SVG Sprites--><svg class="sprites">
@@ -301,13 +262,9 @@
 
                                         <label class="select" for="slct"><select id="slct" required="required">
                                             <option value="" disabled="disabled" selected="selected">Select i/o</option>
-                                            <option value="#">One</option>
-                                            <option value="#">Two</option>
-                                            <option value="#">Three</option>
-                                            <option value="#">Four</option>
-                                            <option value="#">Five</option>
-                                            <option value="#">Six</option>
-                                            <option value="#">Seven</option>
+                                            {% for io in ios %}
+                                                <option value="{{ io }}"> {{ io }} </option>
+                                            {% endfor %}
                                         </select><svg>
                                             <use xlink:href="#select-arrow-down"></use>
                                         </svg></label><!-- SVG Sprites--><svg class="sprites">
@@ -322,13 +279,9 @@
 
                                         <label class="select" for="slct"><select id="slct" required="required">
                                             <option value="" disabled="disabled" selected="selected">Select i/o</option>
-                                            <option value="#">One</option>
-                                            <option value="#">Two</option>
-                                            <option value="#">Three</option>
-                                            <option value="#">Four</option>
-                                            <option value="#">Five</option>
-                                            <option value="#">Six</option>
-                                            <option value="#">Seven</option>
+                                            {% for io in ios %}
+                                                <option value="{{ io }}"> {{ io }} </option>
+                                            {% endfor %}
                                         </select><svg>
                                             <use xlink:href="#select-arrow-down"></use>
                                         </svg></label><!-- SVG Sprites--><svg class="sprites">
@@ -349,13 +302,9 @@
 
                                         <label class="select" for="slct"><select id="slct" required="required">
                                             <option value="" disabled="disabled" selected="selected">Select i/o</option>
-                                            <option value="#">One</option>
-                                            <option value="#">Two</option>
-                                            <option value="#">Three</option>
-                                            <option value="#">Four</option>
-                                            <option value="#">Five</option>
-                                            <option value="#">Six</option>
-                                            <option value="#">Seven</option>
+                                            {% for io in ios %}
+                                                <option value="{{ io }}"> {{ io }} </option>
+                                            {% endfor %}
                                         </select><svg>
                                             <use xlink:href="#select-arrow-down"></use>
                                         </svg></label><!-- SVG Sprites--><svg class="sprites">
@@ -371,13 +320,9 @@
 
                                         <label class="select" for="slct"><select id="slct" required="required">
                                             <option value="" disabled="disabled" selected="selected">Select i/o</option>
-                                            <option value="#">One</option>
-                                            <option value="#">Two</option>
-                                            <option value="#">Three</option>
-                                            <option value="#">Four</option>
-                                            <option value="#">Five</option>
-                                            <option value="#">Six</option>
-                                            <option value="#">Seven</option>
+                                            {% for io in ios %}
+                                                <option value="{{ io }}"> {{ io }} </option>
+                                            {% endfor %}
                                         </select><svg>
                                             <use xlink:href="#select-arrow-down"></use>
                                         </svg></label><!-- SVG Sprites--><svg class="sprites">
@@ -400,13 +345,9 @@
 
                                         <label class="select" for="slct"><select id="slct" required="required">
                                             <option value="" disabled="disabled" selected="selected">Select i/o</option>
-                                            <option value="#">One</option>
-                                            <option value="#">Two</option>
-                                            <option value="#">Three</option>
-                                            <option value="#">Four</option>
-                                            <option value="#">Five</option>
-                                            <option value="#">Six</option>
-                                            <option value="#">Seven</option>
+                                            {% for io in ios %}
+                                            <option value="{{ io }}"> {{ io }} </option>
+                                        {% endfor %}
                                         </select><svg>
                                             <use xlink:href="#select-arrow-down"></use>
                                         </svg></label><!-- SVG Sprites--><svg class="sprites">
@@ -422,13 +363,9 @@
 
                                         <label class="select" for="slct"><select id="slct" required="required">
                                             <option value="" disabled="disabled" selected="selected">Select i/o</option>
-                                            <option value="#">One</option>
-                                            <option value="#">Two</option>
-                                            <option value="#">Three</option>
-                                            <option value="#">Four</option>
-                                            <option value="#">Five</option>
-                                            <option value="#">Six</option>
-                                            <option value="#">Seven</option>
+                                            {% for io in ios %}
+                                                <option value="{{ io }}"> {{ io }} </option>
+                                            {% endfor %}
                                         </select><svg>
                                             <use xlink:href="#select-arrow-down"></use>
                                         </svg></label><!-- SVG Sprites--><svg class="sprites">
@@ -449,7 +386,7 @@
                             <br>
                         <div class="d-flex justify-content-between align-items-center">
                             <a href="{% url 'selectFPGA' %}">  <img src="{% static 'img/boldarrow2.png' %}" style="width: 70%;" /> </a>
-                            <a onclick="bitstreamLoader()">  <img src="{% static 'img/boldarrow.png' %}" style="width: 70%;" /> </a>
+                            <a onclick="bitstreamLoader('{% url 'bitstream' %}')">  <img src="{% static 'img/boldarrow.png' %}" style="width: 70%;" /> </a>
 
                             
                         </div>
@@ -468,6 +405,11 @@
             </div>
 
         </div>
+
+        <script>
+            var gener = document.getElementById("gener");
+            
+        </script>
 
       
         

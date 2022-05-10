@@ -18,6 +18,7 @@
             </div>
             <div class="col-md-6" style="height: 100%;text-align: center;">
                 <br>
+                <form method="post"> {% csrf_token %}
                 <div class="glass" style="border-radius: 15px; backdrop-filter: blur(50px); padding: 40px 45px;border: solid 1px rgba(255, 255, 255, 0.5); margin-top: 3vh;">
                     <div style="text-align: left">
                         <div>
@@ -27,7 +28,7 @@
                             <br>
                             <p class="middle">
                     <label> Enter Clock Frequency </label>
-                    <input type="number" value="5" min="5" max="100" style="width:60px" />
+                    <input type="number" name="clk" value="5" min="5" max="100" style="width:60px" />
                     <label>MHz</label>
                     <br>
                 </p>
@@ -43,23 +44,27 @@
                         
 
                         <div class="multi-button">
-                            <input name="buttons" value="Arty-A7" type="radio" id="arty" checked="checked">
+                            <input name="buttons" value="Arty-A7" name="fpga" type="radio" id="arty" checked="checked">
                             <label for="arty">
                             Arty A-7</label>
-                            <input name="buttons" value="Zybo-Z7" type="radio" id="zybo">
+                            {% comment %} <input name="buttons" value="Zybo-Z7" name="fpga" type="radio" id="zybo">
                             <label for="zybo">
-                              Zybo Z-7</label>
+                              Zybo Z-7</label> {% endcomment %}
                             
                           </div>
+                        
                         
                          
                         <br><br>
                         <div class="d-flex justify-content-between align-items-center">
                             <a href="{% url 'finalize' %}">  <img src="{% static 'img/boldarrow2.png' %}" style="width: 70%;" /> </a>
-                            <a href="{% url 'mapFPGA' %}">  <img src="{% static 'img/boldarrow.png' %}" style="width: 70%;" /> </a>
+                            {% comment %} <a href="{% url 'mapFPGA' %}">  {% endcomment %}
+                                <button class="btn" type="submit"> <img src="{% static 'img/boldarrow.png' %}" style="width: 70%;" />  </button>
+                                {% comment %} </a> {% endcomment %}
 
                             
                         </div>
+                    </form>
 
                         
                         

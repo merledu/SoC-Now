@@ -9,5 +9,6 @@ urlpatterns = [
     # gen bitstream
     path("fpga/select", selectFPGA, name="selectFPGA"),
     path("fpga/map", mapFPGA, name="mapFPGA"),
-    path("fpga/bitsream", bitsream_page, name="bistream")
+    path("fpga/bitsream", bitsream_page, name="bitstream"),
+    path("download/bitstream", )
 ]
