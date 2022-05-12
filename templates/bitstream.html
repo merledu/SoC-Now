@@ -41,7 +41,7 @@
                                         <p> 0101 </p>
                                     </div>
                                     <div class="col-md-6 file-title">
-                                        ProjectName_Username.bit
+                                        SoCNow.bit
                                     </div>
                                     <div class="col-md-3 file-btn">
                                         <a href="" class="button white-single">
@@ -78,6 +78,12 @@
         </div>
 
       <script>
+
+
+        function sleep(ms) {
+            return new Promise(resolve => setTimeout(resolve, ms));
+        }
+
           document.querySelectorAll('.button').forEach(button => {
 
 let duration = 3000,
@@ -105,11 +111,16 @@ svgPath.smoothing = 0;
 
 button.addEventListener('click', e => {
     
+    
     e.preventDefault();
 
     if(!button.classList.contains('loading')) {
 
         button.classList.add('loading');
+        sleep(20000);
+
+        window.location.href = "{% url 'downloadBitstream' %}";
+
 
         gsap.to(svgPath, {
             smoothing: .3,
@@ -131,8 +142,12 @@ button.addEventListener('click', e => {
             ]);
         }, duration / 2);
 
+
+        
       
     }
+
+
 });
 
 

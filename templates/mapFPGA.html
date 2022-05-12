@@ -37,24 +37,30 @@
                             <div class="col-md-7">
                                 <img src="{% static 'img/fpga/arty.png' %}" style="width:100%;" />
                                 <br><br>
-                                <div class="row container "  style="padding-top:15px">
-                                    <div class="col-md-12 darker-borders"  style="padding-top:15px">
-                                        <ul id="gener">
-                                            <li>LED -- I/O</li>
-                                            <li>LED -- I/O</li>
-                                            <li>LED -- I/O</li>
-                                            <li>LED -- I/O</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-5 simple-borders">
-                                <div class="container row" style="padding-top:15px;text-align: center;">
                                     
-                                    <div class="col-md-6">
-                                        BTN0
+                            </div>
+                            <div class="col-md-5 darker-borders"  style="padding-top:15px">
+                                <ul id="gener">
+                                    <h6> Mapped IOs </h6>
+                                </ul>
+                            </div>
+                            
+                            <br>
+                        
+                        </div>
 
-                                        <label class="select" for="slct"><select id="slct" required="required">
+
+                        <br><br>
+                        <div class="row">
+                                
+                            <div class="col-md-12 simple-borders">
+                                <div class="container row" style="padding-top:15px;text-align: center;">
+                                    {% for comp in comps %}
+                                    <div class="col-md-3" style="margin-bottom:10px">
+                                        {{ comp }}
+
+                                        <label  class="select" for="slct">
+                                            <select onchange="addToXdc(event)" id="slct" name={{ comp }} required="required">
                                             <option value="" disabled="disabled" selected="selected">Select i/o</option>
                                             {% for io in ios %}
                                                 <option value="{{ io }}"> {{ io }} </option>
@@ -65,331 +71,29 @@
                                         </svg></label><!-- SVG Sprites--><svg class="sprites">
                                             <symbol id="select-arrow-down" viewbox="0 0 10 6">
                                                 <polyline points="1 1 5 5 9 1"></polyline>
-                                            </symbol>
+                                               </symbol>
                                         </svg>
                                     </div>
-                                    <div class="col-md-6">
-                                        BTN1
-
-                                        <label class="select" for="slct"><select id="slct" required="required">
-                                            <option value="" disabled="disabled" selected="selected">Select i/o</option>
-                                            {% for io in ios %}
-                                                <option value="{{ io }}"> {{ io }} </option>
-                                            {% endfor %}
-                                        </select><svg>
-                                            <use xlink:href="#select-arrow-down"></use>
-                                        </svg></label><!-- SVG Sprites--><svg class="sprites">
-                                            <symbol id="select-arrow-down" viewbox="0 0 10 6">
-                                                <polyline points="1 1 5 5 9 1"></polyline>
-                                            </symbol>
-                                        </svg>
-
-                                    </div>
+                                    {% endfor %}
+        
                                    
 
                                 </div>
 
-                                <div class="container row" style="padding-top:15px;text-align: center;">
-                                    
-                                   
-                                    <div class="col-md-6">
-                                        BTN2
-
-                                        <label class="select" for="slct"><select id="slct" required="required">
-                                            <option value="" disabled="disabled" selected="selected">Select i/o</option>
-                                            {% for io in ios %}
-                                                <option value="{{ io }}"> {{ io }} </option>
-                                            {% endfor %}
-                                        </select><svg>
-                                            <use xlink:href="#select-arrow-down"></use>
-                                        </svg></label><!-- SVG Sprites--><svg class="sprites">
-                                            <symbol id="select-arrow-down" viewbox="0 0 10 6">
-                                                <polyline points="1 1 5 5 9 1"></polyline>
-                                            </symbol>
-                                        </svg>
-
-                                    </div>
-                                    <div class="col-md-6">
-                                        BTN3
-
-                                        <label class="select" for="slct"><select id="slct" required="required">
-                                            <option value="" disabled="disabled" selected="selected">Select i/o</option>
-                                            {% for io in ios %}
-                                                <option value="{{ io }}"> {{ io }} </option>
-                                            {% endfor %}
-                                        </select><svg>
-                                            <use xlink:href="#select-arrow-down"></use>
-                                        </svg></label><!-- SVG Sprites--><svg class="sprites">
-                                            <symbol id="select-arrow-down" viewbox="0 0 10 6">
-                                                <polyline points="1 1 5 5 9 1"></polyline>
-                                            </symbol>
-                                        </svg>
-
-                                    </div>
-
-                                </div>
-
-
-                                <div class="container row" style="padding-top:15px;text-align: center;">
-                                    
-                                    
-                                    <div class="col-md-6">
-                                        SW2
-
-                                        <label class="select" for="slct"><select id="slct" required="required">
-                                            <option value="" disabled="disabled" selected="selected">Select i/o</option>
-                                            {% for io in ios %}
-                                                <option value="{{ io }}"> {{ io }} </option>
-                                            {% endfor %}
-                                        </select><svg>
-                                            <use xlink:href="#select-arrow-down"></use>
-                                        </svg></label><!-- SVG Sprites--><svg class="sprites">
-                                            <symbol id="select-arrow-down" viewbox="0 0 10 6">
-                                                <polyline points="1 1 5 5 9 1"></polyline>
-                                            </symbol>
-                                        </svg>
-
-                                    </div>
-                                    <div class="col-md-6">
-                                        SW3
-
-                                        <label class="select" for="slct"><select id="slct" required="required">
-                                            <option value="" disabled="disabled" selected="selected">Select i/o</option>
-                                            {% for io in ios %}
-                                                <option value="{{ io }}"> {{ io }} </option>
-                                            {% endfor %}
-                                        </select><svg>
-                                            <use xlink:href="#select-arrow-down"></use>
-                                        </svg></label><!-- SVG Sprites--><svg class="sprites">
-                                            <symbol id="select-arrow-down" viewbox="0 0 10 6">
-                                                <polyline points="1 1 5 5 9 1"></polyline>
-                                            </symbol>
-                                        </svg>
-
-
-                                    </div>
-                                    
-                                </div>
-
-                                <div class="container row" style="padding-top:15px;text-align: center;">
-                                    
-                                    
-                                    <div class="col-md-6">
-                                        SW2
-
-                                        <label class="select" for="slct"><select id="slct" required="required">
-                                            <option value="" disabled="disabled" selected="selected">Select i/o</option>
-                                            {% for io in ios %}
-                                            <option value="{{ io }}"> {{ io }} </option>
-                                        {% endfor %}
-                                        </select><svg>
-                                            <use xlink:href="#select-arrow-down"></use>
-                                        </svg></label><!-- SVG Sprites--><svg class="sprites">
-                                            <symbol id="select-arrow-down" viewbox="0 0 10 6">
-                                                <polyline points="1 1 5 5 9 1"></polyline>
-                                            </symbol>
-                                        </svg>
-
-
-                                    </div>
-                                    <div class="col-md-6">
-                                        SW3
-
-                                        <label class="select" for="slct"><select id="slct" required="required">
-                                            <option value="" disabled="disabled" selected="selected">Select i/o</option>
-                                            {% for io in ios %}
-                                            <option value="{{ io }}"> {{ io }} </option>
-                                        {% endfor %}
-                                        </select><svg>
-                                            <use xlink:href="#select-arrow-down"></use>
-                                        </svg></label><!-- SVG Sprites--><svg class="sprites">
-                                            <symbol id="select-arrow-down" viewbox="0 0 10 6">
-                                                <polyline points="1 1 5 5 9 1"></polyline>
-                                            </symbol>
-                                        </svg>
-
-
-                                    </div>
-                                    
-                                </div>
-
-                                <div class="container row" style="padding-top:15px;text-align: center;">
-                                    
-                                    
-                                    <div class="col-md-6">
-                                        LD2
-
-                                        <label class="select" for="slct"><select id="slct" required="required">
-                                            <option value="" disabled="disabled" selected="selected">Select i/o</option>
-                                            {% for io in ios %}
-                                                <option value="{{ io }}"> {{ io }} </option>
-                                            {% endfor %}
-                                        </select><svg>
-                                            <use xlink:href="#select-arrow-down"></use>
-                                        </svg></label><!-- SVG Sprites--><svg class="sprites">
-                                            <symbol id="select-arrow-down" viewbox="0 0 10 6">
-                                                <polyline points="1 1 5 5 9 1"></polyline>
-                                            </symbol>
-                                        </svg>
-
-
-                                    </div>
-                                    <div class="col-md-6">
-                                        LD3
-
-                                        <label class="select" for="slct"><select id="slct" required="required">
-                                            <option value="" disabled="disabled" selected="selected">Select i/o</option>
-                                            {% for io in ios %}
-                                                <option value="{{ io }}"> {{ io }} </option>
-                                            {% endfor %}
-                                        </select><svg>
-                                            <use xlink:href="#select-arrow-down"></use>
-                                        </svg></label><!-- SVG Sprites--><svg class="sprites">
-                                            <symbol id="select-arrow-down" viewbox="0 0 10 6">
-                                                <polyline points="1 1 5 5 9 1"></polyline>
-                                            </symbol>
-                                        </svg>
-
-                                    </div>
-                                    
-                                </div>
-
-                                <div class="container row" style="padding-top:15px;text-align: center;">
-                                    
-                                    
-                                    <div class="col-md-6">
-                                        LD2
-
-                                        <label class="select" for="slct"><select id="slct" required="required">
-                                            <option value="" disabled="disabled" selected="selected">Select i/o</option>
-                                            {% for io in ios %}
-                                                <option value="{{ io }}"> {{ io }} </option>
-                                            {% endfor %}
-                                        </select><svg>
-                                            <use xlink:href="#select-arrow-down"></use>
-                                        </svg></label><!-- SVG Sprites--><svg class="sprites">
-                                            <symbol id="select-arrow-down" viewbox="0 0 10 6">
-                                                <polyline points="1 1 5 5 9 1"></polyline>
-                                            </symbol>
-                                        </svg>
-
-                                    </div>
-                                    <div class="col-md-6">
-                                        LD3
-
-                                        <label class="select" for="slct"><select id="slct" required="required">
-                                            <option value="" disabled="disabled" selected="selected">Select i/o</option>
-                                            {% for io in ios %}
-                                                <option value="{{ io }}"> {{ io }} </option>
-                                            {% endfor %}
-                                        </select><svg>
-                                            <use xlink:href="#select-arrow-down"></use>
-                                        </svg></label><!-- SVG Sprites--><svg class="sprites">
-                                            <symbol id="select-arrow-down" viewbox="0 0 10 6">
-                                                <polyline points="1 1 5 5 9 1"></polyline>
-                                            </symbol>
-                                        </svg>
-
-
-                                    </div>
-                                    
-                                </div>
-
-                                <div class="container row" style="padding-top:15px;text-align: center;">
-                                    
-                                    <div class="col-md-6">
-                                        JA
-
-                                        <label class="select" for="slct"><select id="slct" required="required">
-                                            <option value="" disabled="disabled" selected="selected">Select i/o</option>
-                                            {% for io in ios %}
-                                                <option value="{{ io }}"> {{ io }} </option>
-                                            {% endfor %}
-                                        </select><svg>
-                                            <use xlink:href="#select-arrow-down"></use>
-                                        </svg></label><!-- SVG Sprites--><svg class="sprites">
-                                            <symbol id="select-arrow-down" viewbox="0 0 10 6">
-                                                <polyline points="1 1 5 5 9 1"></polyline>
-                                            </symbol>
-                                        </svg>
-
-
-                                    </div>
-                                    <div class="col-md-6">
-                                        JB
-
-                                        <label class="select" for="slct"><select id="slct" required="required">
-                                            <option value="" disabled="disabled" selected="selected">Select i/o</option>
-                                            {% for io in ios %}
-                                                <option value="{{ io }}"> {{ io }} </option>
-                                            {% endfor %}
-                                        </select><svg>
-                                            <use xlink:href="#select-arrow-down"></use>
-                                        </svg></label><!-- SVG Sprites--><svg class="sprites">
-                                            <symbol id="select-arrow-down" viewbox="0 0 10 6">
-                                                <polyline points="1 1 5 5 9 1"></polyline>
-                                            </symbol>
-                                        </svg>
-
-
-                                    </div>
-                                    
-                                    
-                                </div>
-
-                                <div class="container row" style="padding-top:15px;text-align: center;">
-                                    
-                                    
-                                    <div class="col-md-6">
-                                        JC
-
-                                        <label class="select" for="slct"><select id="slct" required="required">
-                                            <option value="" disabled="disabled" selected="selected">Select i/o</option>
-                                            {% for io in ios %}
-                                            <option value="{{ io }}"> {{ io }} </option>
-                                        {% endfor %}
-                                        </select><svg>
-                                            <use xlink:href="#select-arrow-down"></use>
-                                        </svg></label><!-- SVG Sprites--><svg class="sprites">
-                                            <symbol id="select-arrow-down" viewbox="0 0 10 6">
-                                                <polyline points="1 1 5 5 9 1"></polyline>
-                                            </symbol>
-                                        </svg>
-
-
-                                    </div>
-                                    <div class="col-md-6">
-                                        JD
-
-                                        <label class="select" for="slct"><select id="slct" required="required">
-                                            <option value="" disabled="disabled" selected="selected">Select i/o</option>
-                                            {% for io in ios %}
-                                                <option value="{{ io }}"> {{ io }} </option>
-                                            {% endfor %}
-                                        </select><svg>
-                                            <use xlink:href="#select-arrow-down"></use>
-                                        </svg></label><!-- SVG Sprites--><svg class="sprites">
-                                            <symbol id="select-arrow-down" viewbox="0 0 10 6">
-                                                <polyline points="1 1 5 5 9 1"></polyline>
-                                            </symbol>
-                                        </svg>
-
-
-                                    </div>
-                                    
-                                </div>
+                                
 
                                 <br>
                                 
 
                             </div>
-                            <br>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <a href="{% url 'selectFPGA' %}">  <img src="{% static 'img/boldarrow2.png' %}" style="width: 70%;" /> </a>
-                            <a onclick="bitstreamLoader('{% url 'bitstream' %}')">  <img src="{% static 'img/boldarrow.png' %}" style="width: 70%;" /> </a>
-
                             
                         </div>
+
+                        <div class="d-flex justify-content-between align-items-center">
+                            <a href="{% url 'selectFPGA' %}">  <img src="{% static 'img/boldarrow2.png' %}" style="width: 70%;" /> </a>
+                            <a href="{% url 'programFPGA' %}">  <img src="{% static 'img/boldarrow.png' %}" style="width: 70%;" /> </a>
+
+                            {% comment %} <a onclick="bitstreamLoader('{% url 'bitstream' %}')"> {% endcomment %}
                         </div>
 
 
@@ -406,8 +110,42 @@
 
         </div>
 
+                            
+
+
+                            
+
         <script>
-            var gener = document.getElementById("gener");
+
+            var mappedElements = JSON.parse('{{ el | escapejs }}');
+            console.log(mappedElements);
+            addToGener();
+            fillInInputs();
+
+            function addToGener(){
+                var gener = document.getElementById("gener");
+                Object.keys(mappedElements).forEach(function(key) {
+                    var li = document.createElement("li");
+                    li.innerHTML = key + " -- " + mappedElements[key];
+                    gener.appendChild(li);
+                });
+            }
+
+            function fillInInputs(){
+                Object.keys(mappedElements).forEach(function(key) {
+                    var input = document.getElementsByName(key);
+                    input[0].value = mappedElements[key];
+                });
+            }
+
+            function addToXdc(e){
+                var element = e.target;
+                var name = element.name;
+                var value = element.value;
+                window.location.href = `/soc/addxdc/${name}/${value}`;
+            }
+
+            
             
         </script>
 

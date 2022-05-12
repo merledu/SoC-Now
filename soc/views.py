@@ -1,10 +1,16 @@
+from glob import glob
+import imp
 from django.shortcuts import redirect, render
 from .models import SoC
 from django.core import serializers
 import ast, json, os, re
+from icecream import ic
+import mimetypes
+from django.http import HttpResponse, Http404, FileResponse
 from makeDiagram import makeDiagram
-from thesocnow.settings import GENERATOR_DIR, DRIVERS, RTL_FILES,XDC_ENCODS
+from thesocnow.settings import GENERATOR_DIR, DRIVERS, RTL_FILES,XDC_ENCODS, ARTY_COMPS
 # Create your views here.
+
 def soc_view(request):
     if request.method == "POST":
         obj = SoC.objects.create(
@@ -30,7 +36,8 @@ def soc_view(request):
         outData["spi_flash"] = [1 if "spi_flash" in actualData["devices"] else 0][0]
         outData["i2c"]       = [1 if "i2c" in actualData["devices"] else 0][0]
         outData["wb"]        = [1 if "wb" in actualData["bus"] else 0][0]
-        outData["tl"]        = [1 if "tl" in actualData["bus"] else 0][0]
+        outData["tl"]        = [1 if "tl-ul" in actualData["bus"] else 0][0]
+        outData["tlc"]       = [1 if "tl-c" in actualData["bus"] else 0][0]
 
         with open("SoC-Now-Generator/src/main/scala/config.json", "w") as outfile:
             json.dump(outData,outfile )
@@ -43,31 +50,36 @@ def soc_view(request):
 def finalize_view(request):
 
     return render(request, "finalize.html", {})
+mappedElemets = {}
 
 def selectFPGA(request):
     if request.method != "POST":
         os.chdir(GENERATOR_DIR)
         os.system("./peripheralScript.py")
-        os.system(f"sbt 'runMain {DRIVERS['soc']}'")
+        os.system(f"sbt 'runMain {DRIVERS['fpga']}'")
         os.chdir("..")
+        global mappedElemets
+        mappedElemets = {}
+        return redirect("mapFPGA")
     elif request.method == "POST":
         clk = request.POST.get("clk")
         fpga = "Arty"
         print(clk,fpga)
-        file = open(f"{GENERATOR_DIR}/fpga/arty.xdc", "w")
-        file.write(XDC_ENCODS["default"])
-        file.close()
-        clock_line = XDC_ENCODS["clk"]
-        clock_line = clock_line.replace('x', str(float(clk)))
-        file = open(f"{GENERATOR_DIR}/fpga/arty.xdc", "a")
-        file.write(clock_line)
-        file.close()
+        # file = open(f"{GENERATOR_DIR}/fpga/arty.xdc", "w")
+        # file.write(XDC_ENCODS["default"])
+        # file.close()
+        # clock_line = XDC_ENCODS["clk"]
+        # clock_line = clock_line.replace('x', str(float(clk)))
+        # file = open(f"{GENERATOR_DIR}/fpga/arty.xdc", "a")
+        # file.write(clock_line)
+        # file.close()
         return redirect("mapFPGA")
 
     return render(request, "selectFPGA.html", {})
 
+
 def mapFPGA(request):
-    file= open(f"{GENERATOR_DIR}/{RTL_FILES['soc']}", "r")
+    file= open(f"{GENERATOR_DIR}/{RTL_FILES['fpga']}", "r")
     content = file.readlines()
     file.close()
     n = 0
@@ -78,33 +90,100 @@ def mapFPGA(request):
                 n = 0
             else:
                 newi = (i.split(" ")[-1])[:-2]
-                IOs.append(newi)
+                file = open(f"{GENERATOR_DIR}/src/main/scala/config.json", "r")
+                outData = json.load(file)
+                file.close()
+                ic(outData)
+                if "clock" in newi or "reset" in newi:
+                    IOs.append(newi)
+                elif outData["gpio"] == 1 and "gpio" in newi:
+                    IOs.append(newi)
+                elif outData["spi"] == 1 and "spi" in newi:
+                    IOs.append(newi)
+                elif outData["uart"] == 1 and "uart" in newi:
+                    IOs.append(newi)
+                elif outData["timer"] == 1 and "timer" in newi:
+                    IOs.append(newi)
+                elif outData["spi_flash"] == 1 and "spi_flash" in newi:
+                    IOs.append(newi)
+                elif outData["i2c"] == 1 and "i2c" in newi:
+                    IOs.append(newi)
+                
                 print("newi", newi)
-        elif re.match("^module Generator..", i):
+        elif "module SoCNow(" in i:
             print("MATHCED", i)
             n = 1
 
         
-    return render(request, "mapFPGA.html", {"ios":IOs})
+    return render(request, "mapFPGA.html", {"ios":IOs, "comps":ARTY_COMPS.keys(), "el":json.dumps(mappedElemets)})
 
-def bitsream_page(request):
+def bitstream_gen(request):
+    xdcContent = XDC_ENCODS["default"]
+    for i,j in mappedElemets.items():
+        theString = ARTY_COMPS[i]
+        theString = theString.replace("x", str(j))
+        xdcContent += "\n" + theString
+    file = open(f"{GENERATOR_DIR}/fpga/arty.xdc", "w")
+    file.write(xdcContent)
+    file.close()
+
     os.chdir(GENERATOR_DIR)
     os.system("make bitstream")
     os.chdir("..")
+
+    return redirect("bitstream_view")
+
+def bitsream_page(request):
     return render(request, "bitstream.html", {})
 
 def download_bitstream(request):
-    # Define text file name
-    filename = "Genera"
-    # Define the full file path
-    filepath = "tempFile.v"
-    # Open the file for reading content
-    path = open(filepath, 'r')
-    # Set the mime type
-    mime_type, _ = mimetypes.guess_type(filepath)
-    # Set the return value of the HttpResponse
-    response = HttpResponse(path, content_type=mime_type)
-    # Set the HTTP header for sending to browser
-    response['Content-Disposition'] = "attachment; filename=%s" % filename
-    # Return the response value
-    return response
+    return FileResponse(open(f"{GENERATOR_DIR}/fpga/build/arty_35/SoCNow.bit", 'rb'), as_attachment=True)
+
+def add_xdc(request, key, value):
+    mappedElemets[key] = value
+    ic(mappedElemets)
+    return redirect("mapFPGA")
+
+def add_program(request):
+    file = open(f"{GENERATOR_DIR}/src/main/scala/config.json", "r")
+    outData = json.load(file)
+    file.close()
+    BASE_ADDRESS = 40000000
+    program_str = ""
+    reg = 5
+    if outData["gpio"] == 1:
+        program_str += f"li x{reg}, 0x{BASE_ADDRESS} # GPIO Base Address\n"
+        reg += 1
+        BASE_ADDRESS += 1000
+    elif outData["spi"] == 1:
+        program_str += f"li x{reg}, 0x{BASE_ADDRESS} # SPI Base Address\n"
+        reg += 1
+        BASE_ADDRESS += 1000
+    elif outData["uart"] == 1:
+        program_str += f"li x{reg}, 0x{BASE_ADDRESS} # UART Base Address\n"
+        reg += 1
+        BASE_ADDRESS += 1000
+    elif outData["timer"] == 1:
+        program_str += f"li x{reg}, 0x{BASE_ADDRESS} # Timer Base Address\n"
+        reg += 1
+        BASE_ADDRESS += 1000
+    elif outData["spi_flash"] == 1:
+        program_str += f"li x{reg}, 0x{BASE_ADDRESS} # SPI Flash Base Address\n"
+        reg += 1
+        BASE_ADDRESS += 1000
+    elif outData["i2c"] == 1:
+        program_str += f"li x{reg}, 0x{BASE_ADDRESS} # I2C Base Address\n"
+        reg += 1
+        BASE_ADDRESS += 1000
+    program_str += f"\n#Start your program here\n"
+    program_str += f"\n#Please Generate the Machine Code from Venus and paste it here !!\n"
+
+    if request.method == "POST":
+        machCode = request.POST.get("editor")
+        file = open(f"{GENERATOR_DIR}/fpga/program.mem", "w")
+        file.write(machCode)
+        file.close()
+        return redirect("bitstream")
+
+        
+    return render(request, "programMem.html", {"program":program_str})

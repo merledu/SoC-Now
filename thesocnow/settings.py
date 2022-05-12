@@ -137,31 +137,41 @@ GENERATOR_DIR="SoC-Now-Generator"
 
 
 DRIVERS = {
-    "soc":"GeneratorDriver",
-    "coreiwb":"nucleusrv.components.CoreDriverWB",
-    "coreitl":"nucleusrv.components.CoreDriverTL",
-    "gpiowb":"jigsaw.GpioDriverWB",
-    "spiwb":"jigsaw.SpiDriverWB",
-    "uartwb":"jigsaw.UARTHarnessDriver",
-    "gpiotl":"jigsaw.GpioDriverTL",
-    "spitl":"jigsaw.SpiDriverTL",
-    "uarttl":"jigsaw.UARTHarnessDriverTL",
-    "wb":"caravan.bus.wishbone.WishboneDriver",
-    "tl":"caravan.bus.tilelink.TilelinkDriver"
+    "soc"       :       "GeneratorDriver",
+    "fpga"      :       "SoCNowDriver",
+    "coreiwb"   :       "nucleusrv.components.CoreDriverWB",
+    "coreitl"   :       "nucleusrv.components.CoreDriverTL",
+    "gpiowb"    :       "jigsaw.GPIOHarnessDriver",
+    "spiwb"     :       "jigsaw.SpiDriverWB",
+    "i2cwb"     :       "jigsaw.I2CHarnessDriver",
+    "uartwb"    :       "jigsaw.UARTHarnessDriver",
+    "timerwb"   :       "jigsaw.TimerDriverWB",
+    "gpiotl"    :       "jigsaw.GPIOHarnessDriverTL",
+    "spitl"     :       "jigsaw.SpiDriverTL",
+    "i2ctl"     :       "jigsaw.I2CHarnessDriverTL",
+    "timertl"   :       "jigsaw.TimerDriverTL",
+    "uarttl"    :       "jigsaw.UARTHarnessDriverTL",
+    "wb"        :       "caravan.bus.wishbone.WishboneDriver",
+    "tl"        :       "caravan.bus.tilelink.TilelinkDriver"
 }
 
 RTL_FILES = {
-    "soc":"Generator.v",
-    "coreiwb":"Top.v",
-    "coreitl":"TopTL.v",
-    "gpiowb":"GpioWB.v",
-    "spiwb":"SpiHarness.v",
-    "uartwb":"uartHarness.v",
-    "gpiotl":"GpioTL.v",
-    "spitl":"SpiHarnessTL.v",
-    "uarttl":"uartHarness_TL.v",
-    "wb":"Harness.v",
-    "tl":"TilelinkHarness.v"
+    "soc"       :       "Generator.v",
+    "fpga"      :       "SoCNow.v",
+    "coreiwb"   :       "Top.v",
+    "coreitl"   :       "TopTL.v",
+    "gpiowb"    :       "gpioHarness.v",
+    "spiwb"     :       "SpiHarness.v",
+    "uartwb"    :       "uartHarness.v",
+    "i2cwb"     :       "i2cHarness.v",
+    "timerwb"   :       "TimerHarness.v",
+    "gpiotl"    :       "gpioHarness_TL.v",
+    "spitl"     :       "SpiHarnessTL.v",
+    "uarttl"    :       "uartHarness_TL.v",
+    "i2ctl"     :       "i2cHarness_TL.v",
+    "timertl"   :       "TimerHarnessTL.v",
+    "wb"        :       "Harness.v",
+    "tl"        :       "TilelinkHarness.v"
 }
 
 XDC_ENCODS = {

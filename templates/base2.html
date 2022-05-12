@@ -188,9 +188,10 @@
         } 
         function bitstreamLoader(){
           loaderName = document.getElementById("nameOfLoader");
-          loaderName.innerHTML = "Generating Bitsream";
+          loaderName.innerHTML = "Generating Bitsream <br> <h6> Hold On! It might take some minutes </h6>";
           showLoader();
-          window.location = "/soc/fpga/bitsream";
+          var form   = document.getElementById("program-form");
+          form.submit();
         }
     </script>
 
