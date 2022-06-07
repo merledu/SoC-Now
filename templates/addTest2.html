@@ -1,9 +1,10 @@
 {% extends 'base2.html' %}
 
+
 {% load static %}
 
 
-{% block content %}
+{% block nana %}
 <script src="{% static 'codemirror/codemirror-5.65.0/lib/codemirror.js' %}"></script>
 <link rel="stylesheet" href="{% static 'codemirror/codemirror-5.65.0/theme/ayu-dark.css' %}">
 <link rel="stylesheet" href="{% static 'codemirror/codemirror-5.65.0/lib/codemirror.css' %}">
@@ -17,20 +18,29 @@
 
         <!-- <div class="container"> -->
             <div class="container">
-                <form method="post">
+                <br>
+                <h3> Write Custom Assembly Test to Run on Core </h3>
+                <br>
+                <form id="vcd-form" method="post">
                     {% csrf_token %}
+                    {% for message in messages %}
+                        <div style="text-align:center">
+                            <h5> {{ message }} </h5>
+                        </div>
+                    {% endfor %}
                 <div class="col-md-12 bordered-box">
-                    <textarea name="editor" id="editor"></textarea>
+                    <textarea name="editor" id="editor">{{program}}</textarea>
                 </div>
                 <br>
                 <br>
                 <div class="d-flex justify-content-between">
-                    <a href="{% url 'verify' %}"> <button class="btn fin-btn">< Back</button> </a>
-                    <input type="submit" class="btn fin-btn" value="Download VCD">
-                    <!-- <button onclick="window.close()" id="upload" class="btn fin-btn dis
-                        
-                        
-                        abled">Add <span>^</span> </button> -->
+                   
+                    <button type="button" onclick="window.location.href = '{% url 'finalize' %}'" class="btn fin-btn">< Back</button> 
+                    
+                    <button type="button" onclick="generateVCD()" class="btn fin-btn" style="padding:10px 25px"> Geenreate VCD </button>
+                    
+                    <button type="button" onclick="window.location.href = '{% url 'download_core_vcd' %}'" {% if messages %} abc  {% else %} disabled {% endif %}  class="btn fin-btn" style="padding:10px 25px"> Download VCD </button>
+
                 </div>
                 <br>
                 <div class="hide" id="output" style="text-align:center">
@@ -42,28 +52,6 @@
             </div>
         <!-- </div> -->
 
-    <script>
-        function runCode() {
-            var btn=document.getElementById("upload");
-            btn.classList.remove("disabled");
-            var output=document.getElementById("output");
-            output.classList.remove("hide");
-        }
-    
-        var editor = document.getElementById("editor");
-        CodeMirror.fromTextArea(
-            editor,
-            {
-                lineNumbers: true,
-                matchBrackets: true,
-                theme: "ayu-dark",
-                mode: "text/x-c",
-                autoRefresh: true,
-                scrollbars:true,
-                
-            }
-        ).setSize(null, "100%");
-    </script>
-    
+
 
 {% endblock %}

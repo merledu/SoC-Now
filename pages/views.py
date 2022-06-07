@@ -29,7 +29,8 @@ def show_rtl(request, driverFile):
     file.close()
 
     context = {
-        "rtl":rtl_content
+        "rtl":rtl_content,
+        "driverFile":driverFile
     }
 
     return render(request, "RTL.html", context)
@@ -43,3 +44,14 @@ def gen_rtl(request, component):
 
     return redirect("rtl", RTL_FILES[component])
 
+    
+from django.http import HttpResponse
+def download_driver(request, driverFile):
+    file = open(os.path.join(GENERATOR_DIR, driverFile))
+    rtl_content = file.read()
+    file.close()
+
+    response = HttpResponse(rtl_content, content_type='text/plain')
+    response['Content-Disposition'] = f'attachment; filename="{driverFile}"'
+
+    return response

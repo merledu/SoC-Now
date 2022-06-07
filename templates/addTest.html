@@ -18,6 +18,7 @@
 
         <!-- <div class="container"> -->
             <div class="container">
+                <h3> Run Custom C Test on Core </h3>
                 <form method="post">
                     {% csrf_token %}
                 <div class="col-md-12 bordered-box">
@@ -26,7 +27,7 @@
                 <br>
                 <br>
                 <div class="d-flex justify-content-between">
-                    <a href="{% url 'verify' %}"> <button class="btn fin-btn">< Back</button> </a>
+                    <a href="{% url 'verif_core' %}"> <button class="btn fin-btn">< Back</button> </a>
                     <input type="submit" class="btn fin-btn" value="Run Code">
                     
                 </div>
@@ -40,28 +41,6 @@
             </div>
         <!-- </div> -->
 
-    <script>
-        function runCode() {
-            var btn=document.getElementById("upload");
-            btn.classList.remove("disabled");
-            var output=document.getElementById("output");
-            output.classList.remove("hide");
-        }
-    
-        var editor = document.getElementById("editor");
-        CodeMirror.fromTextArea(
-            editor,
-            {
-                lineNumbers: true,
-                matchBrackets: true,
-                theme: "ayu-dark",
-                mode: "text/x-c",
-                autoRefresh: true,
-                scrollbars:true,
-                
-            }
-        ).setSize(null, "100%");
-    </script>
     
 
 {% endblock %}

@@ -1,0 +1,58 @@
+{% extends 'base2.html' %}
+
+
+{% load static %}
+
+
+{% block nana %}
+<script src="{% static 'codemirror/codemirror-5.65.0/lib/codemirror.js' %}"></script>
+<link rel="stylesheet" href="{% static 'codemirror/codemirror-5.65.0/theme/ayu-dark.css' %}">
+<link rel="stylesheet" href="{% static 'codemirror/codemirror-5.65.0/lib/codemirror.css' %}">
+<script src="{% static 'codemirror/codemirror-5.65.0/mode/clike/clike.js' %}"></script>
+<script src="{% static 'codemirror/codemirror-5.65.0/addon/display/autorefresh.js' %}"></script>
+<style>
+    body{
+        overflow-x: hidden;
+    }
+</style>
+
+        <!-- <div class="container"> -->
+            <div class="container">
+                <br>
+                <h3> Write Custom Test to Write on SoC </h3>
+                <br>
+                <form id="vcd-form" method="post">
+                    {% csrf_token %}
+                    {% for message in messages %}
+                        <div style="text-align:center">
+                            <h5> {{ message }} </h5>
+                        </div>
+                    {% endfor %}
+                <div class="col-md-12 bordered-box">
+                    <h6>{{program | safe}}</h6>
+                    <textarea name="editor" id="editor"></textarea>
+                </div>
+                <br>
+                <br>
+                <div class="d-flex justify-content-between">
+                   
+                    <button type="button" onclick="window.location.href = '{% url 'finalize' %}'" class="btn fin-btn">< Back</button> 
+                    
+                    <button type="button" onclick="generateVCD()" class="btn fin-btn" style="padding:10px 25px"> Geenreate VCD </button>
+                    
+                    <button type="button" onclick="window.location.href = '{% url 'download_vcd' %}'" {% if messages %} abc  {% else %} disabled {% endif %}  class="btn fin-btn" style="padding:10px 25px"> Download VCD </button>
+
+                </div>
+                <br>
+                <div class="hide" id="output" style="text-align:center">
+                    <!-- <b>Program OUTPUT </b> -->
+                </div>
+                <br>
+                <br>
+            </form>
+            </div>
+        <!-- </div> -->
+
+
+
+{% endblock %}

@@ -139,27 +139,59 @@ GENERATOR_DIR="SoC-Now-Generator"
 DRIVERS = {
     "soc"       :       "GeneratorDriver",
     "fpga"      :       "SoCNowDriver",
-    "coreiwb"   :       "nucleusrv.components.CoreDriverWB",
-    "coreitl"   :       "nucleusrv.components.CoreDriverTL",
+    "corewbi"   :       "nucleusrv.components.CoreWBI",
+    "corewbim"  :       "nucleusrv.components.CoreWBIM",
+    "corewbic"  :       "nucleusrv.components.CoreWBIC",
+    "corewbif"  :       "nucleusrv.components.CoreWBIF",
+    "corewbimf" :       "nucleusrv.components.CoreWBIMF",
+    "corewbimc" :       "nucleusrv.components.CoreWBIMC",
+    "corewbifc" :       "nucleusrv.components.CoreWBIFC",
+    "corewbimfc":       "nucleusrv.components.CoreWBIMFC",
+    "coretli"   :       "nucleusrv.components.CoreTLI",
+    "coretlim"  :       "nucleusrv.components.CoreTLIM",
+    "coretlif"  :       "nucleusrv.components.CoreTLIF",
+    "coretlic"  :       "nucleusrv.components.CoreTLIC",
+    "coretlimf" :       "nucleusrv.components.CoreTLIMF",
+    "coretlimc" :       "nucleusrv.components.CoreTLIMC",
+    "coretlifc" :       "nucleusrv.components.CoreTLIFC",
+    "coretlimfc":       "nucleusrv.components.CoreTLIMFC",
     "gpiowb"    :       "jigsaw.GPIOHarnessDriver",
     "spiwb"     :       "jigsaw.SpiDriverWB",
+    "spifwb"    :       "jigsaw.SpiFlashDriverWB",
     "i2cwb"     :       "jigsaw.I2CHarnessDriver",
     "uartwb"    :       "jigsaw.UARTHarnessDriver",
     "timerwb"   :       "jigsaw.TimerDriverWB",
     "gpiotl"    :       "jigsaw.GPIOHarnessDriverTL",
     "spitl"     :       "jigsaw.SpiDriverTL",
+    "spifltl"   :       "jigsaw.SpiFlashDriverTL",
     "i2ctl"     :       "jigsaw.I2CHarnessDriverTL",
     "timertl"   :       "jigsaw.TimerDriverTL",
     "uarttl"    :       "jigsaw.UARTHarnessDriverTL",
     "wb"        :       "caravan.bus.wishbone.WishboneDriver",
-    "tl"        :       "caravan.bus.tilelink.TilelinkDriver"
+    "tl"        :       "caravan.bus.tilelink.TilelinkDriver",
+    "tlc"       :       "TilelinkCachedDriver",
 }
+
 
 RTL_FILES = {
     "soc"       :       "Generator.v",
     "fpga"      :       "SoCNow.v",
-    "coreiwb"   :       "Top.v",
-    "coreitl"   :       "TopTL.v",
+    "corewbi"   :       "Core.v",
+    "corewbim"  :       "Core.v",
+    "corewbic"  :       "Core.v",
+    "corewbif"  :       "Core.v",
+    "corewbimf" :       "Core.v",
+    "corewbimc" :       "Core.v",
+    "corewbifc" :       "Core.v",
+    "corewbimfc":       "Core.v",
+    "coretli"   :       "Core.v",
+    "coretlim"  :       "Core.v",
+    "coretlif"  :       "Core.v",
+    "coretlic"  :       "Core.v",
+    "coretlimf" :       "Core.v",
+    "coretlimc" :       "Core.v",
+    "coretlifc" :       "Core.v",
+    "coretlimfc":       "Core.v",
     "gpiowb"    :       "gpioHarness.v",
     "spiwb"     :       "SpiHarness.v",
     "uartwb"    :       "uartHarness.v",
@@ -171,7 +203,8 @@ RTL_FILES = {
     "i2ctl"     :       "i2cHarness_TL.v",
     "timertl"   :       "TimerHarnessTL.v",
     "wb"        :       "Harness.v",
-    "tl"        :       "TilelinkHarness.v"
+    "tl"        :       "TilelinkHarness.v",
+    "tlc"       :       "TilelinkCachedHarness.v",
 }
 
 XDC_ENCODS = {
@@ -180,7 +213,7 @@ XDC_ENCODS = {
     
 }
 
-ARTY_COMPS = {
+ARTY_COMPS_i = {
     "BTN0":"set_property -dict { PACKAGE_PIN D9    IOSTANDARD LVCMOS33 } [get_ports { x }];",
     "BTN1":"set_property -dict { PACKAGE_PIN C9    IOSTANDARD LVCMOS33 } [get_ports { x }];",
     "BTN2":"set_property -dict { PACKAGE_PIN B9    IOSTANDARD LVCMOS33 } [get_ports { x }];",
@@ -189,6 +222,8 @@ ARTY_COMPS = {
     "SW1" :"set_property -dict { PACKAGE_PIN C11   IOSTANDARD LVCMOS33 } [get_ports { x }];",
     "SW2" :"set_property -dict { PACKAGE_PIN C10   IOSTANDARD LVCMOS33 } [get_ports { x }];",
     "SW3" :"set_property -dict { PACKAGE_PIN A10   IOSTANDARD LVCMOS33 } [get_ports { x }];",
+}
+ARTY_COMPS_o = {
     "LD0_b":"set_property -dict { PACKAGE_PIN E1    IOSTANDARD LVCMOS33 } [get_ports { x }];",
     "LD0_g":"set_property -dict { PACKAGE_PIN F6    IOSTANDARD LVCMOS33 } [get_ports { x }];",
     "LD0_r":"set_property -dict { PACKAGE_PIN G6    IOSTANDARD LVCMOS33 } [get_ports { x }];",

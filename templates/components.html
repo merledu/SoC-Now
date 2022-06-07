@@ -18,26 +18,28 @@
         <div class="contentDiv">
             <h3 class="title">Wishbone</h3>
             <div class="buttonsDiv">
-                <button onclick="showLoaderOnClick('{% url 'gen' component='coreiwb' %}')" class="buttons">RV32I</button>
-                <button disabled class="buttons">RV32IC</button>
-                <button disabled class="buttons">RV32IF</button>
-                <button disabled class="buttons">RV32IM</button>
-                <button disabled class="buttons">RV32IMC</button>
-                <button disabled class="buttons">RV32IMF</button>
-                <button disabled class="buttons">RV32IMFC</button>
+                <button onclick="showLoaderOnClick('{% url 'gen' component='corewbi' %}')" class="buttons">RV32I</button>
+                <button onclick="showLoaderOnClick('{% url 'gen' component='corewbic' %}')" class="buttons">RV32IC</button>
+                <button onclick="showLoaderOnClick('{% url 'gen' component='corewbif' %}')" class="buttons">RV32IF</button>
+                <button onclick="showLoaderOnClick('{% url 'gen' component='corewbim' %}')" class="buttons">RV32IM</button>
+                <button onclick="showLoaderOnClick('{% url 'gen' component='corewbimc' %}')" class="buttons">RV32IMC</button>
+                <button onclick="showLoaderOnClick('{% url 'gen' component='corewbimf' %}')" class="buttons">RV32IMF</button>
+                <button onclick="showLoaderOnClick('{% url 'gen' component='corewbifc' %}')" class="buttons">RV32IFC</button>
+                <button onclick="showLoaderOnClick('{% url 'gen' component='corewbimfc' %}')" class="buttons">RV32IMFC</button>
             </div>
 
         </div>
         <div class="contentDiv">
             <h3 class="title">Tilelink</h3>
             <div class="buttonsDiv">
-                <button onclick="showLoaderOnClick('{% url 'gen' component='coreitl' %}')" class="buttons">RV32I</button>
-                <button disabled class="buttons">RV32IC</button>
-                <button disabled class="buttons">RV32IF</button>
-                <button disabled class="buttons">RV32IM</button>
-                <button disabled class="buttons">RV32IMC</button>
-                <button disabled class="buttons">RV32IMF</button>
-                <button disabled class="buttons">RV32IMFC</button>
+                <button onclick="showLoaderOnClick('{% url 'gen' component='coretli' %}')" class="buttons">RV32I</button>
+                <button onclick="showLoaderOnClick('{% url 'gen' component='coretlic' %}')" class="buttons">RV32IC</button>
+                <button onclick="showLoaderOnClick('{% url 'gen' component='coretlif' %}')" class="buttons">RV32IF</button>
+                <button onclick="showLoaderOnClick('{% url 'gen' component='coretlim' %}')" class="buttons">RV32IM</button>
+                <button onclick="showLoaderOnClick('{% url 'gen' component='coretlimc' %}')" class="buttons">RV32IMC</button>
+                <button onclick="showLoaderOnClick('{% url 'gen' component='coretlimf' %}')" class="buttons">RV32IMF</button>
+                <button onclick="showLoaderOnClick('{% url 'gen' component='coretlifc' %}')" class="buttons">RV32IFC</button>
+                <button onclick="showLoaderOnClick('{% url 'gen' component='coretlimfc' %}')" class="buttons">RV32IMFC</button>
             </div>
 
         </div>
@@ -57,11 +59,11 @@
                 <h3 class="title">Wishbone Integrated</h3>
                 <div class="buttonsDiv">
                     <button onclick="showLoaderOnClick('{% url 'gen' component='gpiowb' %}')" class="buttons">GPIO</button>
-                    <button disabled class="buttons">SPI</button>
-                    <button onclick="showLoaderOnClick('{% url 'gen' component='spiwb' %}')" class="buttons">SPI-Flash</button>
+                    <button onclick="showLoaderOnClick('{% url 'gen' component='spiwb' %}')" class="buttons">SPI</button>
+                    <button onclick="showLoaderOnClick('{% url 'gen' component='spifwb' %}')" class="buttons">SPI-Flash</button>
                     <button onclick="showLoaderOnClick('{% url 'gen' component='uartwb' %}')" class="buttons">UART</button>
-                    <button disabled class="buttons">TIMER</button>
-                    <button disabled class="buttons">I <sup>2</sup>C </button>
+                    <button onclick="showLoaderOnClick('{% url 'gen' component="timerwb" %}')" class="buttons">TIMER</button>
+                    <button onclick="showLoaderOnClick('{% url 'gen' component='i2cwb' %}')" class="buttons">I <sup>2</sup>C </button>
                 </div>
 
             </div>
@@ -69,11 +71,11 @@
                 <h3 class="title">Tilelink Integrated</h3>
                 <div class="buttonsDiv">
                     <button onclick="showLoaderOnClick('{% url 'gen' component='gpiotl' %}')" class="buttons">GPIO</button>
-                    <button disabled class="buttons">SPI</button>
-                    <button onclick="showLoaderOnClick('{% url 'gen' component='spitl' %}')" class="buttons">SPI-Flash</button>
+                    <button onclick="showLoaderOnClick('{% url 'gen' component='spitl' %}')" class="buttons">SPI</button>
+                    <button onclick="showLoaderOnClick('{% url 'gen' component='spiftl' %}')" class="buttons">SPI-Flash</button>
                     <button onclick="showLoaderOnClick('{% url 'gen' component='uarttl' %}')" class="buttons">UART</button>
-                    <button disabled class="buttons">TIMER</button>
-                    <button disabled class="buttons">I <sup>2</sup>C </button>
+                    <button onclick="showLoaderOnClick('{% url 'gen' component='timertl' %}')" class="buttons">TIMER</button>
+                    <button onclick="showLoaderOnClick('{% url 'gen' component='i2ctl' %}')" class="buttons">I <sup>2</sup>C </button>
                 </div>
 
             </div>
@@ -93,7 +95,7 @@
                     <div class="buttonsDiv">
                         <button onclick="showLoaderOnClick('{% url 'gen' component='wb' %}')" class="buttons">Wishbone</button>
                         <button onclick="showLoaderOnClick('{% url 'gen' component='tl' %}')" class="buttons">TL-UL</button>
-                        <button disabled class="buttons">TL-C</button>
+                        <button onclick="showLoaderOnClick('{% url 'gen' component='tlc' %}')" class="buttons">TL-C</button>
                         
                     </div>
     

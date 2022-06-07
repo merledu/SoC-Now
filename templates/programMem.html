@@ -20,14 +20,21 @@
             <div class="container">
                 <form id="program-form" method="post">
                     {% csrf_token %}
+                    {% for message in messages %}
+                        <div style="text-align:center">
+                            <h5> {{ message }} </h5>
+                        </div>
+                    {% endfor %}
                 <div class="col-md-12 bordered-box">
-                    <textarea name="editor" id="editor">{{program}}</textarea>
+                    <div>{{program | safe}}</div>
+                    <textarea name="editor" id="editor"></textarea>
                 </div>
                 <br>
                 <br>
                 <div class="d-flex justify-content-between">
                     <a href="{% url 'mapFPGA' %}"> 
                         <button class="btn fin-btn">< Back</button> </a>
+                    
                     <button type="button" onclick="bitstreamLoader()" class="btn fin-btn" style="padding:10px 25px">Program and Generate Bitstream</button>
                     
                 </div>
@@ -41,28 +48,6 @@
             </div>
         <!-- </div> -->
 
-    <script>
-        function runCode() {
-            var btn=document.getElementById("upload");
-            btn.classList.remove("disabled");
-            var output=document.getElementById("output");
-            output.classList.remove("hide");
-        }
-    
-        var editor = document.getElementById("editor");
-        CodeMirror.fromTextArea(
-            editor,
-            {
-                lineNumbers: true,
-                matchBrackets: true,
-                theme: "ayu-dark",
-                mode: "text/x-c",
-                autoRefresh: true,
-                scrollbars:true,
-                
-            }
-        ).setSize(null, "100%");
-    </script>
-    
+
 
 {% endblock %}

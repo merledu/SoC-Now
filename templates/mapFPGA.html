@@ -55,14 +55,35 @@
                                 
                             <div class="col-md-12 simple-borders">
                                 <div class="container row" style="padding-top:15px;text-align: center;">
-                                    {% for comp in comps %}
+                                    {% for comp in input_comps %}
                                     <div class="col-md-3" style="margin-bottom:10px">
                                         {{ comp }}
 
                                         <label  class="select" for="slct">
                                             <select onchange="addToXdc(event)" id="slct" name={{ comp }} required="required">
                                             <option value="" disabled="disabled" selected="selected">Select i/o</option>
-                                            {% for io in ios %}
+                                            {% for io in inputs %}
+                                                <option value="{{ io }}"> {{ io }} </option>
+                                            {% endfor %}
+                                            
+                                        </select><svg>
+                                            <use xlink:href="#select-arrow-down"></use>
+                                        </svg></label><!-- SVG Sprites--><svg class="sprites">
+                                            <symbol id="select-arrow-down" viewbox="0 0 10 6">
+                                                <polyline points="1 1 5 5 9 1"></polyline>
+                                               </symbol>
+                                        </svg>
+                                    </div>
+                                    {% endfor %}
+
+                                    {% for comp in output_comps %}
+                                    <div class="col-md-3" style="margin-bottom:10px">
+                                        {{ comp }}
+
+                                        <label  class="select" for="slct">
+                                            <select onchange="addToXdc(event)" id="slct" name={{ comp }} required="required">
+                                            <option value="" disabled="disabled" selected="selected">Select i/o</option>
+                                            {% for io in outputs %}
                                                 <option value="{{ io }}"> {{ io }} </option>
                                             {% endfor %}
                                             
