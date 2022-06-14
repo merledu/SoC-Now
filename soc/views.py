@@ -10,7 +10,7 @@ from icecream import ic
 import mimetypes
 from django.http import HttpResponse, Http404, FileResponse
 from makeDiagram import makeDiagram
-from thesocnow.settings import GENERATOR_DIR, DRIVERS, RTL_FILES,XDC_ENCODS, ARTY_COMPS_i, ARTY_COMPS_o
+from thesocnow.settings import GENERATOR_DIR, DRIVERS, RTL_FILES,XDC_ENCODS, ARTY_COMPS_i, ARTY_COMPS_o, BUSES
 from parseVenus import parse_riscv_assembly
 # Create your views here.
 
@@ -51,8 +51,10 @@ def soc_view(request):
     return render(request, "soc.html", {})
 
 def finalize_view(request):
+    obj= list(SoC.objects.all())[-1]
 
-    return render(request, "finalize.html", {})
+
+    return render(request, "finalize.html", {"ext":"".join(obj.extensions), "devices":obj.devices, "bus":BUSES[obj.bus]})
 mappedElemets = {}
 
 def selectFPGA(request):

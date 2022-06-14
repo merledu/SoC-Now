@@ -1,5 +1,6 @@
 import imp
 from operator import imod
+from platform import machine
 from django.shortcuts import render, redirect
 from .models import ComplianceTests
 from parseVenus import parse_riscv_assembly
@@ -16,7 +17,62 @@ from thesocnow.settings import GENERATOR_DIR, DRIVERS, RTL_FILES,XDC_ENCODS, ART
 test_statuses = {}
 # Create your views here.
 def verif_select(request):
-    return render(request, "verif_select.html", {})
+    base = ComplianceTests.objects.all()[0]
+    tests = ComplianceTests.objects.all()[1:]
+    if request.method == "POST":
+        ic("c-test" in request.POST)
+        if "compliance" in request.POST:
+            selected_tests = request.POST.getlist("tst")
+            selected_tests.append("I-ADD-01")
+            global test_statuses
+            test_statuses = {}
+            for test in selected_tests:
+                os.system("./compliance.sh " + test)
+                compile_result(test)
+                # return redirect("test_result", test)
+            return redirect("test_result")
+        
+        elif "c-test" in request.POST:
+
+            c_code = request.POST.get("main-c")
+            file = open("/tmp/c_code.c", "w+")
+            file.write(c_code)
+            file.close()
+            os.system("riscv32-unknown-elf-gcc -g /tmp/c_code.c -o /tmp/c_code.out")
+            os.system("riscv32-unknown-elf-objdump -d /tmp/c_code.out > /tmp/c_code.elf")
+
+            file = open("/tmp/c_code.elf", "r")
+            contents = file.readlines()
+            file.close()
+            # dataList = outData.split("\n")
+            machineCode = []
+            machineCodeFile = open("/tmp/machCode.txt", "w+")
+            for line in contents[1:]:
+                splittedList = line.split("\t")
+                if len(splittedList)>1:
+                    machineCode.append(splittedList[1])
+                    assembly.append(" ".join(splittedList[2:]))
+            machineCodeFile.write("\n".join(machineCode))
+            machineCodeFile.close()
+            os.chdir(f"{GENERATOR_DIR}")
+            os.system("sbt 'testOnly CoreTest -- -DwriteVcd=1 -DmemFile=/tmp/machCode.txt'")
+            os.chdir("../")
+            messages.success(request, "Successfully Generated VCD", extra_tags="success_vcd")
+        elif "s-test" in request.POST:
+            assembly = request.POST.get("main-s")
+            # try:
+            machCode = assembly #parse_riscv_assembly(assembly)
+            file = open("/tmp/machCode.txt", "w+")
+            file.write(machCode)
+            file.close()
+            os.chdir(f"{GENERATOR_DIR}")
+            os.system("sbt 'testOnly CoreTest -- -DwriteVcd=1 -DmemFile=/tmp/machCode.txt'")
+            os.chdir("../")
+            messages.success(request, "Successfully Generated VCD", extra_tags="success_vcd")
+      
+            
+    context = {"basecase":base, "testcases":tests}
+    return render(request, "verif_select.html", context)
 
 def verify_core(request):
     base = ComplianceTests.objects.all()[0]

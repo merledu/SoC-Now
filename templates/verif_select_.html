@@ -1,0 +1,56 @@
+{% extends 'base2.html' %}
+{% load static %}
+
+{% block nana %}
+<style>
+    body{
+        overflow-x:hidden
+    }
+</style>       
+        <div class="row" style="margin-top: 3vh;">
+            <div class="col-md-3">
+            </div>
+            <div class="col-md-6" style="height: 100%;text-align: center;">
+                <br>
+                
+                <a
+                 href="{% url 'verif_core' %}"
+                 style="text-decoration: none; color: white;"><div class="glass d-flex justify-content-between align-items-center" style="border-radius: 15px; backdrop-filter: blur(50px); padding: 10px 15px;border: solid 1px rgba(255, 255, 255, 0.5);  margin-top: 20px;">
+                    <div style="text-align: left;padding-left: 20px;">
+                        <div>
+                            <h4 class="head" style="width: 250px;">
+                                Core Verification
+                            </h4>
+                        </div>
+                        
+                        <p>
+                            Verify the Core with Compliance Tests.
+                        </p>
+                    </div>
+                    <img src="{% static 'img/bigarrow.png' %}" style="width: 20%;" />
+                    
+                </div></a>
+                <a href="{% url 'select_soc' %}" style="text-decoration: none; color: white;"><div class="glass d-flex justify-content-between align-items-center" style="border-radius: 15px; backdrop-filter: blur(50px); padding: 10px 15px;border: solid 1px rgba(255, 255, 255, 0.5);  margin-top: 20px;">
+                    <div style="text-align: left;padding-left: 20px;">
+                        <div>
+                            <h4 class="head" style="width: 250px;">
+                                SoC Verification
+                            </h4>
+                        </div>
+                        
+                        <p>
+                            Verify the complete SoC.
+                        </p>
+                    </div>
+                    <img src="{% static 'img/bigarrow.png' %}" style="width: 20%;" />
+                    
+                </div>
+                </a>
+            </div>
+            <div class="col-md-3">
+                
+            </div>
+
+        </div>
+   
+{% endblock %}

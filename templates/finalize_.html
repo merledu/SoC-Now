@@ -1,0 +1,127 @@
+{% extends 'base2.html' %}
+
+{% load static %}
+
+{% block nana %}
+
+<style>
+    body{
+        overflow-x: hidden;
+    }
+   
+</style>   
+       
+   
+       
+        <div class="row" style="margin-top: 3vh;">
+            <div class="col-md-3">
+            </div>
+            <div class="col-md-6" style="height: 100%;text-align: center;">
+                <br>
+                <div class="glass" style="border-radius: 15px; backdrop-filter: blur(50px); padding: 40px 45px;border: solid 1px rgba(255, 255, 255, 0.5); margin-top: 3vh;">
+                    <div style="text-align: left">
+                        <div>
+                            <h4 class="head" style="width: 200px;">
+                                Customize SoC
+                            </h4>
+                            <p class="middle">
+                                Generate a customized SoC with Core extensions, devices and bus interconnect of your choice.
+                            </p>
+                            
+                        </div>
+                        <div style="text-align: center;">
+                            <h3 style="font-weight: lighter;">Finalized SoC</h3>
+                        </div>
+                        
+                        <div style="text-align: right;">
+                            {% comment %} <button class="btn frame-btn">
+                                Expand
+                                <img src="{% static 'img/uparrow.png' %}" />
+                            </button> {% endcomment %}
+                        </div>
+                        <div class="frame">
+                            <img src="{% static 'img/diagram.png' %}" style="width: 100%;" />
+                        </div>
+                        <br>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <a href="{% url 'soc' %}">  <img src="{% static 'img/boldarrow2.png' %}" style="width: 70%;" /> </a>
+                            {% comment %} <button class="btn down-btn">
+                                CHISEL Source 
+                                <img src="{% static 'img/downarrow.png' %}" />
+                            </button>  {% endcomment %}
+                            
+                        </div>
+
+                        
+                        
+                       
+                    </div>                    
+                </div>
+                
+            </div>
+            <div class="col-md-3" style="margin-top: 60vh;">
+                <div class="container" style="text-align: right;">
+                    <div class="btn-containerr">
+                        <button onclick="window.location.href = '{% url 'verif_soc' %}'">
+                            <span class="text">Verify SoC</span>
+                            <div class="icon-container">
+                                <div class="icon icon--left">
+                                    <img src="{% static 'img/arrow.png' %}"  />
+                                </div>
+                                <div class="icon icon--right">
+                                    <img src="{% static 'img/arrow.png' %}"  />
+                                </div>
+                            </div>
+                        </button>
+                    </div>
+                    <br>
+                    <div class="rtl" onclick="showLoaderOnClick('{% url 'gen' component='soc' %}')">
+                        <div class="button">
+                            <span>Generate RTL</span>
+                            <svg>
+                            <polyline class="o1" points="0 0, 200 0, 200 55, 0 55, 0 0"></polyline>
+                            <polyline class="o2" points="0 0, 200 0, 200 55, 0 55, 0 0"></polyline>
+                        </svg>
+                        </div>
+                    </div>
+                    <br>
+                    <div style="text-align:center">
+                        <button onclick="showLoaderOnClick('{% url 'selectFPGA' %}')" class="noselect">Generate Bitstream</button>
+                    </div>
+                    
+
+                    {% comment %} <div class="btn-containerr">
+                        <button onclick="showLoaderOnClick('{% url 'gen' component='soc' %}')">
+                            <span class="text">Generate RTL</span>
+                            <div class="icon-container">
+                                <div class="icon icon--left">
+                                    <img src="{% static 'img/arrow.png' %}"  />
+                                </div>
+                                <div class="icon icon--right">
+                                    <img src="{% static 'img/arrow.png' %}"  />
+                                </div>
+                            </div>
+                        </button>
+                    </div> {% endcomment %}
+                    {% comment %} <a onclick="showLoaderOnClick('{% url 'verif_soc' %}')">  {% endcomment %}
+                        {% comment %} <button class="btn fin-btn">
+                        Verify SoC
+                        <img src="{% static 'img/arrow.png' %}" />
+                    </button>
+                    </a>
+                    <br>
+                    <a onclick="showLoaderOnClick('{% url 'soc' %}')"> <button class="btn fin-btn">
+                        Generate RTL
+                        <img src="{% static 'img/arrow.png' %}" />
+                    </button>
+                    </a> {% endcomment %}
+                    <br>
+                    
+                </div>
+            </div>
+
+        </div>
+
+      
+        
+        {% endblock %}  

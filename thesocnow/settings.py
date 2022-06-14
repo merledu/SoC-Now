@@ -273,3 +273,10 @@ ARTY_COMPS_o = {
     "JD[7]":"set_property -dict { PACKAGE_PIN H2   IOSTANDARD LVCMOS33 } [get_ports { x }];",
     "JD[8]":"set_property -dict { PACKAGE_PIN G2   IOSTANDARD LVCMOS33 } [get_ports { x }];",
 }
+
+
+BUSES = {
+    "wb":"Wishbone",
+    "tl-ul":"Tilelink Uncached Lightweight",
+    "tl-c":"Tilelink Cached",
+}

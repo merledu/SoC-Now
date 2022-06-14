@@ -9,14 +9,22 @@
     <link href="{% static 'bs/css/bootstrap.css' %}" rel="stylesheet" />
     <link href="{% static 'css/style.css' %}" rel="stylesheet" />
 
-    
+    <link href="https://unpkg.com/augmented-ui@2.0.0/augmented-ui.min.css" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.35.0/codemirror.css" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.1/addon/scroll/simplescrollbars.min.css" />
+
+
+    <script src="{% static 'codemirror/codemirror-5.65.0/lib/codemirror.js' %}"></script>
+<link rel="stylesheet" href="{% static 'codemirror/codemirror-5.65.0/theme/ayu-dark.css' %}">
+<link rel="stylesheet" href="{% static 'codemirror/codemirror-5.65.0/lib/codemirror.css' %}">
+<script src="{% static 'codemirror/codemirror-5.65.0/mode/clike/clike.js' %}"></script>
+<script src="{% static 'codemirror/codemirror-5.65.0/addon/display/autorefresh.js' %}"></script>
+
 </head>
 
 {% block content %}
 
 {% endblock %}
-
-<script src="{% static 'bs/js/bootstrap.js' %}" ></script>
-
+ 
 </body>
 </html>

@@ -1,0 +1,40 @@
+{% load static %}
+
+{% include 'base.html' %}
+
+{% block content %}
+<style>
+    body{
+        overflow-x: hidden;
+    }
+</style>
+<body class="hero-main">
+
+    <section class="clean-block" style="height: 100%;">
+        <div class="row" style="height:100% ">
+            <div class="col-md-8 glass">
+                <div class="container center" style="margin-top: 20vh;">
+                    <img src="{% static 'img/socLogo.png' %}" style="width: 50%;" />
+                    <div class="justify" style="width: 50%;margin-left: 25%;">
+                        <p>An open source no cost tool for creating</p><p>customized SoC using No Code</p>
+                    </div>
+                    <a href="{% url 'home' %}"><button class="btn blue-btn">
+                        <div>
+                            Explore
+                        <img src="{% static 'img/arrow.png' %}" />
+                        </div>
+                        
+                    </button></a>
+                </div>
+
+            </div>
+            <div class="col-md-4">
+                <div class="nav">
+                    <div style="margin-right:20px ;"> <a href="{% url 'about1' %}"> About </a></div>
+                    <div><a href="{% url 'contact1' %}"> Contact </a></div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+{% endblock %}

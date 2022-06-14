@@ -1,237 +1,442 @@
-{% extends 'base2.html' %}
+{% extends 'base.html' %}
 
 {% load static %}
 
-{% block nana %}
+{% block content %}
 
-<style>
-    body{
-        overflow-x: hidden;
-    }
-   
-</style>   
-       
-        <div class="row" style="margin-top: 3vh;">
-            <div class="col-md-3">
+<div class="back">
+
+<form id="msform" method="post"> {% csrf_token %}
+    <ul id="progressbar">
+        <li class="li active">Core</li>  
+        <li class="li">Devices</li> 
+        <li class="li">Bus Interconnect</li>
+    </ul>
+
+    <fieldset id="0" class="form-group activee">
+        <div class="field-head">
+            <h3>Core</h3>
+            <h6>Select the Core ISA and Extensions to include with it.</h6> 
+            <div class="line"></div>
+        </div>
+        
+        <div>
+            
+            <div class="checkbox-group">
+                <legend class="checkbox-group-legend">ISA</legend>
+                <div class="checkbox">
+                    <label class="checkbox-wrapper">
+                        <input type="checkbox" class="checkbox-input" checked disabled />
+                        <span class="checkbox-tile">
+                            <span class="checkbox-icon">
+                                <h1>32</h1>
+                            </span>
+                            <span class="checkbox-label">32 Bit</span>
+                        </span>
+                    </label>
+                </div>
             </div>
-            <div class="col-md-6" style="height: 100%;text-align: center;">
-                <br>
-                <div id="core" class="glass" style="border-radius: 15px; backdrop-filter: blur(50px); padding: 40px 45px;border: solid 1px rgba(255, 255, 255, 0.5); margin-top: 3vh;">
-                    <div style="text-align: left">
-                        <div>
-                            <h4 class="head" style="width: 200px;">
-                                Customize SoC
-                            </h4>
-                            <p class="middle">
-                                Generate a customized SoC with Core extensions, devices and bus interconnect of your choice.
-                            </p>
-                            
-                        </div>
-                        <div style="text-align: center;">
-                            <h3 style="font-weight: lighter;">Core</h3>
-                            <p style="color: rgba(255, 255, 255, 0.801); font-weight: lighter;">Select the Core ISA and Extensions to include with it.</p>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-3"></div>
-                            <div class="col-md-3" style="border-right: 1px solid white">
-                                <h5 style="font-weight: lighter;">ISA</h5>
-                                <form method="POST"> {% csrf_token %}
-                                    <input type="radio" name="isa" value="32 Bit" checked disabled />
-                                    <label> 32 Bit </label>
-                                    <br>
-                                    <!-- <input type="radio" name="isa" value="64 Bit" />
-                                    <label> 64 Bit </label> -->
-                            </div>
-                            <div class="col-md-1"></div>
-                            <div class="col-md-3">
-                                <h5 style="font-weight: lighter;">Extensions</h5>
-                                    <input type="checkbox" value="i" name="ext" disabled checked />
-                                    <label> Integer (I) </label>
-                                    <br />
-                                    <input type="checkbox" value="m" name="ext" />
-                                    <label> Multiplier (M) </label>
-                                    <br />
-                                    <input type="checkbox" value="f" name="ext" />
-                                    <label> Floating Point (F) </label>
-                                    <br />
-                                    <input type="checkbox" value="c" name="ext" />
-                                    <label> Compressed (C) </label> 
-                            </div>
-                            <div class="col-md-2"></div>
-                        </div>
 
-                        <div style="display: flex;justify-content: flex-end;">
-                          <button type="button" class="btn" onclick="open_menu('devices')"> <img src="{% static 'img/boldarrow.png' %}" style="width: 80%;" /> </button>
-                          {% comment %} <style>
-                              input[type=submit] {
-                                    background: url("{% static 'img/boldarrow.png' %}");
-                                      border: 0;
-                                      background-size: contain;
-                                      display: block;
-                                      height: 67px;
-                                      width: 10%;
-                                      background-repeat: no-repeat;
-                                }
-                          </style>  
-                          <input type="submit" value=" "> {% endcomment %}
-                        {% comment %} </form> {% endcomment %}
 
-                        </div>
-                        
-                       
-                    </div>                    
+
+            <div class="checkbox-group">
+                <legend class="checkbox-group-legend">Extensions</legend>
+                <div class="checkbox">
+                    <label class="checkbox-wrapper">
+                        <input type="checkbox" class="checkbox-input" name="ext" value="i" checked disabled />
+                        <span class="checkbox-tile">
+                            <span class="checkbox-icon">
+                                <h1>I</h1>
+                            </span>
+                            <span class="checkbox-label">Integer</span>
+                        </span>
+                    </label>
                 </div>
 
-                <div id="devices" class="glass" style="display:none; border-radius: 15px; backdrop-filter: blur(50px); padding: 40px 45px;border: solid 1px rgba(255, 255, 255, 0.5); margin-top: 3vh;">
-                    <div style="text-align: left">
-                        <div>
-                            <h4 class="head" style="width: 200px;">
-                                Customize SoC
-                            </h4>
-                            <p class="middle">
-                                Generate a customized SoC with Core extensions, devices and bus interconnect of your choice.
-                            </p>
-                            
-                        </div>
-                        <div style="text-align: center;">
-                            <h3 style="font-weight: lighter;">Devices</h3>
-                            <p style="color: rgba(255, 255, 255, 0.801); font-weight: lighter;">Select the Devices to include in the SoC.</p>
-                        </div>
-                        
-                        <div class="row">
-                            <div class="col-md-3"></div>
-                            
-                            <div class="col-md-8">
-                                {% comment %} <form method="POST"> {% csrf_token %} {% endcomment %}
-                                    <input type="checkbox" name="dev" value="gpio" disabled checked />
-                                    <label> General Purpose Input Output (GPIO) </label>
-                                    <br>
-                                    <input type="checkbox" name="dev" value="spi" />
-                                    <label> Serial Peripheral Interface (SPI) </label>
-                                    <br>
-                                    <input type="checkbox" name="dev" value="spi_flash" />
-                                    <label> Serial Peripheral Interface (SPI) - Flash </label>
-                                    <br>
-                                    <input type="checkbox" name="dev" value="uart" />
-                                    <label> Universal Asynchronous Receiver Transmitter (UART) </label>
-                                    <br>
-                                    <input type="checkbox" name="dev" value="timer" />
-                                    <label> Timer </label>
-                                    <br>
-                                    <input type="checkbox" name="dev" value="i2c" />
-                                    <label> Inter Integrated Circuit (I<sup>2</sup>C) </label>
-                            </div>
-                        </div>
-
-                        <div class="d-flex justify-content-between align-items-center">
-                            <button type="button" class="btn" onclick="open_menu('core')"><img src="{% static 'img/boldarrow2.png' %}" style="width: 70%;" /> </button>
-                            <button type="button" class="btn" onclick="open_menu('bus')"> <img src="{% static 'img/boldarrow.png' %}" style="width: 80%;" /> </button>
-
-                            {% comment %} <style>
-                                input[type=submit] {
-                                      background: url("{% static 'img/boldarrow.png' %}");
-                                      border: 0;
-                                      background-size: contain;
-                                      display: block;
-                                      height: 67px;
-                                      width: 10%;
-                                      background-repeat: no-repeat;
-                                  }
-                            </style>  
-                            <input type="submit" value=" ">
-                        </form> {% endcomment %}
-
-                                                </div>
-                        
-                       
-                    </div>                    
+                <div class="checkbox">
+                    <label class="checkbox-wrapper">
+                        <input type="checkbox" class="checkbox-input" name="ext" value="m" />
+                        <span class="checkbox-tile">
+                            <span class="checkbox-icon">
+                                <h1>M</h1>
+                            <span class="checkbox-label">Multiplier</span>
+                        </span>
+                    </label>
                 </div>
 
-
-                <div id="bus" class="glass" style="display:none; border-radius: 15px; backdrop-filter: blur(50px); padding: 40px 45px;border: solid 1px rgba(255, 255, 255, 0.5); margin-top: 3vh;">
-                    <div style="text-align: left">
-                        <div>
-                            <h4 class="head" style="width: 200px;">
-                                Customize SoC
-                            </h4>
-                            <p class="middle">
-                                Generate a customized SoC with Core extensions, devices and bus interconnect of your choice.
-                            </p>
-                            
-                        </div>
-                        <div style="text-align: center;">
-                            <h3 style="font-weight: lighter;">Bus Interconnect</h3>
-                            <p style="color: rgba(255, 255, 255, 0.801); font-weight: lighter;">Select the Bus Interconnect to be used inside the SoC.</p>
-                        </div>
-                        
-                        <div class="row">
-                            <div class="col-md-3"></div>
-                            
-                            <div class="col-md-8">
-                                {% comment %} <form method="POST"> {% csrf_token %} {% endcomment %}
-                                    <input type="radio" name="bus" value="wb" checked>
-                                    <label> Wishbone </label>
-                                    <br />
-                                    <input type="radio" name="bus" value="tl-ul">
-                                    <label> Tilelink Uncached Lightweight (TL-UL) </label>
-                                    <br />
-                                    <input type="radio" name="bus" value="tl-c">
-                                    <label> Tilelink Cached (TL-C) </label>
-                            </div>
-                        </div>
-
-                        <div class="d-flex justify-content-between align-items-center">
-                            
-                            <button type="button" class="btn" onclick="open_menu('devices')"><img src="{% static 'img/boldarrow2.png' %}" style="width: 70%;" /> </button>
-                            <button type="submit" class="btn" > <img src="{% static 'img/boldarrow.png' %}" style="width: 80%;" /> </button>
-
-                            {% comment %} <style>
-                                input[type=submit] {
-                                    background: url("{% static 'img/boldarrow.png' %}");
-                                      border: 0;
-                                      background-size: contain;
-                                      display: block;
-                                      height: 67px;
-                                      width: 10%;
-                                      background-repeat: no-repeat;
-                                  }
-                            </style>  
-                            <input type="submit" value=" ">                        </form> {% endcomment %}
-
-                        </div>
-                    </form>
-                        
-                       
-                    </div>                    
+                <div class="checkbox">
+                    <label class="checkbox-wrapper">
+                        <input type="checkbox" class="checkbox-input" name="ext" value="f" />
+                        <span class="checkbox-tile">
+                            <span class="checkbox-icon">
+                                <h1>F</h1>
+                            <span class="checkbox-label">Floating Point</span>
+                        </span>
+                    </label>
                 </div>
 
-                
-            </div>
-            <div class="col-md-3">
-                
+                <div class="checkbox">
+                    <label class="checkbox-wrapper">
+                        <input type="checkbox" class="checkbox-input" name="ext" value="c" />
+                        <span class="checkbox-tile">
+                            <span class="checkbox-icon">
+                                <h1>C</h1>
+                            <span class="checkbox-label">Compressed</span>
+                        </span>
+                    </label>
+                </div>
             </div>
 
         </div>
+    </fieldset>
 
-    <script>
+    <fieldset class="form-group" id="1">
+        <div class="field-head">
+            <h3>Devices</h3>
+            <h6>Select the Devices to include in the SoC.</h6> 
+            <div class="line"></div>
+        </div>
+        
+        <div>
+            
+            <div class="checkbox-group no-flex" id="dev">
+                <legend class="checkbox-group-legend">Devices</legend>
+                <div class="checkbox">
+                    <label class="checkbox-wrapper">
+                        <input type="checkbox" class="checkbox-input" name="dev" value="gpio"  checked disabled />
+                        <span class="checkbox-tile">
+                            <span class="checkbox-icon">
+                                <h1>GPIO</h1>
+                            </span>
+                            <span class="checkbox-label">General Purpose Input Outputs</span>
+                        </span>
+                    </label>
+                </div>
 
-        function open_menu(comp){
-            var core = document.getElementById("core");
-            var devices = document.getElementById("devices");
-            var bus = document.getElementById("bus");
-            core.style.display = "none";
-            devices.style.display = "none";
-            bus.style.display = "none";
+                <div class="checkbox">
+                    <label class="checkbox-wrapper">
+                        <input type="checkbox" class="checkbox-input" name="dev" value="spi" />
+                        <span class="checkbox-tile">
+                            <span class="checkbox-icon">
+                                <h1>SPI</h1>
+                            </span>
+                            <span class="checkbox-label">Serial Peripheral Interface</span>
+                        </span>
+                    </label>
+                </div>
+                <div class="checkbox">
+                    <label class="checkbox-wrapper">
+                        <input type="checkbox" class="checkbox-input" name="dev" value="spi_flash" />
+                        <span class="checkbox-tile">
+                            <span class="checkbox-icon">
+                                <h1>SPI-F</h1>
+                            </span>
+                            <span class="checkbox-label">Serial Peripheral Interface - Flash</span>
+                        </span>
+                    </label>
+                </div>
 
-            if (comp == "core"){
-                core.style.display = "";
-            } else if (comp  == "devices"){
-                devices.style.display = "";
-            } else if (comp == "bus") {
-                bus.style.display = "";
-            }
-        }
-    </script>
+                <div class="checkbox">
+                    <label class="checkbox-wrapper">
+                        <input type="checkbox" class="checkbox-input" name="dev" value="uart" />
+                        <span class="checkbox-tile">
+                            <span class="checkbox-icon">
+                                <h1>UART</h1>
+                            </span>
+                            <span class="checkbox-label">Universal Asynchronous Receiver Transmitter</span>
+                        </span>
+                    </label>
+                </div>
+
+
+                <div class="checkbox">
+                    <label class="checkbox-wrapper">
+                        <input type="checkbox" class="checkbox-input" name="dev" value="i2c" />
+                        <span class="checkbox-tile">
+                            <span class="checkbox-icon">
+                                <h1>I<sup>2</sup>C</h1>
+                            </span>
+                            <span class="checkbox-label">Inter Integrated Circuit</span>
+                        </span>
+                    </label>
+                </div>
+
+                <div class="checkbox">
+                    <label class="checkbox-wrapper">
+                        <input type="checkbox" class="checkbox-input" name="dev" value="timer" />
+                        <span class="checkbox-tile">
+                            <span class="checkbox-icon">
+                                <h1>TIMER</h1>
+                            </span>
+                            <span class="checkbox-label">Timer</span>
+                        </span>
+                    </label>
+                </div>
+
+            </div>
+
+
+
+            
+
+        </div>
+
+</fieldset>
+
+<fieldset class="form-group" id="2">
+    <div class="field-head">
+        <h3>Bus Interconnect</h3>
+        <h6>Select the Bus Interconnect to be used inside the SoC.</h6> 
+        <div class="line"></div>
+    </div>
     
+    <div>
+        
+        <div class="checkbox-group no-flex" id="bus">
+            <legend class="checkbox-group-legend">Bus</legend>
+            <div class="checkbox">
+                <label class="checkbox-wrapper">
+                    <input type="radio" name="bus" class="checkbox-input" value="wb" checked />
+                    <span class="checkbox-tile">
+                        <span class="checkbox-icon">
+                            <h1>WB</h1>
+                        </span>
+                        <span class="checkbox-label">Wishbone</span>
+                    </span>
+                </label>
+            </div>
 
-{% endblock %}
+
+            <div class="checkbox">
+                <label class="checkbox-wrapper">
+                    <input type="radio" name="bus" class="checkbox-input" value="tl-ul" />
+                    <span class="checkbox-tile">
+                        <span class="checkbox-icon">
+                            <h1>TL-UL</h1>
+                        </span>
+                        <span class="checkbox-label">Tilelink Uncached Lightweight</span>
+                    </span>
+                </label>
+            </div>
+
+            <div class="checkbox">
+                <label class="checkbox-wrapper">
+                    <input type="radio" name="bus" class="checkbox-input" value="tl-c" />
+                    <span class="checkbox-tile">
+                        <span class="checkbox-icon">
+                            <h1>TL-C</h1>
+                        </span>
+                        <span class="checkbox-label">Tilelink Cached</span>
+                    </span>
+                </label>
+            </div>
+        </div>
+
+
+
+        
+
+    </div>
+
+</fieldset>
+
+<div class="btn-cont">
+    <button type="button" class="action-button previous_button">Back</button>
+    <button type="button" class="next action-button">Next</button>
+    <button type="submit" class="submit action-button">Generate</button>
+</div>
+
+<script>
+    var next_btn = document.querySelector('.next');
+    var previous_btn = document.querySelector('.previous_button');
+    var submit_btn = document.querySelector('.submit');
+    next_btn.addEventListener('click', function() {
+        var current_fs = document.getElementsByClassName("activee")[0];
+        console.log(current_fs);
+        var next_fs = current_fs.nextElementSibling;
+        var next_fs_id = next_fs.id;
+        console.log(next_fs_id);
+        // current_fs.animate({
+        //     opacity: '0'
+        // }, {
+        //     duration: 1000,
+        //     complete: function() {
+        //         current_fs.classList.remove('activee');
+        //         next_fs.classList.add('activee');
+                
+        //     }
+        // });
+        current_fs.classList.remove('activee');
+        next_fs.classList.add('activee');
+        var progressbar_li = document.getElementsByClassName("li")[next_fs_id];
+        progressbar_li.classList.add('active');
+        checButtons(next_fs_id);
+    });
+    previous_btn.addEventListener('click', function() {
+        var current_fs = document.getElementsByClassName("activee")[0];
+        console.log(current_fs);
+        var next_fs = current_fs.previousElementSibling;
+        var next_fs_id = current_fs.id;
+        console.log(next_fs_id);
+        // current_fs.animate({
+        //     opacity: '0'
+        // }, {
+        //     duration: 'slow',
+        //     complete: function() {
+        //         current_fs.classList.remove('activee');
+        //         next_fs.classList.add('activee');
+        //         var progressbar_li = document.getElementsByClassName("li")[next_fs_id];
+        //         console.log(progressbar_li)
+        //         progressbar_li.classList.remove('active');
+        //         checButtons();
+        //     }
+        // });
+        current_fs.classList.remove('activee');
+        next_fs.classList.add('activee');
+        var progressbar_li = document.getElementsByClassName("li")[next_fs_id];
+        progressbar_li.classList.remove('active');
+        checButtons(next_fs_id);
+    });
+    function checButtons(id){
+        console.log("------",id);
+        if (id == 0) {
+            previous_btn.disabled = true;
+            next_btn.style.display = 'block';
+        // } else {
+        //     previous_btn.disabled = false;
+        }
+        else if (id == 2) {
+            // next_btn.disabled = true;
+
+            submit_btn.style.display = 'block';
+            next_btn.style.display = 'none';
+        } else {
+            // next_btn.disabled = false;
+            submit_btn.style.display = 'none';
+            next_btn.style.display = 'block';
+            previous_btn.disabled = false;
+        }
+    }
+    checButtons();
+</script>
+
+<!-- <script>
+    ;(function($) {
+    "use strict";  
+    
+    //* Form js
+    function verificationForm(){
+        //jQuery time
+        var current_fs, next_fs, previous_fs; //fieldsets
+        var left, opacity, scale; //fieldset properties which we will animate
+        var animating; //flag to prevent quick multi-click glitches
+
+        $(".next").click(function () {
+            if (animating) return false;
+            animating = true;
+
+            current_fs = $("fieldset .active");
+            next_fs = current_fs.next();
+
+            //activate next step on progressbar using the index of next_fs
+            $("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
+
+            //show the next fieldset
+            next_fs.show();
+            //hide the current fieldset with style
+            current_fs.animate({
+                opacity: 0
+            }, {
+                step: function (now, mx) {
+                    //as the opacity of current_fs reduces to 0 - stored in "now"
+                    //1. scale current_fs down to 80%
+                    scale = 1 - (1 - now) * 0.2;
+                    //2. bring next_fs from the right(50%)
+                    left = (now * 50) + "%";
+                    //3. increase opacity of next_fs to 1 as it moves in
+                    opacity = 1 - now;
+                    current_fs.css({
+                        'transform': 'scale(' + scale + ')',
+                        'position': 'absolute'
+                    });
+                    next_fs.css({
+                        'left': left,
+                        'opacity': opacity
+                    });
+                },
+                duration: 800,
+                complete: function () {
+                    current_fs.hide();
+                    animating = false;
+                },
+                //this comes from the custom easing plugin
+                easing: 'easeInOutBack'
+            });
+        });
+
+        $(".previous").click(function () {
+            if (animating) return false;
+            animating = true;
+
+            current_fs = $(this).parent();
+            previous_fs = $(this).parent().prev();
+
+            //de-activate current step on progressbar
+            $("#progressbar li").eq($("fieldset").index(current_fs)).removeClass("active");
+
+            //show the previous fieldset
+            previous_fs.show();
+            //hide the current fieldset with style
+            current_fs.animate({
+                opacity: 0
+            }, {
+                step: function (now, mx) {
+                    //as the opacity of current_fs reduces to 0 - stored in "now"
+                    //1. scale previous_fs from 80% to 100%
+                    scale = 0.8 + (1 - now) * 0.2;
+                    //2. take current_fs to the right(50%) - from 0%
+                    left = ((1 - now) * 50) + "%";
+                    //3. increase opacity of previous_fs to 1 as it moves in
+                    opacity = 1 - now;
+                    current_fs.css({
+                        'left': left
+                    });
+                    previous_fs.css({
+                        'transform': 'scale(' + scale + ')',
+                        'opacity': opacity
+                    });
+                },
+                duration: 800,
+                complete: function () {
+                    current_fs.hide();
+                    animating = false;
+                },
+                //this comes from the custom easing plugin
+                easing: 'easeInOutBack'
+            });
+        });
+
+        $(".submit").click(function () {
+            return false;
+        })
+    }; 
+    
+    
+    
+    /*Function Calls*/  
+    verificationForm ();
+   
+})(jQuery); 
+</script> -->
+
+
+</form>
+</div>
+
+
+
+
+
+
+{% endblock content %}
+

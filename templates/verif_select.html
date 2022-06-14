@@ -1,56 +1,684 @@
-{% extends 'base2.html' %}
+{% extends 'base.html' %}
+
 {% load static %}
 
-{% block nana %}
+{% block content %}
 <style>
     body{
-        overflow-x:hidden
+        overflow: hidden;
     }
-</style>       
-        <div class="row" style="margin-top: 3vh;">
-            <div class="col-md-3">
-            </div>
-            <div class="col-md-6" style="height: 100%;text-align: center;">
-                <br>
-                
-                <a
-                 href="{% url 'verif_core' %}"
-                 style="text-decoration: none; color: white;"><div class="glass d-flex justify-content-between align-items-center" style="border-radius: 15px; backdrop-filter: blur(50px); padding: 10px 15px;border: solid 1px rgba(255, 255, 255, 0.5);  margin-top: 20px;">
-                    <div style="text-align: left;padding-left: 20px;">
-                        <div>
-                            <h4 class="head" style="width: 250px;">
-                                Core Verification
-                            </h4>
-                        </div>
-                        
-                        <p>
-                            Verify the Core with Compliance Tests.
-                        </p>
-                    </div>
-                    <img src="{% static 'img/bigarrow.png' %}" style="width: 20%;" />
-                    
-                </div></a>
-                <a href="{% url 'select_soc' %}" style="text-decoration: none; color: white;"><div class="glass d-flex justify-content-between align-items-center" style="border-radius: 15px; backdrop-filter: blur(50px); padding: 10px 15px;border: solid 1px rgba(255, 255, 255, 0.5);  margin-top: 20px;">
-                    <div style="text-align: left;padding-left: 20px;">
-                        <div>
-                            <h4 class="head" style="width: 250px;">
-                                SoC Verification
-                            </h4>
-                        </div>
-                        
-                        <p>
-                            Verify the complete SoC.
-                        </p>
-                    </div>
-                    <img src="{% static 'img/bigarrow.png' %}" style="width: 20%;" />
-                    
-                </div>
-                </a>
-            </div>
-            <div class="col-md-3">
-                
-            </div>
+</style>
 
+<section id="main" class="clean-block verif">
+    <div class="row">
+        <div class="col-md-3 tab-btns">
+            <button onclick="changeCom(event,'auto')" class="btn tab-btn active">
+                Automated Core Verification
+            </button>
+            <br>
+            <button onclick="changeCom(event,'custom')" class="btn tab-btn">
+                Custom Core Verification
+            </button>
+            <br>
+            <button onclick="changeCom(event,'soc')" class="btn tab-btn">
+                Custom SoC Verification
+            </button>
         </div>
-   
-{% endblock %}
+        <div class="col-md-9 auto-core">
+            <div class="container">
+                <form id="verification-form" method="post"> {% csrf_token %} 
+                <div class="row">
+                    <div class="col-md-6">
+                        <h4>Select Tests to be run:</h4>
+                        <div class="tests">
+                        <div class="test-group">
+                            <input type="checkbox" name="tst" id="select-all" />
+                            <label> Select All </label>
+                        </div>
+                        <div class="test-group">
+                        <input id="basic" disabled type="checkbox" name="tst" value="{{basecase.name_convention}}" checked />
+                        <label> {{ basecase.name }} </label>
+                        </div>
+                        {% for testcase in testcases %}
+                        <div class="test-group">
+                            <input type="checkbox" name="tst" id="{{testcase.name}}" value="{{testcase.name_convention}}" />
+                            <label> {{testcase.name}} </label>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                    <div class="col-md-2">
+
+                    </div>
+                    <div class="col-md-4">
+                        <div class="testsafter">
+                            <div id="{{basecase.name}}" class="test-group">
+                                <label> {{ basecase.name }} </label>
+                            </div>
+                        </div>
+                        <div>
+                            <div id="containerr">
+                                <button name="compliance" onclick="startVerification()"class="learn-more">
+                                  <span class="circle" aria-hidden="true">
+                                    <span class="icon arrow"></span>
+                                  </span>
+                                  <span class="button-text">Start Verification</span>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        
+                    </div>
+
+
+
+                </div>
+            </form>
+                
+            </div>
+        </div>
+
+        <div class="col-md-9 custom-core">
+            <div class="container">
+                <div class="row">
+                    <div onclick="changeCodeEditor('c')" class="col-md-6 editor-tab active">
+                        main.c
+                    </div>
+                    <div onclick="changeCodeEditor('s')" class="col-md-6 editor-tab">
+                        main.S
+                    </div>
+                </div>
+                <form id="custom-core-form" method="post"> {% csrf_token %}
+
+                
+                    <div class="code-editor">
+                        <div id="main-c-div">
+                            <textarea id="main-c" class="code-editor-textarea" name="main-c"></textarea>
+
+                            <div style="text-align: center;padding: 2%;">
+                                <button type="submit" name="c-test" class="custom-btn btn-1">Generate VCD</button>
+                            </div>
+                            
+                            
+                            
+                            
+                            
+                        </div>
+
+                        <div id="main-s-div">
+                            <textarea id="main-s" class="code-editor-textarea" name="main-s"></textarea>
+                            <div style="text-align: center;padding: 2%;">
+                                <button type="submit" name="s-test" class="custom-btn btn-1">Generate VCD</button>
+                            </div>
+                            
+                            <!-- <button id="button" class="ready" onclick="clickButton();">
+    
+                                <div class="message submitMessage">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 13 12.2">
+                                    <polyline stroke="currentColor" points="2,7.1 6.5,11.1 11,7.1 "/>
+                                    <line stroke="currentColor" x1="6.5" y1="1.2" x2="6.5" y2="10.3"/>
+                                </svg> <span class="button-text">Submit</span>
+                                </div>
+                                
+                                <div class="message loadingMessage">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19 17">
+                                    <circle class="loadingCircle" cx="2.2" cy="10" r="1.6"/>
+                                    <circle class="loadingCircle" cx="9.5" cy="10" r="1.6"/>
+                                    <circle class="loadingCircle" cx="16.8" cy="10" r="1.6"/>
+                                </svg>
+                                </div>
+                                
+                                <div class="message successMessage">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 13 11">
+                                    <polyline stroke="currentColor" points="1.4,5.8 5.1,9.5 11.6,2.1 "/>
+                                </svg> <span class="button-text">Download VCD</span>
+                                </div>
+                            </button>
+                            
+                            <canvas id="canvas"></canvas> -->
+                            
+                        </div>
+
+                        <button disabled type="button" id="button" class="ready" onclick="clickButton();">
+    
+                            <div class="message submitMessage">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 13 12.2">
+                                <polyline stroke="currentColor" points="2,7.1 6.5,11.1 11,7.1 "/>
+                                <line stroke="currentColor" x1="6.5" y1="1.2" x2="6.5" y2="10.3"/>
+                            </svg> <span class="button-text">Submit</span>
+                            </div>
+                            
+                            <div class="message loadingMessage">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19 17">
+                                <circle class="loadingCircle" cx="2.2" cy="10" r="1.6"/>
+                                <circle class="loadingCircle" cx="9.5" cy="10" r="1.6"/>
+                                <circle class="loadingCircle" cx="16.8" cy="10" r="1.6"/>
+                            </svg>
+                            </div>
+                            
+                            <div class="message successMessage">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 13 11">
+                                <polyline stroke="currentColor" points="1.4,5.8 5.1,9.5 11.6,2.1 "/>
+                            </svg> <span class="button-text">Download VCD</span>
+                            </div>
+                        </button>
+                        
+                        <canvas id="canvas"></canvas>
+                    </form>
+
+
+                    <div id="vcd_loader">
+                        <div class="loader">
+                            <span class="loader-block"></span>
+                            <span class="loader-block"></span>
+                            <span class="loader-block"></span>
+                            <span class="loader-block"></span>
+                            <span class="loader-block"></span>
+                            <span class="loader-block"></span>
+                            <span class="loader-block"></span>
+                            <span class="loader-block"></span>
+                            <span class="loader-block"></span>
+                          </div>
+                          <h3 style="text-align: center;margin-top: 35%;"> Generating VCD </h3>
+                    </div>
+                        
+
+                        
+                    
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+<div id="verif_loader">
+
+    <div class="loading">Verification in Progress</div>
+
+
+
+</div>
+
+<script src="{% static 'js/jquery.min.js' %}"></script>
+<script>
+
+
+// form on submit trigger
+$('#custom-core-form').on('submit', function(e) {
+  e.preventDefault()
+  $('#main-c-div').hide()
+   $('#main-s-div').hide()
+   $('#vcd_loader').show()
+   e.submit()
+})
+
+
+function genVCD(lang){
+    if(lang == "c"){
+        var div = document.getElementById("main-c-div");
+        var vcd_loader = document.getElementById("vcd_loader");
+        div.style.display = "none";
+        vcd_loader.style.display = "block";
+    } else if("s"){
+        var div = document.getElementById("main-s-div");
+        var vcd_loader = document.getElementById("vcd_loader");
+        div.style.display = "none";
+        vcd_loader.style.display = "block";
+    }
+    var form = document.getElementById("custom-core-form");
+    form.submit();
+}
+
+
+
+    function changeCodeEditor(cd){
+        if(cd == "c"){
+            $("#main-c-div").show();
+            $("#main-s-div").hide();
+            $(".editor-tab").removeClass("active");
+            $(".editor-tab").eq(0).addClass("active");
+            // $("#main-c-dwnld-btn").style.display = "block";
+            // $("#main-s-dwnld-btn").hide()
+            // var cm = $('.CodeMirror')[0].CodeMirror;
+            // //Hide
+            // $(cm.getWrapperElement()).hide();
+            // //Show
+            // var cm2 = $('.CodeMirror')[1].CodeMirror;
+            // $(cm2.getWrapperElement()).show();
+        }
+        else{
+            $("#main-c-div").hide();
+            $("#main-s-div").show();
+            $(".editor-tab").removeClass("active");
+            $(".editor-tab").eq(1).addClass("active");
+            // $("#main-c-dwnld-btn").hide()
+            // $("#main-s-dwnld-btn").show()
+
+            // var cm = $('.CodeMirror')[1].CodeMirror;
+            // //Hide
+            // $(cm.getWrapperElement()).hide();
+            // //Show
+            // var cm2 = $('.CodeMirror')[0].CodeMirror;
+            // $(cm2.getWrapperElement()).show();
+        }
+    }
+
+var editor = document.getElementById("main-c");
+      CodeMirror.fromTextArea(
+          editor,
+          {
+              lineNumbers: true,
+              matchBrackets: true,
+              theme: "ayu-dark",
+              mode: "text/x-csrc",
+              autoRefresh: true,
+              scrollbars:true,
+              
+          }
+      ).setSize(null, "65vh");
+      var editor2 = document.getElementById("main-s");
+      CodeMirror.fromTextArea(
+          editor2,
+          {
+              lineNumbers: true,
+              matchBrackets: true,
+              theme: "ayu-dark",
+              mode: "text/x-csrc",
+              autoRefresh: true,
+              scrollbars:true,
+              
+          }
+      ).setSize(null, "65vh");
+
+    //   var cm = $('.CodeMirror')[1].CodeMirror;
+    //         //Hide
+    //         $(cm.getWrapperElement()).hide();
+
+      
+
+    function changeCom(event,comp){
+        var autoCore = document.getElementsByClassName("auto-core")[0];
+        var customCore = document.getElementsByClassName("custom-core")[0];
+        var customSoC = document.getElementsByClassName("custom-soc")[0];
+        var tabBtns = document.getElementsByClassName("tab-btn");
+        for (var i = 0; i < tabBtns.length; i++) {
+            tabBtns[i].classList.remove("active");
+        }
+        event.target.classList.add("active");
+        if(comp == "auto"){
+            autoCore.style.display = "block";
+            customCore.style.display = "none";
+            customSoC.style.display = "none";
+        }
+        else if(comp == "custom"){
+            autoCore.style.display = "none";
+            customCore.style.display = "block";
+            customSoC.style.display = "none";
+        }
+        else if(comp == "soc"){
+            autoCore.style.display = "none";
+            customCore.style.display = "none";
+            customSoC.style.display = "block";
+        }  
+    }
+
+     function startVerification(){
+        var form = document.getElementById('verification-form');
+        var main = document.getElementById('main');
+        var loader = document.getElementById('verif_loader');
+        main.style.display = "none";
+        loader.style.display = "flex";
+        loloo();
+        form.submit();
+    }
+    function loloo(){
+        $(document).ready(function() {
+
+let loading = $('.loading').wrapInner('<div></div>'),
+    min = 20,
+    max = 70,
+    minMove = 10,
+    maxMove = 20;
+
+startAnimation(loading);
+
+loading.on('animationend webkitAnimationEnd oAnimationEnd', 'span:last-child', e => {
+    startAnimation(loading);
+});
+
+//Set CSS vars & generate spans if needed
+function setCSSVars(elem, min, max, minMove, maxMove) {
+    let width = Math.ceil(elem.width()),
+        text = elem.text();
+    for(let i = 1; i < width; i++) {
+        let num = Math.floor(Math.random() * (max - min + 1)) + min,
+            numMove = Math.floor(Math.random() * (maxMove - minMove + 1)) + minMove,
+            dir = (i % 2 == 0) ? 1 : -1,
+            spanCurrent = elem.find('span:eq(' + i + ')'),
+            span = spanCurrent.length ? spanCurrent : $('<span />');
+        span.css({
+            '--x': i - 1 + 'px',
+            '--move-y': num * dir + 'px',
+            '--move-y-s': ((i % 2 == 0) ? num * dir - numMove : num * dir + numMove) + 'px',
+            '--delay': i * 10 + 'ms'
+        });
+        if(!spanCurrent.length) {
+            elem.append(span.text(text));
+        }
+    }
+}
+
+//Start animation
+function startAnimation(elem) {
+    elem.removeClass('start');
+    setCSSVars(elem, min, max, minMove, maxMove);
+    void elem[0].offsetWidth;
+    elem.addClass('start');
+}
+
+});
+    }
+    
+
+</script>
+<script>
+    $('#select-all').click(function(event) {   
+            if(this.checked) {
+                // Iterate each checkbox
+                $(':checkbox').each(function() {
+                    this.checked = true;
+                    $(".testsafter").find("#select-all").remove();
+                    var name = $(this).attr("id");
+                    // append name in test-group inner html
+                    if(name != "basic"){
+                        $(".testsafter").append(`<div id="${name}" class='test-group'><label> ${name} </label></div>`);
+
+                    }
+                               
+                });
+            } else {
+                $(':checkbox').each(function() {
+                    this.checked = false;                       
+                });
+                // add empty string in .testafter inner html
+                // $(".testsafter").html("");
+                $(".testsafter").html("<div id='{{basecase.name}}' class='test-group'><label> {{ basecase.name }} </label></div>");
+                
+                $('#basic')[0].checked = true;
+                // $(".testsafter").append(`<div id="${ {{ basecase.name }} }" class='test-group'><label> ${ {{ basecase.name }} } </label></div>`);
+
+            }
+        }); 
+        // checbox on checked trigger
+        $(':checkbox').click(function() {
+            if($(this).is(':checked')) {
+                var name = $(this).attr("id");
+                // append name in test-group inner html
+                $(".testsafter").append(`<div id="${name}" class='test-group'><label> ${name} </label></div>`);
+            }
+            else {
+                var name = $(this).attr("id");
+                // remove name from test-group inner html
+                $(".testsafter").find("#" + name).remove();
+            }
+        });
+    // $(":checkbox").checked(function() {
+        
+    
+    // });
+</script>
+
+
+<script>
+
+    // ammount to add on each button press
+    const confettiCount = 20
+    const sequinCount = 10
+    
+    // "physics" variables
+    const gravityConfetti = 0.3
+    const gravitySequins = 0.55
+    const dragConfetti = 0.075
+    const dragSequins = 0.02
+    const terminalVelocity = 3
+    
+    // init other global elements
+    const button = document.getElementById('button')
+    var disabled = false
+    const canvas = document.getElementById('canvas')
+    const ctx = canvas.getContext('2d')
+    canvas.width = window.innerWidth
+    canvas.height = window.innerHeight
+    let cx = ctx.canvas.width / 2
+    let cy = ctx.canvas.height / 2
+    
+    // add Confetto/Sequin objects to arrays to draw them
+    let confetti = []
+    let sequins = []
+    
+    // colors, back side is darker for confetti flipping
+    const colors = [
+      { front : '#7b5cff', back: '#6245e0' }, // Purple
+      { front : '#b3c7ff', back: '#8fa5e5' }, // Light Blue
+      { front : '#5c86ff', back: '#345dd1' }  // Darker Blue
+    ]
+    
+    // helper function to pick a random number within a range
+    randomRange = (min, max) => Math.random() * (max - min) + min
+    
+    // helper function to get initial velocities for confetti
+    // this weighted spread helps the confetti look more realistic
+    initConfettoVelocity = (xRange, yRange) => {
+      const x = randomRange(xRange[0], xRange[1])
+      const range = yRange[1] - yRange[0] + 1
+      let y = yRange[1] - Math.abs(randomRange(0, range) + randomRange(0, range) - range)
+      if (y >= yRange[1] - 1) {
+        // Occasional confetto goes higher than the max
+        y += (Math.random() < .25) ? randomRange(1, 3) : 0
+      }
+      return {x: x, y: -y}
+    }
+    
+    // Confetto Class
+    function Confetto() {
+      this.randomModifier = randomRange(0, 99)
+      this.color = colors[Math.floor(randomRange(0, colors.length))]
+      this.dimensions = {
+        x: randomRange(5, 9),
+        y: randomRange(8, 15),
+      }
+      this.position = {
+        x: randomRange(canvas.width/2 - button.offsetWidth/4, canvas.width/2 + button.offsetWidth/4),
+        y: randomRange(canvas.height/2 + button.offsetHeight/2 + 8, canvas.height/2 + (1.5 * button.offsetHeight) - 8),
+      }
+      this.rotation = randomRange(0, 2 * Math.PI)
+      this.scale = {
+        x: 1,
+        y: 1,
+      }
+      this.velocity = initConfettoVelocity([-9, 9], [6, 11])
+    }
+    Confetto.prototype.update = function() {
+      // apply forces to velocity
+      this.velocity.x -= this.velocity.x * dragConfetti
+      this.velocity.y = Math.min(this.velocity.y + gravityConfetti, terminalVelocity)
+      this.velocity.x += Math.random() > 0.5 ? Math.random() : -Math.random()
+      
+      // set position
+      this.position.x += this.velocity.x
+      this.position.y += this.velocity.y
+    
+      // spin confetto by scaling y and set the color, .09 just slows cosine frequency
+      this.scale.y = Math.cos((this.position.y + this.randomModifier) * 0.09)    
+    }
+    
+    // Sequin Class
+    function Sequin() {
+      this.color = colors[Math.floor(randomRange(0, colors.length))].back,
+      this.radius = randomRange(1, 2),
+      this.position = {
+        x: randomRange(canvas.width/2 - button.offsetWidth/3, canvas.width/2 + button.offsetWidth/3),
+        y: randomRange(canvas.height/2 + button.offsetHeight/2 + 8, canvas.height/2 + (1.5 * button.offsetHeight) - 8),
+      },
+      this.velocity = {
+        x: randomRange(-6, 6),
+        y: randomRange(-8, -12)
+      }
+    }
+    Sequin.prototype.update = function() {
+      // apply forces to velocity
+      this.velocity.x -= this.velocity.x * dragSequins
+      this.velocity.y = this.velocity.y + gravitySequins
+      
+      // set position
+      this.position.x += this.velocity.x
+      this.position.y += this.velocity.y   
+    }
+    
+    // add elements to arrays to be drawn
+    initBurst = () => {
+      for (let i = 0; i < confettiCount; i++) {
+        confetti.push(new Confetto())
+      }
+      for (let i = 0; i < sequinCount; i++) {
+        sequins.push(new Sequin())
+      }
+    }
+    
+    // draws the elements on the canvas
+    render = () => {
+      ctx.clearRect(0, 0, canvas.width, canvas.height)
+      
+      confetti.forEach((confetto, index) => {
+        let width = (confetto.dimensions.x * confetto.scale.x)
+        let height = (confetto.dimensions.y * confetto.scale.y)
+        
+        // move canvas to position and rotate
+        ctx.translate(confetto.position.x, confetto.position.y)
+        ctx.rotate(confetto.rotation)
+    
+        // update confetto "physics" values
+        confetto.update()
+        
+        // get front or back fill color
+        ctx.fillStyle = confetto.scale.y > 0 ? confetto.color.front : confetto.color.back
+        
+        // draw confetto
+        ctx.fillRect(-width / 2, -height / 2, width, height)
+        
+        // reset transform matrix
+        ctx.setTransform(1, 0, 0, 1, 0, 0)
+    
+        // clear rectangle where button cuts off
+        if (confetto.velocity.y < 0) {
+          ctx.clearRect(canvas.width/2 - button.offsetWidth/2, canvas.height/2 + button.offsetHeight/2, button.offsetWidth, button.offsetHeight)
+        }
+      })
+    
+      sequins.forEach((sequin, index) => {  
+        // move canvas to position
+        ctx.translate(sequin.position.x, sequin.position.y)
+        
+        // update sequin "physics" values
+        sequin.update()
+        
+        // set the color
+        ctx.fillStyle = sequin.color
+        
+        // draw sequin
+        ctx.beginPath()
+        ctx.arc(0, 0, sequin.radius, 0, 2 * Math.PI)
+        ctx.fill()
+    
+        // reset transform matrix
+        ctx.setTransform(1, 0, 0, 1, 0, 0)
+    
+        // clear rectangle where button cuts off
+        if (sequin.velocity.y < 0) {
+          ctx.clearRect(canvas.width/2 - button.offsetWidth/2, canvas.height/2 + button.offsetHeight/2, button.offsetWidth, button.offsetHeight)
+        }
+      })
+    
+      // remove confetti and sequins that fall off the screen
+      // must be done in seperate loops to avoid noticeable flickering
+      confetti.forEach((confetto, index) => {
+        if (confetto.position.y >= canvas.height) confetti.splice(index, 1)
+      })
+      sequins.forEach((sequin, index) => {
+        if (sequin.position.y >= canvas.height) sequins.splice(index, 1)
+      })
+    
+      window.requestAnimationFrame(render)
+    }
+    
+    // cycle through button states when clicked
+    clickButton = () => {
+      if (!disabled) {
+        disabled = true
+        // Loading stage
+        button.classList.add('loading')
+        button.classList.remove('ready')
+        setTimeout(() => {
+          // Completed stage
+          button.classList.add('complete')
+          button.classList.remove('loading')
+          setTimeout(() => {
+            window.initBurst()
+            setTimeout(() => {
+              // Reset button so user can select it again
+              disabled = false
+              button.classList.add('ready')
+              button.classList.remove('complete')
+            }, 4000)
+          }, 320)
+        }, 1800)
+      }
+    }
+    
+    // re-init canvas if the window size changes
+    resizeCanvas = () => {
+      canvas.width = window.innerWidth
+      canvas.height = window.innerHeight
+      cx = ctx.canvas.width / 2
+      cy = ctx.canvas.height / 2
+    }
+    
+    // resize listenter
+    window.addEventListener('resize', () => {
+      resizeCanvas()
+    })
+    
+    // click button on spacebar or return keypress
+    document.body.onkeyup = (e) => {
+      if (e.keyCode == 13 || e.keyCode == 32) {
+        clickButton()
+      }
+    }
+    
+    // Set up button text transition timings on page load
+    textElements = button.querySelectorAll('.button-text')
+    textElements.forEach((element) => {
+      characters = element.innerText.split('')
+      let characterHTML = ''
+      characters.forEach((letter, index) => {
+        characterHTML += `<span class="char${index}" style="--d:${index * 30}ms; --dr:${(characters.length - index - 1) * 30}ms;">${letter}</span>`
+      })
+      element.innerHTML = characterHTML
+    })
+    
+    // kick off the render loop
+    window.initBurst()
+    render()
+       
+    
+    </script>
+    
+
+<script>
+
+</script>
+
+{% endblock content %}

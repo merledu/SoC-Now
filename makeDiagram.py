@@ -26,12 +26,12 @@ def makeDiagram():
                 bus = "wishbone"
 
     # im = Image.new('RGB', (x, y),(0,0,0))
-    im = Image.new('RGBA', (x, y), (255, 0, 0, 0))
+    im = Image.new('RGBA', (x, y), (0, 0, 0, 0))
 
 
     draw = ImageDraw.Draw(im)
     # draw.rounded_rectangle((60,60, 2440,1010), fill=(255, 0, 0, 0), outline=(255, 255, 2            55),width=5, radius=20)
-    draw.rectangle((950,150,150,950),fill=(255, 0, 0, 0),outline=(225,225,225),width=5)
+    draw.rectangle((950,150,150,950),fill=(0, 0, 0, 0),outline=(0,0,0),width=5)
     draw.text((300, 400), "Core" , font = font, align ="left")
 
     str = ""
@@ -52,14 +52,14 @@ def makeDiagram():
         val = a+60
 
         for i in device:
-            draw.rectangle((x1,y1,x2,y2),fill=(255, 0, 0, 0),outline=(225,225,225),width=5)
+            draw.rectangle((x1,y1,x2,y2),fill=(0, 0, 0, 0),outline=(0,0,0),width=5)
             if i == "spi_flash":
                 draw.text((x1+30, y2+40), "SPI-" , font = font2, align ="right")
                 draw.text((x1+30, y2+85), "FLASH" , font = font2, align ="right")
             else:
                 draw.text((x1+30, y2+55), i.upper() , font = font2, align ="right")
 
-            draw.rectangle((a,b,c,d),fill=(255, 0, 0, 0),outline=(225,225,225),width=5)
+            draw.rectangle((a,b,c,d),fill=(0, 0, 0, 0),outline=(0,0,0),width=5)
             draw.text((val, d+4), bus.capitalize() , font = font3, align ="right") 
 
             x2 += 190
@@ -86,14 +86,14 @@ def makeDiagram():
         val = a+120
 
         for i in device:
-            draw.rectangle((x1,y1,x2,y2),fill=(255, 0, 0, 0),outline=(225,225,225),width=5)
+            draw.rectangle((x1,y1,x2,y2),fill=(0, 0, 0, 0),outline=(0,0,0),width=5)
             if i == "spi_flash":
                 draw.text((x1+60, y2+50), "SPI" , font = font2, align ="right")
                 draw.text((x1+60, y2+105), "FLASH" , font = font2, align ="right")
             else:
                 draw.text((x1+50, y2+85), i.upper() , font = font2, align ="right")
 
-            draw.rectangle((a,b,c,d),fill=(255, 0, 0, 0),outline=(225,225,225),width=5)
+            draw.rectangle((a,b,c,d),fill=(0, 0, 0, 0),outline=(225,225,225),width=5)
             draw.text((val, d+4), bus.capitalize() , font = font3, align ="right") 
 
             x2 += 280
@@ -120,14 +120,14 @@ def makeDiagram():
         val = a+140
 
         for i in device:
-            draw.rectangle((x1,y1,x2,y2),fill=(255, 0, 0, 0),outline=(225,225,225),width=3)
+            draw.rectangle((x1,y1,x2,y2),fill=(0, 0, 0, 0),outline=(0,0,0),width=3)
             if i == "spi_flash":
                 draw.text((x1+60, y2+50), "SPI" , font = font2, align ="right")
                 draw.text((x1+60, y2+105), "FLASH" , font = font2, align ="right")
             else:
                 draw.text((x1+50, y2+85), i.upper() , font = font2, align ="right")
 
-            draw.rectangle((a,b,c,d),fill=(255, 0, 0, 0),outline=(225,225,225),width=3)
+            draw.rectangle((a,b,c,d),fill=(0, 0, 0, 0),outline=(0,0,0),width=3)
             draw.text((val, d+4), bus.capitalize() , font = font3, align ="right") 
 
             x2 += 280

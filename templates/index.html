@@ -1,40 +1,104 @@
+{% extends 'base.html' %}
+
 {% load static %}
 
-{% include 'base.html' %}
-
 {% block content %}
-<style>
-    body{
-        overflow-x: hidden;
-    }
-</style>
-<body class="hero-main">
 
-    <section class="clean-block" style="height: 100%;">
-        <div class="row" style="height:100% ">
-            <div class="col-md-8 glass">
-                <div class="container center" style="margin-top: 20vh;">
-                    <img src="{% static 'img/socLogo.png' %}" style="width: 50%;" />
-                    <div class="justify" style="width: 50%;margin-left: 25%;">
-                        <p>An open source no cost tool for creating</p><p>customized SoC using No Code</p>
-                    </div>
-                    <a href="{% url 'home' %}"><button class="btn blue-btn">
-                        <div>
-                            Explore
-                        <img src="{% static 'img/arrow.png' %}" />
-                        </div>
-                        
-                    </button></a>
+
+<section class="hero">
+    <div class="hero-content">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h1 class="gradient-text">SoC-Now</h1>
+                    <h4>Mini SoC Generator by MERL-UIT</h4>
+                    <button class="btn explr-btn">Explore <img src="{% static 'img/right-arrow.png' %}" </button>
                 </div>
-
-            </div>
-            <div class="col-md-4">
-                <div class="nav">
-                    <div style="margin-right:20px ;"> <a href="{% url 'about1' %}"> About </a></div>
-                    <div><a href="{% url 'contact1' %}"> Contact </a></div>
+                <div class="col-md-6 d-flex justify-content-center align-items-center">
+                    <img src="{% static 'img/lptp.png' %}" style="width:100% ;" class="img-responsive" alt="SoC-Now">
                 </div>
             </div>
         </div>
-    </section>
+    </div>
     
-{% endblock %}
+    
+</section>
+
+<section class="clean-block">
+    <div class="container">
+        <h2 class="section-head"> Features </h2>
+        <div class="line"></div>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-head">
+                    <img src="{% static 'img/nsoc.png' %}" style="width:20%" />
+                    </div>
+                    <div class="card-body">
+                        <h4 class="card-title">Generate SoC</h4>
+                        <p class="card-text">Generate a customized SoC with Core extensions, devices and bus interconnect of your choice.</p>
+                    
+                        <div id="containerr">
+                            <button onclick="window.location.href = '{% url 'soc' %}'" class="learn-more">
+                              <span class="circle" aria-hidden="true">
+                                <span class="icon arrow"></span>
+                              </span>
+                              <span class="button-text">Create Project</span>
+                            </button>
+                          </div>
+                    
+                    
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-head">
+                    <img src="{% static 'img/ncomp.png' %}" style="width:20%" />
+                    </div>
+                    <div class="card-body">
+                        <h4 class="card-title">Reusable Component</h4>
+                        <p class="card-text">Generate a customized configurable component either Core, Device, and/or Bus Interconnect.</p>
+                    
+                        <div id="containerr">
+                            <button class="learn-more">
+                              <span class="circle" aria-hidden="true">
+                                <span class="icon arrow"></span>
+                              </span>
+                              <span class="button-text">Create Project</span>
+                            </button>
+                        </div>
+                    
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-head">
+                    <img src="{% static 'img/nverif.png' %}" style="width:20%" />
+                    </div>
+                    <div class="card-body">
+                        <h4 class="card-title">Verification</h4>
+                        <p class="card-text">Verify the Core, and/or SoC by pre-defined, compliance or custom testcases.</p>
+                    
+                        <div id="containerr">
+                            <button onclick="window.location.href  = '{% url 'verif_select' %}'"class="learn-more">
+                              <span class="circle" aria-hidden="true">
+                                <span class="icon arrow"></span>
+                              </span>
+                              <span class="button-text">Create Project</span>
+                            </button>
+                        </div>
+                    
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock content %}
+
