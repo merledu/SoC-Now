@@ -44,23 +44,23 @@ def verif_select(request):
             file = open("/tmp/c_code.elf", "r")
             contents = file.readlines()
             file.close()
-            # dataList = outData.split("\n")
             machineCode = []
             machineCodeFile = open("/tmp/machCode.txt", "w+")
             for line in contents[1:]:
                 splittedList = line.split("\t")
                 if len(splittedList)>1:
                     machineCode.append(splittedList[1])
-                    assembly.append(" ".join(splittedList[2:]))
             machineCodeFile.write("\n".join(machineCode))
             machineCodeFile.close()
             os.chdir(f"{GENERATOR_DIR}")
             os.system("sbt 'testOnly CoreTest -- -DwriteVcd=1 -DmemFile=/tmp/machCode.txt'")
             os.chdir("../")
             messages.success(request, "Successfully Generated VCD", extra_tags="success_vcd")
+
+            context = {"basecase":base, "testcases":tests, "c_code":c_code, "machineCode":None, "soc_code":None}
+
         elif "s-test" in request.POST:
             assembly = request.POST.get("main-s")
-            # try:
             machCode = assembly #parse_riscv_assembly(assembly)
             file = open("/tmp/machCode.txt", "w+")
             file.write(machCode)
@@ -69,9 +69,25 @@ def verif_select(request):
             os.system("sbt 'testOnly CoreTest -- -DwriteVcd=1 -DmemFile=/tmp/machCode.txt'")
             os.chdir("../")
             messages.success(request, "Successfully Generated VCD", extra_tags="success_vcd")
-      
+            context = {"basecase":base, "testcases":tests, "c_code":None, "machineCode":machCode, "soc_code":None}
+        
+        elif "soc-test" in request.POST:
+            assembly = request.POST.get("main-soc")
+            machCode = assembly #parse_riscv_assembly(assembly)
+            file = open("/tmp/machCode.txt", "w+")
+            file.write(machCode)
+            file.close()
+            os.chdir(f"{GENERATOR_DIR}")
+            os.system("sbt 'testOnly CoreTest -- -DwriteVcd=1 -DmemFile=/tmp/machCode.txt'")
+            os.chdir("../")
+            messages.success(request, "Successfully Generated VCD", extra_tags="success_vcd")
+            context = {"basecase":base, "testcases":tests, "c_code":None, "machineCode":None, "soc_code":assembly}
+            return render(request, "soc_test.html", context)
+    else:
+        context = {"basecase":base, "testcases":tests, "c_code":None, "machineCode":None, "soc_code":None}
+
             
-    context = {"basecase":base, "testcases":tests}
+    
     return render(request, "verif_select.html", context)
 
 def verify_core(request):
