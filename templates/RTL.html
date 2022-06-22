@@ -1,45 +1,63 @@
 {% extends 'base.html' %}
+
 {% load static %}
 
 {% block content %}
 
+<style>
+    body{
+        overflow-x: hidden;
+    }
+   
+</style>   
+<script src="{% static 'codemirror/codemirror-5.65.0/lib/codemirror.js' %}"></script>
+<link rel="stylesheet" href="{% static 'codemirror/codemirror-5.65.0/theme/ayu-dark.css' %}">
+<link rel="stylesheet" href="{% static 'codemirror/codemirror-5.65.0/lib/codemirror.css' %}">
+<script src="{% static 'codemirror/codemirror-5.65.0/mode/clike/clike.js' %}"></script>
+<script src="{% static 'codemirror/codemirror-5.65.0/addon/display/autorefresh.js' %}"></script>
 
-<code class="code-container" content="// Jane 💜">
-    <div class="glow-container">
-      <div class="augs" data-augmented-ui></div>
-    </div>
-    <section class="augs bg" data-augmented-ui>
-      <button class="dots" onclick="changeMode()" title="change mode"></button>
-      <input value="propjockey.io">
-      <div class="code highcontrast-dark">
-        <textarea id="code">
-  @keyframes cast-bit-to-space-toggle {
-    to { --cbtst-space-toggle: ; }
-  }
-  
-  @property --cbtst-space-toggle {
-    syntax: "*";
-    initial-value: initial;
-    inherits: false;
-  }
-  
-  :where(.cbtst) {
-    --cbtst-animation: cast-bit-to-space-toggle
-      1ms linear both var(--cbtst-bit, 0);
-    animation: var(--cbtst-animation);
-  }
-  
-  /* usage */
-  .my-el.cbtst {
-    --cbtst-bit: 1; /* provide input value of 0 or 1 */
-    /* var(--cbtst-space-toggle) is the output */
-  }
-        </textarea>
-      </div>
-    </section>
-  </div>
-  
-  
- 
+   
+  <div class="RTL">
+        <!-- <div class="container"> -->
+            <div class="container">
+                <!-- <form method="post">
+                    {% csrf_token %} -->
+                    <div class="d-flex justify-content-between">
+                       <button style="visibility:hidden" onclick="history.back()" class="btn fin-btn">< Back</button>
+                        <!-- <button onclick="window.close()" id="upload" class="btn fin-btn disabled">Download <span>^</span> </button> -->
+                        {% comment %} <form method="post">
+                            {% csrf_token %} {% endcomment %}
+                            <button onclick="window.location.href = '/download/driver/{{ driverFile }}'" type="button" class="btn fin-btn">Download </button>
+                    </div>
+                <div class="col-md-12 bordered-box">
+                    <textarea name="editor" id="editor">{{rtl}}</textarea>
+                </div>
+            {% comment %} </form> {% endcomment %}
 
-{% endblock content %}
+                <br>
+                <br>
+                
+                <br>
+                
+            </form>
+            </div>
+        </div>
+
+        <script>
+            var editor = document.getElementById("editor");
+      CodeMirror.fromTextArea(
+          editor,
+          {
+              lineNumbers: true,
+              matchBrackets: true,
+              theme: "ayu-dark",
+              mode: "text/x-c",
+              autoRefresh: true,
+              scrollbars:true,
+              
+          }
+      ).setSize(null, "75vh");
+      </script>
+    
+
+{% endblock %}

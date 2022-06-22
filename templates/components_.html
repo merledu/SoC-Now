@@ -1,10 +1,13 @@
-{% extends "base.html" %}
+{% extends 'base2.html' %}
 
 {% load static %}
 
-{% block content %}
-
-
+{% block nana %}
+<style>
+    body{
+        overflow-x:hidden;
+    }
+</style>
 
 <div class="comp">
 
@@ -97,28 +100,9 @@
                     </div>
     
                 </div>
-            </div>
-               
-
-        </div>
     </div>
-    </div>
-
-    <div id="comp_loader">
-        <div class="loading"> Genreating Component </div>
-    </div>
+</div>
 
 
 
-    <script>
-        function showLoaderOnClick(url){
-            var main = document.getElementsByClassName("comp")[0];
-            main.style.display = "none";
-            var loader = document.getElementById("comp_loader");
-            loader.style.display = "flex";
-            loloo();
-            window.location.href = url;
-        }
-    </script>
-
-{% endblock content %}
+{% endblock %}

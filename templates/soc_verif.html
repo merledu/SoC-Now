@@ -1,10 +1,10 @@
-{% extends 'base2.html' %}
+{% extends 'base.html' %}
 
 
 {% load static %}
 
 
-{% block nana %}
+{% block content %}
 <script src="{% static 'codemirror/codemirror-5.65.0/lib/codemirror.js' %}"></script>
 <link rel="stylesheet" href="{% static 'codemirror/codemirror-5.65.0/theme/ayu-dark.css' %}">
 <link rel="stylesheet" href="{% static 'codemirror/codemirror-5.65.0/lib/codemirror.css' %}">
@@ -15,6 +15,7 @@
         overflow-x: hidden;
     }
 </style>
+<section class="clean-block soc_verif">
 
         <!-- <div class="container"> -->
             <div class="container">
@@ -38,7 +39,7 @@
                    
                     <button type="button" onclick="window.location.href = '{% url 'finalize' %}'" class="btn fin-btn">< Back</button> 
                     
-                    <button type="button" onclick="generateVCD()" class="btn fin-btn" style="padding:10px 25px"> Geenreate VCD </button>
+                    <button type="button" onclick="generateVCD()" class="btn fin-btn" style="padding:10px 25px"> Generate VCD </button>
                     
                     <button type="button" onclick="window.location.href = '{% url 'download_vcd' %}'" {% if messages %} abc  {% else %} disabled {% endif %}  class="btn fin-btn" style="padding:10px 25px"> Download VCD </button>
 
@@ -52,7 +53,40 @@
             </form>
             </div>
         <!-- </div> -->
+        </section>
 
+        <div id="vcd_loader">
+            <div class="loading">Generating VCD</div>
+        </div>
+        
+
+
+        <script>
+
+            function generateVCD(){
+                var main = document.getElementsByClassName("soc_verif")[0];
+                var loader = document.getElementById("vcd_loader");
+                main.style.display = "none";
+                loader.style.display = "flex";
+                loloo();
+                var form   = document.getElementById("vcd-form");
+                form.submit();
+              }
+
+      var editor = document.getElementById("editor");
+      CodeMirror.fromTextArea(
+          editor,
+          {
+              lineNumbers: true,
+              matchBrackets: true,
+              theme: "ayu-dark",
+              mode: "text/x-c",
+              autoRefresh: true,
+              scrollbars:true,
+              
+          }
+      ).setSize(null, "75vh");
+      </script>
 
 
 {% endblock %}

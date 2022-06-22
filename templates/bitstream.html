@@ -1,8 +1,8 @@
-{% extends 'base2.html' %}
+{% extends 'base.html' %}
 
 {% load static %}
 
-{% block nana %}
+{% block content %}
 
 <style>
     body{
@@ -12,7 +12,7 @@
 </style>   
        
    
-       
+   <section class="clean-block bitstream">    
         <div class="row" style="margin-top: 3vh;">
             <div class="col-md-3">
             </div>
@@ -57,7 +57,7 @@
                         
                         <div class="d-flex justify-content-between align-items-center">
                             <a href="{% url 'mapFPGA' %}">  <img src="{% static 'img/boldarrow2.png' %}" style="width: 70%;" /> </a>
-                            <a href="{% url 'home' %}">  <img src="{% static 'img/home-ico.png' %}" style="width: 70%;" /> </a>
+                            <a href="{% url 'index' %}">  <img src="{% static 'img/home-ico.png' %}" style="width: 70%;" /> </a>
 
                             
                         </div>
@@ -76,6 +76,7 @@
             </div>
 
         </div>
+    </section>
 
       <script>
 

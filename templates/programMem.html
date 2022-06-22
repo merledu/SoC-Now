@@ -1,10 +1,10 @@
-{% extends 'base2.html' %}
+{% extends 'base.html' %}
 
 
 {% load static %}
 
 
-{% block nana %}
+{% block content %}
 <script src="{% static 'codemirror/codemirror-5.65.0/lib/codemirror.js' %}"></script>
 <link rel="stylesheet" href="{% static 'codemirror/codemirror-5.65.0/theme/ayu-dark.css' %}">
 <link rel="stylesheet" href="{% static 'codemirror/codemirror-5.65.0/lib/codemirror.css' %}">
@@ -15,16 +15,13 @@
         overflow-x: hidden;
     }
 </style>
+<section class="clean-block soc_verif">
 
         <!-- <div class="container"> -->
             <div class="container">
                 <form id="program-form" method="post">
                     {% csrf_token %}
-                    {% for message in messages %}
-                        <div style="text-align:center">
-                            <h5> {{ message }} </h5>
-                        </div>
-                    {% endfor %}
+                    
                 <div class="col-md-12 bordered-box">
                     <div>{{program | safe}}</div>
                     <textarea name="editor" id="editor"></textarea>
@@ -48,6 +45,38 @@
             </div>
         <!-- </div> -->
 
+        </section>
+        <div id="vcd_loader">
+            <div class="loading">Generating Bitstream</div>
+        </div>
+        
 
+
+        <script>
+
+            function bitstreamLoader(){
+                var main = document.getElementsByClassName("soc_verif")[0];
+                var loader = document.getElementById("vcd_loader");
+                main.style.display = "none";
+                loader.style.display = "flex";
+                loloo();
+                var form   = document.getElementById("program-form");
+                form.submit();
+              }
+
+      var editor = document.getElementById("editor");
+      CodeMirror.fromTextArea(
+          editor,
+          {
+              lineNumbers: true,
+              matchBrackets: true,
+              theme: "ayu-dark",
+              mode: "text/x-c",
+              autoRefresh: true,
+              scrollbars:true,
+              
+          }
+      ).setSize(null, "75vh");
+      </script>
 
 {% endblock %}
